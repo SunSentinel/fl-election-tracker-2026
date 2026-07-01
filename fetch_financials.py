@@ -41,14 +41,14 @@ def fetch_financial_totals(api_key, candidate_df):
         
         params = {
             "api_key": api_key,
-            "election_year": "2026"
+            "cycle": "2026"  # Updated this to correctly grab the 2026 cycle
         }
         
         try:
             # 1-second pause to easily stay under your standard key limit (1,000 calls/hour)
             time.sleep(1) 
             
-            # Lowering to 5 seconds lets us skip past server lag instantly
+            # 5 seconds lets us skip past intermittent server lag instantly
             response = requests.get(endpoint, headers=HEADERS, params=params, timeout=5)
             response.raise_for_status()
             
@@ -57,11 +57,26 @@ def fetch_financial_totals(api_key, candidate_df):
             
             if results:
                 totals = results[0]
+                
+                # DIAGNOSTIC: Print the raw keys for the very first candidate
+                if index == 0:
+                    print(f"\n[DEBUG] Raw FEC Totals Keys for {candidate_name}:")
+                    print(list(totals.keys()))
+                    print("\n")
+                
+                # Check for all possible FEC cash-on-hand variations to bypass the $0 fallback trap
+                coh = (
+                    totals.get('cash_on_hand_cop') or 
+                    totals.get('cash_on_hand') or 
+                    totals.get('cash_on_hand_end_period') or 
+                    0.0
+                )
+                
                 financial_data.append({
                     'candidate_id': candidate_id,
                     'receipts': totals.get('receipts', 0.0),
                     'disbursements': totals.get('disbursements', 0.0),
-                    'cash_on_hand_end_period': totals.get('cash_on_hand_end_period', 0.0)
+                    'cash_on_hand_end_period': coh 
                 })
             else:
                 # If they haven't filed 2026 numbers yet, we record zeros so the table isn't blank
