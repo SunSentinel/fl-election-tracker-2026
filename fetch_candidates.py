@@ -5,7 +5,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from the .env file
+# Load environment variables from the local .env file
 load_dotenv()
 
 # Suppress the macOS LibreSSL warning
@@ -40,7 +40,7 @@ def fetch_fl_2026_candidates(api_key):
         print(f" -> Pinging API for page {current_page}...")
         
         try:
-            # BUMPED TIMEOUT TO 30 SECONDS
+            # 30-second timeout to give sluggish servers more time
             response = requests.get(endpoint, params=params, timeout=30)
             response.raise_for_status()
             
@@ -72,13 +72,71 @@ def fetch_fl_2026_candidates(api_key):
     df = pd.DataFrame(all_candidates)
     
     if not df.empty:
+        # Add 'district' to our list of ideal columns to extract from the JSON
         ideal_columns = [
             'candidate_id', 'name', 'office_full', 'party_full', 
-            'incumbent_challenge_full', 'principal_committees', 
+            'district', 'incumbent_challenge_full', 'principal_committees', 
             'principal_committee_ids'
         ]
         existing_columns = [col for col in ideal_columns if col in df.columns]
         df = df[existing_columns]
+        
+        # Enacted May 2026 Special Session Mid-Decade Map (Plan EOGPCRP2026 / HB 1-D)
+        FL_COUNTIES = {
+            "1": "Escambia, Santa Rosa, Okaloosa, Walton",
+            "2": "Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",
+            "3": "Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",
+            "4": "Clay, Duval, Nassau",
+            "5": "Duval, St. Johns",
+            "6": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
+            "7": "Seminole, Volusia",
+            "8": "Brevard, Indian River, Orange",
+            "9": "Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",
+            "10": "Orange",
+            "11": "Lake, Orange, Polk, Sumter",
+            "12": "Citrus, Hernando, Pasco",
+            "13": "Pinellas",
+            "14": "Hillsborough, Pinellas",
+            "15": "Hillsborough, Pasco, Polk",
+            "16": "Hillsborough, Manatee",
+            "17": "Charlotte, Lee, Sarasota",
+            "18": "Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",
+            "19": "Collier, Lee",
+            "20": "Broward, Palm Beach",
+            "21": "Martin, Palm Beach, St. Lucie",
+            "22": "Broward, Palm Beach",
+            "23": "Broward, Palm Beach",
+            "24": "Broward, Miami-Dade",
+            "25": "Broward, Miami-Dade",
+            "26": "Collier, Miami-Dade, Monroe",
+            "27": "Miami-Dade",
+            "28": "Miami-Dade, Monroe"
+        }
+        
+        if 'district' in df.columns and 'office_full' in df.columns:
+            def format_office(row):
+                office = str(row.get('office_full', ''))
+                district = str(row.get('district', ''))
+                
+                if office == 'Senate':
+                    return "Senate|Statewide (All 67 Counties)"
+                
+                if office == 'House' and district and district not in ['00', '0', 'None', 'nan']:
+                    try:
+                        dist_num = str(int(float(district)))
+                        counties = FL_COUNTIES.get(dist_num, "Multiple Counties")
+                        # We use a pipe "|" to split the office string cleanly on the front end
+                        return f"House (District {dist_num})|{counties}"
+                    except ValueError:
+                        return office
+                return office
+            
+            # Apply the formatting rule to every row
+            df['office_full'] = df.apply(format_office, axis=1)
+            
+            # Drop the raw district column so we don't clutter the final CSV
+            df = df.drop(columns=['district'])
+            
         print(f"\nSuccessfully structured {len(df)} candidates into our dataset.")
     else:
         print("\nNo candidate data was retrieved.")
