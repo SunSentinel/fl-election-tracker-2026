@@ -1,0 +1,50 @@
+name: Daily FEC Data Sync
+
+on:
+  schedule:
+    # Runs at 06:00 UTC (2:00 AM Eastern Time) every single day
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allows us to also run it manually from GitHub with a click of a button
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Check out the repository code so the server can access it
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    # 2. Set up a clean Python environment on the virtual machine
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.9'
+
+    # 3. Cache dependencies to make the run faster
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests pandas python-dotenv
+
+    # 4. Run Phase 1: Candidate Roster
+    - name: Fetch Candidates
+      env:
+        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+      run: python fetch_candidates.py
+
+    # 5. Run Phase 2: Financial Totals
+    - name: Fetch Financial Totals
+      env:
+        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+      run: python fetch_financials.py
+
+    # 6. Check if changes were made, and if so, commit the new CSV to the repo
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "FEC Data Bot"
+        git config --global user.email "data-bot@newsroom.com"
+        git add fl_2026_*.csv
+        
+        # Only commit if there are actually changes to avoid workflow errors
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Automated daily FEC data update: $(date +'%Y-%m-%d')" && git push)
