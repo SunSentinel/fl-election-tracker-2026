@@ -31,7 +31,6 @@ def fetch_financial_totals(api_key, candidate_df):
     
     financial_data = []
     
-    # Process ALL candidates found in our CSV roster
     for index, row in candidate_df.iterrows():
         candidate_id = row['candidate_id']
         candidate_name = row['name']
@@ -41,14 +40,14 @@ def fetch_financial_totals(api_key, candidate_df):
         
         params = {
             "api_key": api_key,
-            "cycle": "2026"  # Updated this to correctly grab the 2026 cycle
+            "cycle": "2026"  
         }
         
         try:
-            # 1-second pause to easily stay under your standard key limit (1,000 calls/hour)
-            time.sleep(1) 
+            # Pausing for 4 seconds keeps us safely at ~15 requests per minute (900/hour),
+            # permanently keeping us under the FEC's 1,000 requests/hour rate limit ceiling.
+            time.sleep(4) 
             
-            # 5 seconds lets us skip past intermittent server lag instantly
             response = requests.get(endpoint, headers=HEADERS, params=params, timeout=5)
             response.raise_for_status()
             
@@ -58,17 +57,11 @@ def fetch_financial_totals(api_key, candidate_df):
             if results:
                 totals = results[0]
                 
-                # DIAGNOSTIC: Print the raw keys for the very first candidate
-                if index == 0:
-                    print(f"\n[DEBUG] Raw FEC Totals Keys for {candidate_name}:")
-                    print(list(totals.keys()))
-                    print("\n")
-                
-                # Check for all possible FEC cash-on-hand variations to bypass the $0 fallback trap
+                # Bypassing the $0 fallback by targeting the correct verified key
                 coh = (
+                    totals.get('last_cash_on_hand_end_period') or 
                     totals.get('cash_on_hand_cop') or 
                     totals.get('cash_on_hand') or 
-                    totals.get('cash_on_hand_end_period') or 
                     0.0
                 )
                 
@@ -79,7 +72,6 @@ def fetch_financial_totals(api_key, candidate_df):
                     'cash_on_hand_end_period': coh 
                 })
             else:
-                # If they haven't filed 2026 numbers yet, we record zeros so the table isn't blank
                 financial_data.append({
                     'candidate_id': candidate_id,
                     'receipts': 0.0,
@@ -88,8 +80,7 @@ def fetch_financial_totals(api_key, candidate_df):
                 })
                 
         except requests.exceptions.RequestException as e:
-            # If the request times out or errors, log it, record baseline zeros, and keep moving
-            print(f"    [!] Failed to fetch {candidate_name}: {e}. Recording placeholder data and skipping...")
+            print(f"    [!] Failed to fetch {candidate_name}: {e}. Recording placeholder data...")
             financial_data.append({
                 'candidate_id': candidate_id,
                 'receipts': 0.0,
@@ -109,12 +100,10 @@ if __name__ == "__main__":
         financials_df = fetch_financial_totals(API_KEY, candidates_df)
         
         if not financials_df.empty:
-            # Structural merge combining candidate metadata with their financial rows
             merged_df = pd.merge(candidates_df, financials_df, on='candidate_id', how='inner')
             
-            timestamp = datetime.now().strftime("%Y%m%d")
-            export_filename = f"fl_2026_tracker_master_{timestamp}.csv"
-            
+            # Exporting to a clean, standardized latest filename format
+            export_filename = "fl_2026_tracker_master_latest.csv"
             merged_df.to_csv(export_filename, index=False)
             print(f"\nSUCCESS! Master tracker dataset exported to {export_filename}")
         else:

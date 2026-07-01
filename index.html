@@ -27,7 +27,6 @@
             border-bottom: 1px solid #e5e7eb !important;
             padding: 10px 10px !important;
         }
-        /* Custom styling for the DataTables search box */
         .dataTables_filter input {
             border: 1px solid #cccccc !important;
             border-radius: 4px !important;
@@ -65,7 +64,7 @@
                 <thead>
                     <tr>
                         <th class="text-left">Candidate Name</th>
-                        <th class="text-left">Office</th>
+                        <th class="text-left">Office / Counties</th>
                         <th class="text-left">Party</th>
                         <th class="text-right">Total Raised</th>
                         <th class="text-right">Total Spent</th>
@@ -83,7 +82,6 @@
     </div>
 
     <script>
-        // Updated formatter to explicitly force maximumFractionDigits to 0 for strict rounding
         const currencyFormatter = new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD',
@@ -91,8 +89,8 @@
             maximumFractionDigits: 0
         });
 
-        // Ensure this filename matches your current active master CSV
-        const CSV_FILE = 'fl_2026_tracker_master_20260701.csv'; 
+        // Configured to dynamically look for the static standardized data file name
+        const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
 
         $(document).ready(function() {
             Papa.parse(CSV_FILE, {
@@ -108,13 +106,25 @@
                         const disbursements = parseFloat(row.disbursements) || 0;
                         const coh = parseFloat(row.cash_on_hand_end_period) || 0;
 
-                        // Datawrapper-style zebra striping
+                        // Parse out the pipe character dividing Office titles from local counties
+                        let officeDisplay = row.office_full || 'N/A';
+                        let countySubtitle = '';
+                        
+                        if (officeDisplay.includes('|')) {
+                            const parts = officeDisplay.split('|');
+                            officeDisplay = parts[0];
+                            countySubtitle = `<div class="text-[11px] text-gray-400 mt-0.5 leading-tight tracking-wide">${parts[1]}</div>`;
+                        }
+
                         const bgClass = index % 2 === 0 ? 'bg-white' : 'bg-[#f9f9f9]';
 
                         tableBody += `
                             <tr class="${bgClass} hover:bg-[#f1f1f1] transition-colors text-[#333333]">
                                 <td class="font-bold text-[#111111]">${row.name}</td>
-                                <td class="text-gray-600">${row.office_full || 'N/A'}</td>
+                                <td class="text-gray-600">
+                                    <div class="font-medium text-gray-800">${officeDisplay}</div>
+                                    ${countySubtitle}
+                                </td>
                                 <td class="text-gray-600">${row.party_full || 'N/A'}</td>
                                 <td class="text-right font-mono" data-order="${receipts}">${currencyFormatter.format(receipts)}</td>
                                 <td class="text-right font-mono text-gray-500" data-order="${disbursements}">${currencyFormatter.format(disbursements)}</td>
@@ -131,14 +141,14 @@
                         pageLength: 25,
                         order: [[3, "desc"]], 
                         language: {
-                            searchPlaceholder: "Search...",
+                            searchPlaceholder: "Search candidate, county, party...",
                             search: "",
                             lengthMenu: "Show _MENU_ entries"
                         }
                     });
                 },
                 error: function(err) {
-                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error loading data file: ${err.message}</span>`);
+                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error loading data file: ${err.message}. Make sure your filename matches.</span>`);
                 }
             });
         });
