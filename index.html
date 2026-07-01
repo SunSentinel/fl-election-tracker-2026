@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida 2026 Federal Election Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <style>
+        /* Override DataTables standard styling to match Datawrapper's clean look */
+        table.dataTable {
+            border-collapse: collapse !important;
+            margin-top: 15px !important;
+            margin-bottom: 15px !important;
+        }
+        table.dataTable thead th {
+            border-bottom: 2px solid #333333 !important;
+            font-weight: 700 !important;
+            color: #333333 !important;
+            padding: 8px 10px !important;
+        }
+        table.dataTable tbody td {
+            border-bottom: 1px solid #e5e7eb !important;
+            padding: 10px 10px !important;
+        }
+        /* Custom styling for the DataTables search box */
+        .dataTables_filter input {
+            border: 1px solid #cccccc !important;
+            border-radius: 4px !important;
+            padding: 6px 12px !important;
+            margin-left: 8px !important;
+            font-size: 0.875rem !important;
+            outline: none !important;
+        }
+        .dataTables_filter input:focus {
+            border-color: #111111 !important;
+        }
+        .dataTables_length select {
+            border: 1px solid #cccccc !important;
+            border-radius: 4px !important;
+            padding: 4px 8px !important;
+        }
+    </style>
+</head>
+<body class="bg-white text-[#333333] font-sans antialiased p-4 sm:p-6">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-6 border-b border-gray-200 pb-4">
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Florida 2026 Campaign Finance Tracker</h1>
+            <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
+                A searchable database of federal candidates registered for the 2026 election cycle in Florida. Data automatically syncs daily with the Federal Election Commission (FEC). <span class="italic text-gray-500 font-medium">Note: All financial figures are rounded to the nearest dollar.</span>
+            </p>
+        </header>
+
+        <div id="loading" class="text-center py-12 text-gray-400 text-sm font-medium">
+            Loading data from FEC pipeline...
+        </div>
+
+        <div id="table-container" class="hidden overflow-x-auto">
+            <table id="fec-table" class="display w-full text-sm">
+                <thead>
+                    <tr>
+                        <th class="text-left">Candidate Name</th>
+                        <th class="text-left">Office</th>
+                        <th class="text-left">Party</th>
+                        <th class="text-right">Total Raised</th>
+                        <th class="text-right">Total Spent</th>
+                        <th class="text-right">Cash On Hand</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    </tbody>
+            </table>
+        </div>
+        
+        <footer class="mt-4 text-xs text-gray-400 text-right">
+            Source: Federal Election Commission (FEC) API • Built for newsroom use.
+        </footer>
+    </div>
+
+    <script>
+        // Updated formatter to explicitly force maximumFractionDigits to 0 for strict rounding
+        const currencyFormatter = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+
+        // Ensure this filename matches your current active master CSV
+        const CSV_FILE = 'fl_2026_tracker_master_20260701.csv'; 
+
+        $(document).ready(function() {
+            Papa.parse(CSV_FILE, {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    const data = results.data;
+                    let tableBody = '';
+
+                    data.forEach(function(row, index) {
+                        const receipts = parseFloat(row.receipts) || 0;
+                        const disbursements = parseFloat(row.disbursements) || 0;
+                        const coh = parseFloat(row.cash_on_hand_end_period) || 0;
+
+                        // Datawrapper-style zebra striping
+                        const bgClass = index % 2 === 0 ? 'bg-white' : 'bg-[#f9f9f9]';
+
+                        tableBody += `
+                            <tr class="${bgClass} hover:bg-[#f1f1f1] transition-colors text-[#333333]">
+                                <td class="font-bold text-[#111111]">${row.name}</td>
+                                <td class="text-gray-600">${row.office_full || 'N/A'}</td>
+                                <td class="text-gray-600">${row.party_full || 'N/A'}</td>
+                                <td class="text-right font-mono" data-order="${receipts}">${currencyFormatter.format(receipts)}</td>
+                                <td class="text-right font-mono text-gray-500" data-order="${disbursements}">${currencyFormatter.format(disbursements)}</td>
+                                <td class="text-right font-mono font-bold text-[#111111]" data-order="${coh}">${currencyFormatter.format(coh)}</td>
+                            </tr>
+                        `;
+                    });
+
+                    $('#fec-table tbody').html(tableBody);
+                    $('#loading').addClass('hidden');
+                    $('#table-container').removeClass('hidden');
+
+                    $('#fec-table').DataTable({
+                        pageLength: 25,
+                        order: [[3, "desc"]], 
+                        language: {
+                            searchPlaceholder: "Search...",
+                            search: "",
+                            lengthMenu: "Show _MENU_ entries"
+                        }
+                    });
+                },
+                error: function(err) {
+                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error loading data file: ${err.message}</span>`);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
