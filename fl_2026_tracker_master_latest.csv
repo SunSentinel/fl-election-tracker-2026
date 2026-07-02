@@ -1,10 +1,10 @@
 candidate_id,name,office_full,party_full,incumbent_challenge_full,receipts,disbursements,cash_on_hand_end_period
-H4FL02112,"ABOUJAOUDE, ROCK ADEL MR. JR","House (District 12)|Citrus, Hernando, Pasco",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H4FL02112,"ABOUJAOUDE, ROCK ADEL MR. JR","House (District 12)|Citrus, Hernando, Pasco",DEMOCRATIC PARTY,Challenger,0.0,0.0,126.64
 H4FL07137,"ADAMS, JENNIFER","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Challenger,35056.07,29925.26,5136.72
 H2FL21132,"ADEIMY, DEBORAH","House (District 23)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,138415.84,84497.27,57526.71
 H6FL03115,"ALBERS, TROY","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",DEMOCRATIC PARTY,Challenger,1637.0,1637.0,0.0
 H6FL19277,"ARIAS, VICTOR M.","House (District 19)|Collier, Lee",DEMOCRATIC PARTY,Open seat,22813.19,4241.97,18571.22
-H4FL27028,"ARIAS, VINCENT MICHAEL",House (District 27)|Miami-Dade,REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H4FL27028,"ARIAS, VINCENT MICHAEL",House (District 27)|Miami-Dade,REPUBLICAN PARTY,Challenger,127485.72,27580.48,99905.24
 H2FL28038,"ASENCIO, ROBERT","House (District 28)|Miami-Dade, Monroe",DEMOCRATIC PARTY,Open seat,0.0,0.0,0.0
 H2FL03197,"ASENSIO, MANUEL","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",REPUBLICAN PARTY,,0.0,0.0,0.0
 H0FL19221,"ASKAR, CASEY","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,0.0,0.0,43.0
@@ -22,7 +22,7 @@ H2FL04211,"BEAN, AARON P.","House (District 4)|Clay, Duval, Nassau",REPUBLICAN P
 H4FL19090,"BENACQUISTO, LIZBETH","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
 H6FL09070,"BILIRAKIS, GUS M","House (District 12)|Citrus, Hernando, Pasco",REPUBLICAN PARTY,Incumbent,1020937.9,707040.68,435314.26
 S4FL00736,"BONOAN, FEENA",Senate|Statewide (All 67 Counties),LIBERTARIAN PARTY,Challenger,0.0,0.0,0.0
-H2FL14269,"BRADLEY, CHRISTOPHER","House (District 14)|Hillsborough, Pinellas",NONE,Challenger,0.0,0.0,0.0
+H2FL14269,"BRADLEY, CHRISTOPHER","House (District 14)|Hillsborough, Pinellas",NONE,Challenger,0.0,0.0,4318.5
 H6FL22172,"BRANDA, PAOLA","House (District 23)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,5100.0,0.0,5100.0
 H4FL18134,"BRAUNSTON, PETER ALAN MR","House (District 18)|Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL01457,"BRODEN, STEPHEN","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",INDEPENDENT,Open seat,19541.21,19541.21,0.0
@@ -31,11 +31,11 @@ H2FL10358,"BROWN, CORRINE",House (District 10)|Orange,DEMOCRATIC PARTY,Open seat
 H6FL13148,"BUCHANAN, VERNON","House (District 16)|Hillsborough, Manatee",REPUBLICAN PARTY,Incumbent,929818.2,893272.66,1085758.89
 H0FL11152,"BUNTYN, TONY","House (District 11)|Lake, Orange, Polk, Sumter",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H2FL21082,"BUONGIORNO, JEFFREY D","House (District 21)|Martin, Palm Beach, St. Lucie",REPUBLICAN PARTY,Challenger,500.0,0.0,500.0
-H6FL22156,"BURCK, DAVID","House (District 22)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H6FL22156,"BURCK, DAVID","House (District 22)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,131000.0,20164.78,110835.22
 H0FL03175,"CAMMACK, KAT","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Incumbent,1519279.02,1232248.27,842581.65
 H4FL20098,"CAMPBELL, LUTHER MR.","House (District 20)|Broward, Palm Beach",DEMOCRATIC PARTY,Challenger,37128.18,11067.85,26060.33
 S4FL00637,"CAMPBELL, STANLEY",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,0.0,118434.38,0.0
-H6FL25035,"CARBONARA, MICHAEL","House (District 22)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H6FL25035,"CARBONARA, MICHAEL","House (District 22)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,2526427.75,1893254.99,633172.76
 H4FL09190,"CARTER, GREGORY MARCUS MR","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Challenger,14949.98,14234.07,1995.23
 H0FL09115,"CASTILLO, JOSE","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Challenger,65.97,157.19,0.0
 H6FL11126,"CASTOR, KATHY","House (District 14)|Hillsborough, Pinellas",DEMOCRATIC PARTY,Incumbent,876012.18,386157.72,716584.33
@@ -47,8 +47,8 @@ H8FL20032,"CHERFILUS-MCCORMICK, SHEILA","House (District 20)|Broward, Palm Beach
 H0FL05147,"CHESTER, ALBERT II","House (District 5)|Duval, St. Johns",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL01515,"CHICO, DOUGLAS CONNOR","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Challenger,46262.98,19762.8,26500.18
 H2FL25083,"CLARK, DREW-MONTEZ DR.","House (District 20)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
-H4FL15155,"COHN, ALAN","House (District 15)|Hillsborough, Pasco, Polk",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
-H6FL19228,"COLLINS, CHRIS","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,910000.0,604436.5,305563.5
+H4FL15155,"COHN, ALAN","House (District 15)|Hillsborough, Pasco, Polk",DEMOCRATIC PARTY,Challenger,0.0,21.0,184.21
+H6FL19228,"COLLINS, CHRIS","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
 H6FL06381,"COOPER, ROBERT DAVID MR II","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",DEMOCRATIC PARTY,Challenger,26385.56,17032.37,9353.19
 H6FL07215,"DALTON, BALE","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Challenger,692231.21,227793.9,464437.31
 H6FL21059,"DANDIYA, PIA","House (District 22)|Broward, Palm Beach",DEMOCRATIC PARTY,Challenger,1575117.24,403470.7,1171646.54
@@ -82,14 +82,14 @@ H4FL26111,"EVANS, RICHARD MR.","House (District 26)|Collier, Miami-Dade, Monroe"
 H8FL26062,"FAAS, SOURAYA","House (District 28)|Miami-Dade, Monroe",LIBERTARIAN PARTY,Open seat,0.0,0.0,0.0
 H6FL13296,"FAY, JOHN T",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,2529.67,631.35,1759.08
 H4FL07145,"FERNANDEZ, HILSIA TATIANA","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Challenger,679.04,4066.81,0.0
-H2FL07289,"FERNANDEZ, HLSIA","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H2FL07289,"FERNANDEZ, HLSIA","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Challenger,679.04,4066.81,0.0
 H8FL27110,"FERRER, GABRIEL A",House (District 27)|Miami-Dade,REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
-H6FL06258,"FINE, RANDY","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",REPUBLICAN PARTY,,0.0,0.0,0.0
+H6FL06258,"FINE, RANDY","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",REPUBLICAN PARTY,,3719022.46,2957460.97,761561.49
 H6FL13239,"FORD, EARLE",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,569488.62,553303.6,16185.02
 H6FL27064,"FORNINO, ALEXANDER",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Challenger,25150.33,24814.88,-719.18
 H4FL13200,"FOX, WHITNEY",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,0.0,20055.38,0.0
 H2FL14053,"FRANKEL, LOIS J.","House (District 23)|Broward, Palm Beach",DEMOCRATIC PARTY,Incumbent,1855772.41,678246.06,1464968.6
-H0FL15104,"FRANKLIN, SCOTT MR.","House (District 18)|Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",REPUBLICAN PARTY,Incumbent,0.0,0.0,0.0
+H0FL15104,"FRANKLIN, SCOTT MR.","House (District 18)|Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",REPUBLICAN PARTY,Incumbent,634983.24,297386.91,819491.81
 H6FL01523,"FRANKMAN, JOHN","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Challenger,90317.74,5380.64,84937.1
 H6FL22149,"FRANZESE, DANIEL JOHN","House (District 22)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,438419.4,64155.43,384192.46
 H2FL21108,"FRANZESE, DANIEL JOHN","House (District 25)|Broward, Miami-Dade",REPUBLICAN PARTY,Challenger,438419.4,64155.43,384192.46
@@ -103,7 +103,7 @@ H6FL06357,"GAMBARO, CHARLES","House (District 6)|Flagler, Lake, Marion, Putnam, 
 H6FL18212,"GIBSON, CURTIS","House (District 18)|Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",DEMOCRATIC PARTY,Challenger,452.9,105.33,347.57
 H6FL26041,"GIL, YURINA","House (District 26)|Collier, Miami-Dade, Monroe",DEMOCRATIC PARTY,Challenger,38587.56,22726.78,17079.25
 H0FL26036,"GIMENEZ, CARLOS","House (District 28)|Miami-Dade, Monroe",REPUBLICAN PARTY,Incumbent,414710.14,346166.71,644571.4
-S6FL00848,"GLEASON, CHRISTOPHER",Senate|Statewide (All 67 Counties),REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+S6FL00848,"GLEASON, CHRISTOPHER",Senate|Statewide (All 67 Counties),REPUBLICAN PARTY,Challenger,3429.73,129.73,3300.0
 H2FL24052,"GONZALEZ, PATRICIA","House (District 24)|Broward, Miami-Dade",REPUBLICAN PARTY,Open seat,1332.0,1236.6,95.4
 H6FL05250,"GRAGE, RACHEL","House (District 5)|Duval, St. Johns",DEMOCRATIC PARTY,Challenger,160947.08,65892.01,95055.07
 H6FL13312,"GRAY, LEELA J",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,564999.77,64764.82,500234.95
@@ -113,13 +113,13 @@ S6FL00376,"GRAYSON, ALAN MARK",Senate|Statewide (All 67 Counties),DEMOCRATIC PAR
 H6FL09187,"GRAYSON, DENA MD, PHD MD, PHD","House (District 8)|Brevard, Indian River, Orange",DEMOCRATIC PARTY,Challenger,1227.24,1979.09,0.0
 H6FL02299,"GREEN, AMANDA MARIE","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",DEMOCRATIC PARTY,Open seat,204676.02,110026.12,94649.9
 H2FL08139,"GREEN, KAREN REV. DR.","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Open seat,0.0,0.0,0.0
-H4FL01247,"GROSS, KEITH","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
+H4FL01247,"GROSS, KEITH","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,5680863.09,561202.88,5125436.86
 H4FL11089,"GROVES, RALPH","House (District 11)|Lake, Orange, Polk, Sumter",LIBERTARIAN PARTY,Open seat,0.0,0.0,0.0
 H6FL23162,"GURFEIN, JARED","House (District 23)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,28053.17,16275.72,11777.45
 H4FL22136,"GUTMANN, ANDREW","House (District 22)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,0.0,4493.25,0.0
 H4FL11105,"HALL, BARBARA BARBIE HARDEN","House (District 11)|Lake, Orange, Polk, Sumter",DEMOCRATIC PARTY,Open seat,21305.41,20831.88,8555.87
 H4FL08168,"HARIDOPOLOS, MIKE","House (District 8)|Brevard, Indian River, Orange",REPUBLICAN PARTY,Incumbent,1250931.85,664982.72,844111.96
-H6FL03099,"HARP, SETH ALLAN","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H6FL03099,"HARP, SETH ALLAN","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",DEMOCRATIC PARTY,Challenger,22424.55,19396.74,3027.81
 H6FL16117,"HARRIS, JONATHAN","House (District 16)|Hillsborough, Manatee",DEMOCRATIC PARTY,Open seat,32769.08,10529.89,22239.19
 H6FL23139,"HARRISON, RAVEN","House (District 25)|Broward, Miami-Dade",REPUBLICAN PARTY,Challenger,701238.51,525204.1,176034.41
 H2FL23021,"HASTINGS, ALCEE L","House (District 20)|Broward, Palm Beach",DEMOCRATIC PARTY,Incumbent,0.0,0.0,0.0
@@ -128,9 +128,9 @@ H6FL05284,"HAZEN, ALEXANDER","House (District 5)|Duval, St. Johns",DEMOCRATIC PA
 H4FL08101,"HEARTON, JOHN L MR.","House (District 8)|Brevard, Indian River, Orange",REPUBLICAN PARTY,Challenger,0.0,8425.02,9177.91
 H6FL05235,"HEGGESTAD, MARK PETER","House (District 5)|Duval, St. Johns",DEMOCRATIC PARTY,Challenger,25414.0,13185.1,12478.27
 H2FL13279,"HENSON, AUDREY",House (District 13)|Pinellas,REPUBLICAN PARTY,Open seat,0.0,1613.88,0.0
-H2FL04195,"HILL, ANTHONY TONY","House (District 4)|Clay, Duval, Nassau",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H2FL04195,"HILL, ANTHONY TONY","House (District 4)|Clay, Duval, Nassau",DEMOCRATIC PARTY,Challenger,250.0,0.0,19141.74
 H6FL05193,"HOLLOWAY, LASHONDA J","House (District 4)|Clay, Duval, Nassau",DEMOCRATIC PARTY,,0.0,0.0,0.0
-H2FL20159,"HOLNESS, DALE V.C. MR.","House (District 20)|Broward, Palm Beach",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H2FL20159,"HOLNESS, DALE V.C. MR.","House (District 20)|Broward, Palm Beach",DEMOCRATIC PARTY,Challenger,306515.89,12925.78,312672.42
 H2FL22205,"HOLZHAUER, HAVA","House (District 23)|Broward, Palm Beach",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL03131,"HUBAC, GEORGE EMIL","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",DEMOCRATIC PARTY,Challenger,1201.23,521.47,679.76
 H6FL12199,"IRIZARRY, CHRISTOPHER","House (District 15)|Hillsborough, Pasco, Polk",DEMOCRATIC PARTY,Challenger,15703.73,5379.33,10324.4
@@ -153,7 +153,7 @@ H6FL07165,"KINTER, MARIALANA","House (District 7)|Seminole, Volusia",DEMOCRATIC 
 H6FL04220,"KIRWAN, MICHAEL","House (District 4)|Clay, Duval, Nassau",DEMOCRATIC PARTY,Challenger,511694.58,285240.11,226454.47
 H6FL04188,"KNOLES, RICKY PATRIC MR","House (District 4)|Clay, Duval, Nassau",DEMOCRATIC PARTY,Challenger,5020.0,5020.0,0.0
 H0FL19247,"KOWAL, DANIEL","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
-H6FL27056,"LAMONDIN, RICHARD",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H6FL27056,"LAMONDIN, RICHARD",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Challenger,743712.29,743712.29,0.0
 S6FL00657,"LANG, JAKE",Senate|Statewide (All 67 Counties),REPUBLICAN PARTY,Challenger,32771.73,27362.66,5409.07
 H6FL23154,"LARKIN, OLIVER ADAMS","House (District 25)|Broward, Miami-Dade",DEMOCRATIC PARTY,Challenger,327736.48,145012.77,182723.71
 H6FL19186,"LAUF, CATALINA","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,974858.77,584741.16,390117.61
@@ -164,7 +164,7 @@ H2FL12131,"LEISER, CHRISTOPHER MR.","House (District 12)|Citrus, Hernando, Pasco
 S2FL00227,"LEMIEUX, GEORGE S",Senate|Statewide (All 67 Counties),REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H4FL19116,"LERNER, KARI","House (District 19)|Collier, Lee",DEMOCRATIC PARTY,Challenger,0.0,27350.49,0.0
 H2FL07198,"LE, TUAN A",House (District 10)|Orange,REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
-H6FL02323,"LEWIS, NICHOLAS JUSTIN","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
+H6FL02323,"LEWIS, NICHOLAS JUSTIN","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,40397.36,36817.39,3579.97
 H4FL13176,"LICCIONE, JOHN WILLIAM",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL26058,"LOCKLIN, NICOLE","House (District 26)|Collier, Miami-Dade, Monroe",DEMOCRATIC PARTY,Challenger,105198.13,29206.42,75991.71
 H4FL17052,"LOPEZ, MANNY","House (District 17)|Charlotte, Lee, Sarasota",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
@@ -181,7 +181,7 @@ H6FL11217,"MARTIN, JACK","House (District 12)|Citrus, Hernando, Pasco",REPUBLICA
 H6FL21075,"MARTIN, JAMES","House (District 21)|Martin, Palm Beach, St. Lucie",DEMOCRATIC PARTY,Challenger,306655.16,146272.04,160383.12
 H6FL18097,"MAST, BRIAN","House (District 21)|Martin, Palm Beach, St. Lucie",REPUBLICAN PARTY,Incumbent,3104405.43,2322221.17,2553561.92
 H6FL20119,"MAXIME, KEDNER","House (District 20)|Broward, Palm Beach",INDEPENDENT,Challenger,6229.0,1233.48,4995.52
-H6FL15192,"MCAULEY, DARREN","House (District 12)|Citrus, Hernando, Pasco",DEMOCRATIC PARTY,Challenger,532060.24,265534.39,266525.85
+H6FL15192,"MCAULEY, DARREN","House (District 12)|Citrus, Hernando, Pasco",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 S6FL00236,"MCBRIDE, WILLIAM",Senate|Statewide (All 67 Counties),REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H4FL05123,"MCGOVERN, JAY","House (District 5)|Duval, St. Johns",DEMOCRATIC PARTY,Challenger,0.0,6341.95,19790.71
 H2FL07206,"MCGOVERN, KEVIN JOHN","House (District 15)|Hillsborough, Pasco, Polk",REPUBLICAN PARTY,Open seat,0.0,2200.89,0.0
@@ -200,13 +200,13 @@ H2FL09277,"MORALES, ADIANIS","House (District 9)|Orange, Osceola, Polk, Indian R
 H6FL06407,"MORGAN, STEVE","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",DEMOCRATIC PARTY,Challenger,5910.0,760.71,5149.29
 H2FL22171,"MOSKOWITZ, JARED","House (District 25)|Broward, Miami-Dade",DEMOCRATIC PARTY,Incumbent,1710590.3,842813.43,1217063.57
 S4FL00611,"MUCARSEL-POWELL, DEBBIE",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
-S6FL00806,"MUJICA, HECTOR DANIEL",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+S6FL00806,"MUJICA, HECTOR DANIEL",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,717348.11,637278.06,80070.05
 H6FL06332,"MURCHINSON-RIVERA, RONNIE","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",DEMOCRATIC PARTY,Challenger,11888.5,9312.58,2575.92
 H6FL02364,"MURPHY, LUKE","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,135410.13,4848.71,130561.42
 H6FL07140,"MURPHY, STEPHANIE","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Incumbent,0.0,0.0,0.0
 H4FL24058,"NAVARRO, JESUS","House (District 24)|Broward, Miami-Dade",REPUBLICAN PARTY,Challenger,0.0,0.0,-586.63
 H4FL14091,"NEELD, ROBERT M. JR.","House (District 19)|Collier, Lee",DEMOCRATIC PARTY,,0.0,0.0,0.0
-S2FL00656,"NGUYEN, QUOC TUAN MR.",Senate|Statewide (All 67 Counties),NO PARTY AFFILIATION,Challenger,0.0,0.0,0.0
+S2FL00656,"NGUYEN, QUOC TUAN MR.",Senate|Statewide (All 67 Counties),NO PARTY AFFILIATION,Challenger,0.0,0.0,-2426.25
 S6FL00830,"NIXON, ANGELA",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,293583.92,20957.37,177595.28
 H6FL02356,"NORTON, JIM","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,272216.26,13120.61,259095.65
 H6FL19129,"OBERWEIS, JAMES MR.","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,4360995.58,1396396.85,2964598.73
@@ -219,7 +219,7 @@ H6FL27106,"PARNAS, LEV","House (District 22)|Broward, Palm Beach",INDEPENDENT,Ch
 H6FL13247,"PAROS, REGINALD",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,15863.96,15863.96,0.0
 H2FL07230,"PASTRANA, ALLEK","House (District 7)|Seminole, Volusia",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL01390,"PATRONIS, JIMMY JR.","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Challenger,3132076.59,2624960.99,507115.6
-H0FL13158,"PAULINA LUNA, ANNA",House (District 13)|Pinellas,REPUBLICAN PARTY,Incumbent,0.0,0.0,0.0
+H0FL13158,"PAULINA LUNA, ANNA",House (District 13)|Pinellas,REPUBLICAN PARTY,Incumbent,2298615.43,1054588.53,1375442.45
 H6FL01432,"PEACOCK, JEFF","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Open seat,29098.5,37665.06,0.0
 H6FL16109,"PEARSON, GLENN KEITH MR","House (District 16)|Hillsborough, Manatee",DEMOCRATIC PARTY,Open seat,30086.99,22918.94,8491.14
 H6FL19145,"PEDERSEN, MIKE","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,46008.0,33367.14,12640.86
@@ -232,19 +232,19 @@ H4FL01270,"PITTMAN, BERNADETTE","House (District 1)|Escambia, Santa Rosa, Okaloo
 H2FL27071,"POLO, FRANK",House (District 27)|Miami-Dade,REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H6FL16133,"POPE, EDWARD PETER DR.","House (District 16)|Hillsborough, Manatee",REPUBLICAN PARTY,Open seat,15057.57,1355.24,13702.33
 H8FL15107,"POSEY, BILL","House (District 8)|Brevard, Indian River, Orange",REPUBLICAN PARTY,Incumbent,13284.78,113501.32,0.0
-H6FL02315,"POWER, EVAN MR","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
+H6FL02315,"POWER, EVAN MR","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,346280.17,48062.24,298217.93
 H0FL04033,"PUESCHEL, DEBORAH KATZ","House (District 4)|Clay, Duval, Nassau",WRITE-IN,Open seat,0.0,0.0,698.07
 H6FL14112,"QUINN, CHRISTINE YVONNE",House (District 13)|Pinellas,REPUBLICAN PARTY,Challenger,0.0,837.13,0.0
-H6FL10185,"RANCE, HOWARD STEVEN","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
-H6FL09203,"RENTAS, WANDA","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
+H6FL10185,"RANCE, HOWARD STEVEN","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Challenger,93551.76,55881.89,37669.87
+H6FL09203,"RENTAS, WANDA","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Open seat,800.0,815.0,0.0
 H8FL23051,"REYES, CARLOS JOSE JR.","House (District 23)|Broward, Palm Beach",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H0FL25038,"RIVERA, DAVID","House (District 26)|Collier, Miami-Dade, Monroe",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 S6FL00418,"RIVERA, ERNESTO J",Senate|Statewide (All 67 Counties),REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H6FL04204,"ROBINSON, BRITTNEY","House (District 4)|Clay, Duval, Nassau",DEMOCRATIC PARTY,Challenger,16194.29,12726.04,3385.88
 H6FL13254,"ROBINSON, TIMOTHY BRANDT MR",House (District 13)|Pinellas,DEMOCRATIC PARTY,Challenger,60546.36,27834.63,32711.73
-H4FL14117,"ROCHFORD, ROBERT ANTHONY ROCKY CAPT","House (District 14)|Hillsborough, Pinellas",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H4FL14117,"ROCHFORD, ROBERT ANTHONY ROCKY CAPT","House (District 14)|Hillsborough, Pinellas",REPUBLICAN PARTY,Challenger,62385.0,43427.2,21137.36
 H6FL27098,"RODRIGUEZ, ELIOTT",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Challenger,312002.51,12526.67,299475.84
-H8FL27052,"RODRIGUEZ, JOSE JAVIER",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Open seat,0.0,265.0,175565.86
+H8FL27052,"RODRIGUEZ, JOSE JAVIER",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Open seat,0.0,0.0,0.0
 H6FL02331,"ROGERS, AUSTIN","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Open seat,722377.34,47185.17,675192.17
 H0FL01120,"ROMAGNANO, CHASE ANDERSON ANDY REV.","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H6FL19087,"ROONEY, FRANCIS","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Incumbent,0.0,897.5,5581.8
@@ -255,14 +255,14 @@ H4FL01288,"RUDMAN, JOEL DR.","House (District 1)|Escambia, Santa Rosa, Okaloosa,
 H2FL27089,"RUSSELL, KEN",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL04105,"RUTHERFORD, JOHN","House (District 5)|Duval, St. Johns",REPUBLICAN PARTY,Incumbent,528233.02,299106.25,406796.42
 H2FL11117,"SABATINI, ANTHONY","House (District 11)|Lake, Orange, Polk, Sumter",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
-H8FL27185,"SALAZAR, MARIA ELVIRA",House (District 27)|Miami-Dade,REPUBLICAN PARTY,Incumbent,0.0,0.0,0.0
+H8FL27185,"SALAZAR, MARIA ELVIRA",House (District 27)|Miami-Dade,REPUBLICAN PARTY,Incumbent,1373240.18,846727.53,1937339.79
 H6FL01374,"SALZMAN, MICHELLE","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
 H6FL01366,"SALZMAN, MICHELLE","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
 S2FL00623,"SANCHEZ, WILLIAM",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H2FL24037,"SANON-JULES, CHRISTINE ALEXANDRIA","House (District 24)|Broward, Miami-Dade",DEMOCRATIC PARTY,Open seat,0.0,0.0,0.0
 H6FL19111,"SAPP, HOWARD","House (District 19)|Collier, Lee",DEMOCRATIC PARTY,Open seat,32473.39,35205.17,-2731.78
 H8FL03046,"SAPP, JUDSON","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Open seat,0.0,0.0,824.57
-H2FL26073,"SCHAFFER, JEREMIAH","House (District 28)|Miami-Dade, Monroe",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H2FL26073,"SCHAFFER, JEREMIAH","House (District 28)|Miami-Dade, Monroe",REPUBLICAN PARTY,Challenger,0.0,0.0,270.02
 H2FL01258,"SCHILLER, MARGARET ANN MS","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H4FL16161,"SCHNEIDER, JAN","House (District 16)|Hillsborough, Manatee",DEMOCRATIC PARTY,Challenger,21271.49,3270.64,58919.59
 H2FL13139,"SCHNEIDER, JAN","House (District 16)|Hillsborough, Manatee",DEMOCRATIC PARTY,Open seat,21271.49,3270.64,58919.59
@@ -272,11 +272,11 @@ H6FL06274,"SELMONT, GEORGE AUSTIN","House (District 6)|Flagler, Lake, Marion, Pu
 H2FL20134,"SHARIEF, BARBARA","House (District 20)|Broward, Palm Beach",DEMOCRATIC PARTY,Open seat,0.0,0.0,0.0
 H0FL21110,"SHERRILL, REBA","House (District 21)|Martin, Palm Beach, St. Lucie",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H6FL08296,"SHOCK, COLBY","House (District 8)|Brevard, Indian River, Orange",DEMOCRATIC PARTY,Challenger,10840.38,10840.38,0.0
-H6FL18204,"SIMMONS, DEVA","House (District 18)|Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",NO PARTY AFFILIATION,Challenger,0.0,0.0,0.0
-H6FL23188,"SINGER, SCOTT M.","House (District 25)|Broward, Miami-Dade",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H6FL18204,"SIMMONS, DEVA","House (District 18)|Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",NO PARTY AFFILIATION,Challenger,7653.22,0.0,7653.22
+H6FL23188,"SINGER, SCOTT M.","House (District 25)|Broward, Miami-Dade",REPUBLICAN PARTY,Challenger,1347715.25,116628.27,1231086.98
 H2FL21124,"SKRBIC, LJUBO DR MD","House (District 21)|Martin, Palm Beach, St. Lucie",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H8FL06098,"SODERBERG, NANCY","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",DEMOCRATIC PARTY,Open seat,0.0,315.0,13460.8
-H4FL11121,"SORIANO, GAVRIEL ELIYAHU","House (District 11)|Lake, Orange, Polk, Sumter",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
+H4FL11121,"SORIANO, GAVRIEL ELIYAHU","House (District 11)|Lake, Orange, Polk, Sumter",REPUBLICAN PARTY,Challenger,1657.84,1632.89,24.95
 H2FL11125,"SORIANO, GAVRIEL ELIYAHU","House (District 14)|Hillsborough, Pinellas",REPUBLICAN PARTY,Challenger,1657.84,1632.89,24.95
 H6FL09179,"SOTO, DARREN","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",DEMOCRATIC PARTY,Incumbent,1241415.11,422928.05,832605.6
 H0FL02110,"SOUTHERLAND, WILLIAM STEVE II","House (District 2)|Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
@@ -290,15 +290,15 @@ H6FL22131,"SRADO, ANTONIO","House (District 22)|Broward, Palm Beach",REPUBLICAN 
 H8FL06056,"STEARNS, CLIFFORD B.","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Challenger,101724.34,189943.03,443122.39
 H8FL17053,"STEUBE, GREG","House (District 17)|Charlotte, Lee, Sarasota",REPUBLICAN PARTY,Incumbent,959819.1,546827.97,2004286.93
 H4FL03136,"STEVENS, ALEC","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Challenger,0.0,788.0,-788.0
-H4FL03144,"STEVENS, ALEC","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
-H0FL03209,"ST. GEORGE, JAMES","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Open seat,0.0,0.0,0.0
+H4FL03144,"STEVENS, ALEC","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Challenger,0.0,788.0,-788.0
+H0FL03209,"ST. GEORGE, JAMES","House (District 3)|Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",REPUBLICAN PARTY,Open seat,0.0,0.0,1828.72
 H4FL06055,"STOCKTON, JAMES D","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",DEMOCRATIC PARTY,Challenger,2472.19,523.49,2010.79
 H6FL09252,"STORY, JUSTIN","House (District 9)|Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",REPUBLICAN PARTY,Challenger,42170.25,37052.96,5117.29
 H6FL19194,"STRAND, JOHN","House (District 19)|Collier, Lee",REPUBLICAN PARTY,Open seat,82893.31,64978.81,17914.5
 H8FL00034,"TADDEO, ANNETTE",House (District 27)|Miami-Dade,DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 H6FL21034,"TAYLOR, BERNARD","House (District 21)|Martin, Palm Beach, St. Lucie",DEMOCRATIC PARTY,Challenger,32502.36,23351.42,21558.94
 H6FL14161,"TEK, ERGIN AKA BATMAN","House (District 14)|Hillsborough, Pinellas",REPUBLICAN PARTY,Challenger,10341.76,5022.82,5318.94
-H6FL06290,"TERRY, RANDALL","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",INDEPENDENT,Challenger,0.0,0.0,0.0
+H6FL06290,"TERRY, RANDALL","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",INDEPENDENT,Challenger,17861.83,17861.83,0.0
 H6FL01275,"THOMPSON, MICHAEL","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Open seat,86975.7,111975.7,-25000.0
 H2FL15191,"TOLEDO, JACKIE","House (District 15)|Hillsborough, Pasco, Polk",REPUBLICAN PARTY,Challenger,0.0,0.0,82.65
 H2FL23260,"TROUT, W MICHAEL","House (District 23)|Broward, Palm Beach",DEMOCRATIC PARTY,Challenger,5.0,0.0,9378.64
@@ -306,13 +306,13 @@ H2FL21066,"TROUT, W. MICHAEL ""MIKE""","House (District 21)|Martin, Palm Beach, 
 H6FL07223,"ULRICH, SARAH","House (District 7)|Seminole, Volusia",REPUBLICAN PARTY,Challenger,5129.0,2165.32,2963.68
 H0FL07143,"VALENTIN, LEO","House (District 7)|Seminole, Volusia",REPUBLICAN PARTY,Challenger,0.0,0.0,0.0
 H6FL01325,"VALENTINO, GENE","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",REPUBLICAN PARTY,Challenger,478959.8,478959.8,0.0
-H4FL01197,"VALIMONT, JENNIFER GAY","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
+H4FL01197,"VALIMONT, JENNIFER GAY","House (District 1)|Escambia, Santa Rosa, Okaloosa, Walton",DEMOCRATIC PARTY,Challenger,36746.33,12948.4,23797.93
 H0FL17092,"VEREEN, RODERICK D","House (District 24)|Broward, Miami-Dade",DEMOCRATIC PARTY,,0.0,0.0,0.0
 H6FL25043,"VILLATORO, CLAUDIA","House (District 25)|Broward, Miami-Dade",REPUBLICAN PARTY,Challenger,4887.06,4637.02,-593.04
 S6FL00855,"VINDMAN, ALEXANDER",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,8188391.6,1748269.11,6440222.49
 H8FL06148,"WALTZ, MICHAEL","House (District 6)|Flagler, Lake, Marion, Putnam, St. Johns, Volusia",REPUBLICAN PARTY,Incumbent,3185.92,901108.6,654002.52
 H4FL20023,"WASSERMAN SCHULTZ, DEBBIE","House (District 20)|Broward, Palm Beach",DEMOCRATIC PARTY,Incumbent,2502688.61,1052517.34,2507480.19
-H0FL08208,"WEBSTER, DANIEL","House (District 11)|Lake, Orange, Polk, Sumter",REPUBLICAN PARTY,Incumbent,0.0,0.0,0.0
+H0FL08208,"WEBSTER, DANIEL","House (District 11)|Lake, Orange, Polk, Sumter",REPUBLICAN PARTY,Incumbent,368123.26,297618.07,170533.73
 H6FL11241,"WEBSTER, ROYAL MR.","House (District 11)|Lake, Orange, Polk, Sumter",DEMOCRATIC PARTY,Open seat,4831.41,2501.77,3385.89
 S2FL00466,"WEIL, JOSHUA",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,0.0,0.0,0.0
 S6FL00756,"WEIL, JOSHUA JOSEPH",Senate|Statewide (All 67 Counties),DEMOCRATIC PARTY,Challenger,15933478.15,15933478.15,0.0
