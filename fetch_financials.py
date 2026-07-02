@@ -3,6 +3,8 @@ import time
 import glob
 import warnings
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 import pandas as pd
 from datetime import datetime
 from dotenv import load_dotenv
@@ -27,7 +29,17 @@ def get_latest_candidate_file():
     return max(list_of_files, key=os.path.getctime)
 
 def fetch_financial_totals(api_key, candidate_df):
-    print(f"Fetching financial totals from the FEC using API Key: {api_key[:5]}...")
+    print(f"Fetching financial totals from the FEC using UPGRADED API Key: {api_key[:5]}...")
+    
+    # Configure a robust session with automatic retries for server blips
+    session = requests.Session()
+    retries = Retry(
+        total=3,                # Retry up to 3 times
+        backoff_factor=0.5,     # Wait 0.5s, 1s, 2s between retries to let the server breathe
+        status_forcelist=[500, 502, 503, 504], # Retry on standard server errors
+        raise_on_status=False
+    )
+    session.mount('https://', HTTPAdapter(max_retries=retries))
     
     financial_data = []
     
@@ -44,10 +56,11 @@ def fetch_financial_totals(api_key, candidate_df):
         }
         
         try:
-            # Safe 4-second delay to bypass the hourly rate limit
-            time.sleep(4) 
+            # Paced buffer for upgraded 120 calls/min tier
+            time.sleep(0.6) 
             
-            response = requests.get(endpoint, headers=HEADERS, params=params, timeout=5)
+            # Increased timeout to 10 seconds to handle sluggish FEC server processing times
+            response = session.get(endpoint, headers=HEADERS, params=params, timeout=10)
             response.raise_for_status()
             
             data = response.json()
@@ -68,7 +81,6 @@ def fetch_financial_totals(api_key, candidate_df):
                     'receipts': totals.get('receipts', 0.0),
                     'disbursements': totals.get('disbursements', 0.0),
                     'cash_on_hand_end_period': coh,
-                    # NEW: Pulling committee specific funding streams
                     'pac_money': totals.get('other_political_committee_contributions', 0.0),
                     'party_money': totals.get('political_party_committee_contributions', 0.0)
                 })
@@ -83,7 +95,7 @@ def fetch_financial_totals(api_key, candidate_df):
                 })
                 
         except requests.exceptions.RequestException as e:
-            print(f"    [!] Failed to fetch {candidate_name}: {e}. Recording placeholder data...")
+            print(f"    [!] Failed to fetch {candidate_name} after retries: {e}. Recording placeholder data...")
             financial_data.append({
                 'candidate_id': candidate_id,
                 'receipts': 0.0,
