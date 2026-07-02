@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Florida 2026 Federal Election Tracker</title>
+    <title>South Florida 2026 Campaign Finance Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
-        /* Override DataTables standard styling to match Datawrapper's clean look */
         table.dataTable {
             border-collapse: collapse !important;
             margin-top: 15px !important;
@@ -49,14 +48,14 @@
 
     <div class="max-w-7xl mx-auto">
         <header class="mb-6 border-b border-gray-200 pb-4">
-            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Florida 2026 campaign finance tracker</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">South Florida 2026 campaign finance tracker</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
-                A searchable database of federal candidates registered for the 2026 election cycle in Florida. Data automatically syncs daily with the Federal Election Commission (FEC). <span class="italic text-gray-500 font-medium">Note: Candidates with no fundraising or expenditures in this cycle are excluded. All financial figures are rounded to the nearest dollar.</span>
+                A localized view of federal candidates in statewide races or House districts touching Palm Beach, Broward, and Miami-Dade counties. Data automatically syncs daily with the FEC. <span class="italic text-gray-500 font-medium">Note: Candidates with no fundraising or expenditures in this cycle are excluded. All financial figures are rounded to the nearest dollar.</span>
             </p>
         </header>
 
         <div id="loading" class="text-center py-12 text-gray-400 text-sm font-medium">
-            Loading data from FEC pipeline...
+            Loading South Florida data...
         </div>
 
         <div id="table-container" class="hidden overflow-x-auto">
@@ -74,7 +73,7 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    </tbody>
+                </tbody>
             </table>
         </div>
         
@@ -94,7 +93,6 @@
 
         const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
 
-        // Grabs the HTTP metadata from the server to find out when the file actually changed
         function fetchFileTimestamp() {
             fetch(CSV_FILE, { method: 'HEAD' })
                 .then(response => {
@@ -126,18 +124,30 @@
                     let displayedCount = 0;
 
                     data.forEach(function(row) {
+                        const rawOffice = row.office_full || '';
                         const receipts = parseFloat(row.receipts) || 0;
                         const disbursements = parseFloat(row.disbursements) || 0;
+
+                        // 1. ACTIVITY FILTER: Skip if completely uncapitalized
+                        if (receipts === 0 && disbursements === 0) {
+                            return;
+                        }
+
+                        // 2. GEOGRAPHY FILTER: Check if statewide or local tri-county
+                        const isStatewide = rawOffice.startsWith('Senate');
+                        const isSouthFlorida = rawOffice.includes('Palm Beach') || 
+                                               rawOffice.includes('Broward') || 
+                                               rawOffice.includes('Miami-Dade');
+
+                        if (!isStatewide && !isSouthFlorida) {
+                            return; 
+                        }
+
                         const coh = parseFloat(row.cash_on_hand_end_period) || 0;
                         const pacMoney = parseFloat(row.pac_money) || 0;
                         const partyMoney = parseFloat(row.party_money) || 0;
 
-                        // EXCLUSION RULE: Skip candidate if they have zero activity
-                        if (receipts === 0 && disbursements === 0) {
-                            return; 
-                        }
-
-                        let officeDisplay = row.office_full || 'N/A';
+                        let officeDisplay = rawOffice;
                         let countySubtitle = '';
                         
                         if (officeDisplay.includes('|')) {
@@ -174,7 +184,7 @@
                         pageLength: 25,
                         order: [[3, "desc"]], 
                         language: {
-                            searchPlaceholder: "Search candidate, county, party...",
+                            searchPlaceholder: "Filter local races...",
                             search: "",
                             lengthMenu: "Show _MENU_ entries"
                         }
