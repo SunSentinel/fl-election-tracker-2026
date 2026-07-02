@@ -49,7 +49,7 @@
 
     <div class="max-w-7xl mx-auto">
         <header class="mb-6 border-b border-gray-200 pb-4">
-            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Florida 2026 Campaign Finance Tracker</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Florida 2026 campaign finance tracker</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
                 A searchable database of federal candidates registered for the 2026 election cycle in Florida. Data automatically syncs daily with the Federal Election Commission (FEC). <span class="italic text-gray-500 font-medium">Note: All financial figures are rounded to the nearest dollar.</span>
             </p>
@@ -76,8 +76,9 @@
             </table>
         </div>
         
-        <footer class="mt-4 text-xs text-gray-400 text-right">
-            Source: Federal Election Commission (FEC) API • Built for newsroom use.
+        <footer class="mt-4 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-1">
+            <div id="update-timestamp" class="italic">Checking server for update metadata...</div>
+            <div>Source: Federal Election Commission (FEC) API</div>
         </footer>
     </div>
 
@@ -89,10 +90,40 @@
             maximumFractionDigits: 0
         });
 
-        // Configured to dynamically look for the static standardized data file name
         const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
 
+        // Grabs the HTTP metadata from the server to find out when the file actually changed
+        function fetchFileTimestamp() {
+            fetch(CSV_FILE, { method: 'HEAD' })
+                .then(response => {
+                    const lastModified = response.headers.get('Last-Modified');
+                    if (lastModified) {
+                        const dateObj = new Date(lastModified);
+                        
+                        // Formats the timestamp nicely for humans (e.g., July 2, 2026 at 2:05 AM)
+                        const options = { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric', 
+                            hour: 'numeric', 
+                            minute: '2-digit' 
+                        };
+                        const formattedDate = dateObj.toLocaleDateString('en-US', options);
+                        
+                        $('#update-timestamp').text(`Data last updated: ${formattedDate}`);
+                    } else {
+                        $('#update-timestamp').text('Data automatically syncs daily');
+                    }
+                })
+                .catch(() => {
+                    $('#update-timestamp').text('Data automatically syncs daily');
+                });
+        }
+
         $(document).ready(function() {
+            // Trigger the timestamp fetch
+            fetchFileTimestamp();
+
             Papa.parse(CSV_FILE, {
                 download: true,
                 header: true,
@@ -106,7 +137,6 @@
                         const disbursements = parseFloat(row.disbursements) || 0;
                         const coh = parseFloat(row.cash_on_hand_end_period) || 0;
 
-                        // Parse out the pipe character dividing Office titles from local counties
                         let officeDisplay = row.office_full || 'N/A';
                         let countySubtitle = '';
                         
@@ -148,7 +178,7 @@
                     });
                 },
                 error: function(err) {
-                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error loading data file: ${err.message}. Make sure your filename matches.</span>`);
+                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error loading data file: ${err.message}</span>`);
                 }
             });
         });
