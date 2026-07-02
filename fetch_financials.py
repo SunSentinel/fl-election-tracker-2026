@@ -44,8 +44,7 @@ def fetch_financial_totals(api_key, candidate_df):
         }
         
         try:
-            # Pausing for 4 seconds keeps us safely at ~15 requests per minute (900/hour),
-            # permanently keeping us under the FEC's 1,000 requests/hour rate limit ceiling.
+            # Safe 4-second delay to bypass the hourly rate limit
             time.sleep(4) 
             
             response = requests.get(endpoint, headers=HEADERS, params=params, timeout=5)
@@ -57,7 +56,6 @@ def fetch_financial_totals(api_key, candidate_df):
             if results:
                 totals = results[0]
                 
-                # Bypassing the $0 fallback by targeting the correct verified key
                 coh = (
                     totals.get('last_cash_on_hand_end_period') or 
                     totals.get('cash_on_hand_cop') or 
@@ -69,14 +67,19 @@ def fetch_financial_totals(api_key, candidate_df):
                     'candidate_id': candidate_id,
                     'receipts': totals.get('receipts', 0.0),
                     'disbursements': totals.get('disbursements', 0.0),
-                    'cash_on_hand_end_period': coh 
+                    'cash_on_hand_end_period': coh,
+                    # NEW: Pulling committee specific funding streams
+                    'pac_money': totals.get('other_political_committee_contributions', 0.0),
+                    'party_money': totals.get('political_party_committee_contributions', 0.0)
                 })
             else:
                 financial_data.append({
                     'candidate_id': candidate_id,
                     'receipts': 0.0,
                     'disbursements': 0.0,
-                    'cash_on_hand_end_period': 0.0
+                    'cash_on_hand_end_period': 0.0,
+                    'pac_money': 0.0,
+                    'party_money': 0.0
                 })
                 
         except requests.exceptions.RequestException as e:
@@ -85,7 +88,9 @@ def fetch_financial_totals(api_key, candidate_df):
                 'candidate_id': candidate_id,
                 'receipts': 0.0,
                 'disbursements': 0.0,
-                'cash_on_hand_end_period': 0.0
+                'cash_on_hand_end_period': 0.0,
+                'pac_money': 0.0,
+                'party_money': 0.0
             })
             continue
 
@@ -102,7 +107,6 @@ if __name__ == "__main__":
         if not financials_df.empty:
             merged_df = pd.merge(candidates_df, financials_df, on='candidate_id', how='inner')
             
-            # Exporting to a clean, standardized latest filename format
             export_filename = "fl_2026_tracker_master_latest.csv"
             merged_df.to_csv(export_filename, index=False)
             print(f"\nSUCCESS! Master tracker dataset exported to {export_filename}")

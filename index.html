@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
-        /* Override DataTables standard styling to match Datawrapper's clean look */
         table.dataTable {
             border-collapse: collapse !important;
             margin-top: 15px !important;
@@ -67,12 +66,14 @@
                         <th class="text-left">Office / Counties</th>
                         <th class="text-left">Party</th>
                         <th class="text-right">Total Raised</th>
+                        <th class="text-right">PAC Money</th>
+                        <th class="text-right">Party Money</th>
                         <th class="text-right">Total Spent</th>
                         <th class="text-right">Cash On Hand</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    </tbody>
+                </tbody>
             </table>
         </div>
         
@@ -92,24 +93,14 @@
 
         const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
 
-        // Grabs the HTTP metadata from the server to find out when the file actually changed
         function fetchFileTimestamp() {
             fetch(CSV_FILE, { method: 'HEAD' })
                 .then(response => {
                     const lastModified = response.headers.get('Last-Modified');
                     if (lastModified) {
                         const dateObj = new Date(lastModified);
-                        
-                        // Formats the timestamp nicely for humans (e.g., July 2, 2026 at 2:05 AM)
-                        const options = { 
-                            year: 'numeric', 
-                            month: 'long', 
-                            day: 'numeric', 
-                            hour: 'numeric', 
-                            minute: '2-digit' 
-                        };
+                        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' };
                         const formattedDate = dateObj.toLocaleDateString('en-US', options);
-                        
                         $('#update-timestamp').text(`Data last updated: ${formattedDate}`);
                     } else {
                         $('#update-timestamp').text('Data automatically syncs daily');
@@ -121,7 +112,6 @@
         }
 
         $(document).ready(function() {
-            // Trigger the timestamp fetch
             fetchFileTimestamp();
 
             Papa.parse(CSV_FILE, {
@@ -136,6 +126,8 @@
                         const receipts = parseFloat(row.receipts) || 0;
                         const disbursements = parseFloat(row.disbursements) || 0;
                         const coh = parseFloat(row.cash_on_hand_end_period) || 0;
+                        const pacMoney = parseFloat(row.pac_money) || 0;
+                        const partyMoney = parseFloat(row.party_money) || 0;
 
                         let officeDisplay = row.office_full || 'N/A';
                         let countySubtitle = '';
@@ -157,6 +149,8 @@
                                 </td>
                                 <td class="text-gray-600">${row.party_full || 'N/A'}</td>
                                 <td class="text-right font-mono" data-order="${receipts}">${currencyFormatter.format(receipts)}</td>
+                                <td class="text-right font-mono text-gray-500" data-order="${pacMoney}">${currencyFormatter.format(pacMoney)}</td>
+                                <td class="text-right font-mono text-gray-500" data-order="${partyMoney}">${currencyFormatter.format(partyMoney)}</td>
                                 <td class="text-right font-mono text-gray-500" data-order="${disbursements}">${currencyFormatter.format(disbursements)}</td>
                                 <td class="text-right font-mono font-bold text-[#111111]" data-order="${coh}">${currencyFormatter.format(coh)}</td>
                             </tr>
