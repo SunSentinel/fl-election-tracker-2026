@@ -14,7 +14,6 @@ load_dotenv()
 
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib3')
 
-# Pull the secure key from the environment. Fall back to DEMO_KEY if not found.
 API_KEY = os.getenv("FEC_API_KEY", "DEMO_KEY")
 BASE_URL = "https://api.open.fec.gov/v1"
 
@@ -31,12 +30,11 @@ def get_latest_candidate_file():
 def fetch_financial_totals(api_key, candidate_df):
     print(f"Fetching financial totals from the FEC using UPGRADED API Key: {api_key[:5]}...")
     
-    # Configure a robust session with automatic retries for server blips
     session = requests.Session()
     retries = Retry(
-        total=3,                # Retry up to 3 times
-        backoff_factor=0.5,     # Wait 0.5s, 1s, 2s between retries to let the server breathe
-        status_forcelist=[500, 502, 503, 504], # Retry on standard server errors
+        total=3,                
+        backoff_factor=0.5,     
+        status_forcelist=[500, 502, 503, 504], 
         raise_on_status=False
     )
     session.mount('https://', HTTPAdapter(max_retries=retries))
@@ -56,10 +54,7 @@ def fetch_financial_totals(api_key, candidate_df):
         }
         
         try:
-            # Paced buffer for upgraded 120 calls/min tier
             time.sleep(0.6) 
-            
-            # Increased timeout to 10 seconds to handle sluggish FEC server processing times
             response = session.get(endpoint, headers=HEADERS, params=params, timeout=10)
             response.raise_for_status()
             
@@ -82,7 +77,7 @@ def fetch_financial_totals(api_key, candidate_df):
                     'disbursements': totals.get('disbursements', 0.0),
                     'cash_on_hand_end_period': coh,
                     'pac_money': totals.get('other_political_committee_contributions', 0.0),
-                    'party_money': totals.get('political_party_committee_contributions', 0.0)
+                    'loans': totals.get('loans', 0.0)
                 })
             else:
                 financial_data.append({
@@ -91,7 +86,7 @@ def fetch_financial_totals(api_key, candidate_df):
                     'disbursements': 0.0,
                     'cash_on_hand_end_period': 0.0,
                     'pac_money': 0.0,
-                    'party_money': 0.0
+                    'loans': 0.0
                 })
                 
         except requests.exceptions.RequestException as e:
@@ -102,7 +97,7 @@ def fetch_financial_totals(api_key, candidate_df):
                 'disbursements': 0.0,
                 'cash_on_hand_end_period': 0.0,
                 'pac_money': 0.0,
-                'party_money': 0.0
+                'loans': 0.0
             })
             continue
 

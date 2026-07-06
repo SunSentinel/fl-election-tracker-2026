@@ -1,8 +1,8 @@
-import requests
-import pandas as pd
-import warnings
-from datetime import datetime
 import os
+import requests
+import warnings
+import pandas as pd
+from datetime import datetime
 from dotenv import load_dotenv
 
 # Load environment variables from the local .env file
@@ -11,15 +11,65 @@ load_dotenv()
 # Suppress the macOS LibreSSL warning
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib3')
 
-# Pull the real key securely, default to DEMO_KEY if missing
 API_KEY = os.getenv("FEC_API_KEY", "DEMO_KEY") 
 BASE_URL = "https://api.open.fec.gov/v1"
 
+def get_official_qualified_names():
+    file_path = "dos_qualified.txt"
+    if not os.path.exists(file_path):
+        print(f"\n[!] Warning: Could not find '{file_path}' in your folder.")
+        return None
+        
+    try:
+        dos_df = pd.read_csv(file_path, sep='\t', encoding='utf-8', dtype=str)
+        dos_df['OfficeDesc'] = dos_df['OfficeDesc'].fillna('').str.strip()
+        
+        fed_dos = dos_df[dos_df['OfficeDesc'].str.contains('United States Senator|United States Representative', case=False, na=False)].copy()
+        
+        # Find the state's district column dynamically
+        district_col = next((col for col in fed_dos.columns if col.lower() in ['juris1num', 'district', 'districtnum']), None)
+        
+        qualified_candidates = []
+        for _, row in fed_dos.iterrows():
+            last_name = str(row.get('NameLast', '')).strip().lower()
+            first_name = str(row.get('NameFirst', '')).strip().lower()
+            
+            # Extract the official state district
+            dos_district = "Statewide"
+            if 'Senator' not in str(row.get('OfficeDesc', '')):
+                if district_col and pd.notna(row[district_col]):
+                    dos_district = str(row[district_col]).strip()
+            
+            if last_name: 
+                qualified_candidates.append({
+                    'last_name': last_name,
+                    'first_name': first_name,
+                    'raw_name': f"{last_name.upper()}, {first_name.upper()}",
+                    'dos_district': dos_district
+                })
+                
+        print(f" -> Found {len(qualified_candidates)} officially filed federal candidates in local DOS file.")
+        return qualified_candidates
+        
+    except Exception as e:
+        print(f"[!] Error reading DOS file: {e}")
+        return None
+
+def clean_name_string(name):
+    name = str(name).lower().replace('.', '').replace(',', '').replace("'", "").replace('"', "")
+    suffixes = [' jr', ' sr', ' ii', ' iii', ' iv', ' md']
+    for suffix in suffixes:
+        if name.endswith(suffix):
+            name = name[:-len(suffix)]
+    return name.strip()
+
 def fetch_fl_2026_candidates(api_key):
     if api_key == "DEMO_KEY":
-        print("DEBUG: Python is using the fallback 'DEMO_KEY'. It cannot find your .env file!")
+        print("DEBUG: Python is using the fallback 'DEMO_KEY'.")
     else:
-        print(f"DEBUG: Success! Python found your .env file. Using key starting with: {api_key[:5]}...")
+        print(f"DEBUG: Success! Using key starting with: {api_key[:5]}...")
+
+    qualified_list = get_official_qualified_names()
 
     print("Fetching Florida 2026 federal candidates from FEC...")
     endpoint = f"{BASE_URL}/candidates/"
@@ -28,7 +78,7 @@ def fetch_fl_2026_candidates(api_key):
         "api_key": api_key,
         "state": "FL",
         "cycle": "2026",
-        "has_raised_funds": "true",
+        "election_year": "2026",
         "per_page": 100,
         "sort": "name"
     }
@@ -40,28 +90,15 @@ def fetch_fl_2026_candidates(api_key):
         print(f" -> Pinging API for page {current_page}...")
         
         try:
-            # 30-second timeout to give sluggish servers more time
             response = requests.get(endpoint, params=params, timeout=30)
             response.raise_for_status()
-            
-        except requests.exceptions.ReadTimeout:
-            print("\n[!] Error: The FEC API connection timed out. Server took too long to respond.")
-            break
-        except requests.exceptions.HTTPError as e:
-            if response.status_code == 429:
-                print(f"\n[!] Error 429: Rate limit exceeded using key: {api_key[:5]}...")
-            else:
-                print(f"\n[!] HTTP Error: {e}")
-            break
         except requests.exceptions.RequestException as e:
-            print(f"\n[!] A network error occurred: {e}")
+            print(f"\n[!] Network or rate error occurred: {e}")
             break
             
         data = response.json()
         results = data.get('results', [])
         all_candidates.extend(results)
-        
-        print(f"    ...Found {len(results)} candidates on this page.")
         
         pagination = data.get('pagination', {})
         if pagination.get('pages') and current_page < pagination.get('pages'):
@@ -72,7 +109,6 @@ def fetch_fl_2026_candidates(api_key):
     df = pd.DataFrame(all_candidates)
     
     if not df.empty:
-        # Add 'district' to our list of ideal columns to extract from the JSON
         ideal_columns = [
             'candidate_id', 'name', 'office_full', 'party_full', 
             'district', 'incumbent_challenge_full', 'principal_committees', 
@@ -81,63 +117,73 @@ def fetch_fl_2026_candidates(api_key):
         existing_columns = [col for col in ideal_columns if col in df.columns]
         df = df[existing_columns]
         
-        # Enacted May 2026 Special Session Mid-Decade Map (Plan EOGPCRP2026 / HB 1-D)
-        FL_COUNTIES = {
-            "1": "Escambia, Santa Rosa, Okaloosa, Walton",
-            "2": "Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Washington",
-            "3": "Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Levy, Marion, Suwannee, Union",
-            "4": "Clay, Duval, Nassau",
-            "5": "Duval, St. Johns",
-            "6": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-            "7": "Seminole, Volusia",
-            "8": "Brevard, Indian River, Orange",
-            "9": "Orange, Osceola, Polk, Indian River, Okeechobee, Highlands, Glades",
-            "10": "Orange",
-            "11": "Lake, Orange, Polk, Sumter",
-            "12": "Citrus, Hernando, Pasco",
-            "13": "Pinellas",
-            "14": "Hillsborough, Pinellas",
-            "15": "Hillsborough, Pasco, Polk",
-            "16": "Hillsborough, Manatee",
-            "17": "Charlotte, Lee, Sarasota",
-            "18": "Collier, DeSoto, Glades, Hardee, Hendry, Highlands, Okeechobee, Polk",
-            "19": "Collier, Lee",
-            "20": "Broward, Palm Beach",
-            "21": "Martin, Palm Beach, St. Lucie",
-            "22": "Broward, Palm Beach",
-            "23": "Broward, Palm Beach",
-            "24": "Broward, Miami-Dade",
-            "25": "Broward, Miami-Dade",
-            "26": "Collier, Miami-Dade, Monroe",
-            "27": "Miami-Dade",
-            "28": "Miami-Dade, Monroe"
-        }
-        
-        if 'district' in df.columns and 'office_full' in df.columns:
+        if qualified_list is not None and len(qualified_list) > 0:
+            def get_official_district(fec_name):
+                fec_name_clean = str(fec_name).lower().strip()
+                parts = fec_name_clean.split(',')
+                fec_last = clean_name_string(parts[0])
+                fec_first = clean_name_string(parts[1]) if len(parts) > 1 else ""
+
+                for q_candidate in qualified_list:
+                    q_last = clean_name_string(q_candidate['last_name'])
+                    q_first = clean_name_string(q_candidate['first_name'])
+                    
+                    if fec_last == q_last:
+                        if fec_first and q_first:
+                            q_first_parts = q_first.split()
+                            fec_first_parts = fec_first.split()
+                            
+                            for q_part in q_first_parts:
+                                for f_part in fec_first_parts:
+                                    if len(q_part) > 2 and (q_part in f_part or f_part in q_part):
+                                        return q_candidate['dos_district']
+                                        
+                            if (q_first in fec_first) or (fec_first in q_first):
+                                return q_candidate['dos_district']
+                        else:
+                            return q_candidate['dos_district']
+                return None
+
+            print("Filtering FEC results and injecting authoritative DOS district mapping...")
+            
+            df['dos_district'] = df['name'].apply(get_official_district)
+            dropped = df[df['dos_district'].isnull()]['name'].tolist()
+            if dropped:
+                print(f" -> Dropped {len(dropped)} historical/unfiled FEC accounts not on the DOS list.")
+                
+            df = df[df['dos_district'].notnull()].copy()
+
+        # Load the dynamic county crosswalk built from the state's redistricting text file
+        crosswalk_file = 'district_counties.csv'
+        FL_COUNTIES = {}
+        if os.path.exists(crosswalk_file):
+            cw_df = pd.read_csv(crosswalk_file, dtype=str)
+            FL_COUNTIES = dict(zip(cw_df['district_num'], cw_df['county_list']))
+        else:
+            print(f"\n[!] Warning: '{crosswalk_file}' not found. Counties will not display.")
+            print("    Run build_crosswalk.py first to generate the county map.")
+
+        if 'office_full' in df.columns:
             def format_office(row):
                 office = str(row.get('office_full', ''))
-                district = str(row.get('district', ''))
+                district = str(row.get('dos_district', row.get('district', '')))
                 
-                if office == 'Senate':
+                if office == 'Senate' or district == 'Statewide':
                     return "Senate|Statewide (All 67 Counties)"
                 
-                if office == 'House' and district and district not in ['00', '0', 'None', 'nan']:
+                if district and district not in ['00', '0', 'None', 'nan', '']:
                     try:
                         dist_num = str(int(float(district)))
                         counties = FL_COUNTIES.get(dist_num, "Multiple Counties")
-                        # We use a pipe "|" to split the office string cleanly on the front end
                         return f"House (District {dist_num})|{counties}"
                     except ValueError:
                         return office
                 return office
             
-            # Apply the formatting rule to every row
             df['office_full'] = df.apply(format_office, axis=1)
+            df = df.drop(columns=['district', 'dos_district'], errors='ignore')
             
-            # Drop the raw district column so we don't clutter the final CSV
-            df = df.drop(columns=['district'])
-            
-        print(f"\nSuccessfully structured {len(df)} candidates into our dataset.")
+        print(f"\nSuccessfully structured {len(df)} QUALIFIED candidates into our dataset using authoritative DOS districts.")
     else:
         print("\nNo candidate data was retrieved.")
         

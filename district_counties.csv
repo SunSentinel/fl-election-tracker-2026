@@ -1,0 +1,29 @@
+district_num,county_list
+1,"Escambia, Okaloosa, Santa Rosa, Walton"
+10,Orange
+11,"Lake, Orange, Sumter"
+12,"Hillsborough, Pasco"
+13,"Pasco, Pinellas"
+14,Hillsborough
+15,"Citrus, Hernando, Hillsborough, Pasco"
+16,"DeSoto, Hardee, Hillsborough, Manatee, Pinellas, Polk, Sarasota"
+17,"Charlotte, Lee, Sarasota"
+18,"Osceola, Polk"
+19,"Collier, Lee"
+2,"Bay, Calhoun, Franklin, Gadsden, Gulf, Holmes, Jackson, Jefferson, Lafayette, Leon, Liberty, Madison, Taylor, Wakulla, Walton, Washington"
+20,Broward
+21,"Martin, Palm Beach, St. Lucie"
+22,"Broward, Collier, Hendry, Palm Beach"
+23,Palm Beach
+24,"Broward, Miami-Dade"
+25,"Broward, Miami-Dade, Palm Beach"
+26,"Broward, Miami-Dade"
+27,Miami-Dade
+28,"Miami-Dade, Monroe"
+3,"Alachua, Baker, Bradford, Columbia, Dixie, Gilchrist, Hamilton, Lafayette, Levy, Marion, Suwannee, Union"
+4,"Clay, Duval, Nassau"
+5,"Duval, St. Johns"
+6,"Flagler, Lake, Marion, Putnam, St. Johns, Volusia"
+7,"Orange, Seminole, Volusia"
+8,"Brevard, Orange"
+9,"Glades, Highlands, Indian River, Okeechobee, Orange, Osceola, Polk"

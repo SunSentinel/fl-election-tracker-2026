@@ -5,44 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>South Florida 2026 Campaign Finance Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
-
-    <style>
-        table.dataTable {
-            border-collapse: collapse !important;
-            margin-top: 15px !important;
-            margin-bottom: 15px !important;
-        }
-        table.dataTable thead th {
-            border-bottom: 2px solid #333333 !important;
-            font-weight: 700 !important;
-            color: #333333 !important;
-            padding: 8px 10px !important;
-        }
-        table.dataTable tbody td {
-            border-bottom: 1px solid #e5e7eb !important;
-            padding: 10px 10px !important;
-        }
-        .dataTables_filter input {
-            border: 1px solid #cccccc !important;
-            border-radius: 4px !important;
-            padding: 6px 12px !important;
-            margin-left: 8px !important;
-            font-size: 0.875rem !important;
-            outline: none !important;
-        }
-        .dataTables_filter input:focus {
-            border-color: #111111 !important;
-        }
-        .dataTables_length select {
-            border: 1px solid #cccccc !important;
-            border-radius: 4px !important;
-            padding: 4px 8px !important;
-        }
-    </style>
 </head>
 <body class="bg-white text-[#333333] font-sans antialiased p-4 sm:p-6">
 
@@ -50,34 +14,22 @@
         <header class="mb-6 border-b border-gray-200 pb-4">
             <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">South Florida 2026 campaign finance tracker</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
-                A localized view of federal candidates in statewide races or House districts touching Palm Beach, Broward, and Miami-Dade counties. Data automatically syncs daily with the FEC. <span class="italic text-gray-500 font-medium">Note: Candidates with no fundraising or expenditures in this cycle are excluded. All financial figures are rounded to the nearest dollar.</span>
+                A localized regional breakdown tracking races intersecting Palm Beach, Broward, and Miami-Dade counties. <span class="italic text-gray-500 font-medium">Note: Candidates with zero financial activity are excluded. Financial figures are rounded to the nearest dollar.</span>
             </p>
+            
+            <div class="mt-4 max-w-md">
+                <input type="text" id="search-filter" placeholder="Filter local races..." 
+                       class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
+            </div>
         </header>
 
         <div id="loading" class="text-center py-12 text-gray-400 text-sm font-medium">
-            Loading South Florida data...
+            Filtering South Florida entries...
         </div>
 
-        <div id="table-container" class="hidden overflow-x-auto">
-            <table id="fec-table" class="display w-full text-sm">
-                <thead>
-                    <tr>
-                        <th class="text-left">Candidate Name</th>
-                        <th class="text-left">Office / Counties</th>
-                        <th class="text-left">Party</th>
-                        <th class="text-right">Total Raised</th>
-                        <th class="text-right">PAC Money</th>
-                        <th class="text-right">Party Money</th>
-                        <th class="text-right">Total Spent</th>
-                        <th class="text-right">Cash On Hand</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                </tbody>
-            </table>
-        </div>
+        <div id="tracker-container" class="space-y-10 hidden"></div>
         
-        <footer class="mt-4 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-1">
+        <footer class="mt-8 border-t border-gray-200 pt-4 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-1">
             <div id="update-timestamp" class="italic">Checking server for update metadata...</div>
             <div>Source: Federal Election Commission (FEC) API</div>
         </footer>
@@ -85,10 +37,7 @@
 
     <script>
         const currencyFormatter = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
+            style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0
         });
 
         const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
@@ -99,100 +48,167 @@
                     const lastModified = response.headers.get('Last-Modified');
                     if (lastModified) {
                         const dateObj = new Date(lastModified);
-                        const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' };
-                        const formattedDate = dateObj.toLocaleDateString('en-US', options);
-                        $('#update-timestamp').text(`Data last updated: ${formattedDate}`);
+                        $('#update-timestamp').text(`Data last updated: ${dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`);
                     } else {
                         $('#update-timestamp').text('Data automatically syncs daily');
                     }
-                })
-                .catch(() => {
-                    $('#update-timestamp').text('Data automatically syncs daily');
-                });
+                }).catch(() => $('#update-timestamp').text('Data automatically syncs daily'));
+        }
+
+        function getPartyTier(partyString) {
+            const p = (partyString || '').toUpperCase();
+            if (p.includes('REP')) return { rank: 1, label: 'R', css: 'bg-red-50 text-red-700 border-red-200' };
+            if (p.includes('DEM')) return { rank: 2, label: 'D', css: 'bg-blue-50 text-blue-700 border-blue-200' };
+            if (p.includes('NPA') || p.includes('NON-PARTY') || p.includes('NO PARTY')) return { rank: 3, label: 'NPA', css: 'bg-slate-100 text-slate-700 border-slate-300' };
+            if (p.includes('IND')) return { rank: 4, label: 'I', css: 'bg-purple-50 text-purple-700 border-purple-200' };
+            return { rank: 5, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
+        }
+
+        function getRaceSortValue(raceKey) {
+            if (raceKey.startsWith('Senate')) return -1;
+            const match = raceKey.match(/\d+/);
+            return match ? parseInt(match[0], 10) : 999;
         }
 
         $(document).ready(function() {
             fetchFileTimestamp();
 
             Papa.parse(CSV_FILE, {
-                download: true,
-                header: true,
-                skipEmptyLines: true,
+                download: true, header: true, skipEmptyLines: true,
                 complete: function(results) {
                     const data = results.data;
-                    let tableBody = '';
-                    let displayedCount = 0;
+                    const groups = {};
 
-                    data.forEach(function(row) {
-                        const rawOffice = row.office_full || '';
+                    data.forEach(row => {
                         const receipts = parseFloat(row.receipts) || 0;
                         const disbursements = parseFloat(row.disbursements) || 0;
+                        if (receipts === 0 && disbursements === 0) return; 
 
-                        // 1. ACTIVITY FILTER: Skip if completely uncapitalized
-                        if (receipts === 0 && disbursements === 0) {
-                            return;
-                        }
-
-                        // 2. GEOGRAPHY FILTER: Check if statewide or local tri-county
+                        let rawOffice = row.office_full || 'Other';
+                        
+                        // Geographic boundaries check for South FL visibility rule
                         const isStatewide = rawOffice.startsWith('Senate');
                         const isSouthFlorida = rawOffice.includes('Palm Beach') || 
                                                rawOffice.includes('Broward') || 
                                                rawOffice.includes('Miami-Dade');
-
-                        if (!isStatewide && !isSouthFlorida) {
-                            return; 
-                        }
-
-                        const coh = parseFloat(row.cash_on_hand_end_period) || 0;
-                        const pacMoney = parseFloat(row.pac_money) || 0;
-                        const partyMoney = parseFloat(row.party_money) || 0;
-
-                        let officeDisplay = rawOffice;
-                        let countySubtitle = '';
                         
-                        if (officeDisplay.includes('|')) {
-                            const parts = officeDisplay.split('|');
-                            officeDisplay = parts[0];
-                            countySubtitle = `<div class="text-[11px] text-gray-400 mt-0.5 leading-tight tracking-wide">${parts[1]}</div>`;
+                        if (!isStatewide && !isSouthFlorida) return; 
+
+                        let officeName = rawOffice;
+                        let counties = '';
+
+                        if (rawOffice.includes('|')) {
+                            const parts = rawOffice.split('|');
+                            officeName = parts[0];
+                            counties = parts[1];
                         }
 
-                        const bgClass = displayedCount % 2 === 0 ? 'bg-white' : 'bg-[#f9f9f9]';
-                        displayedCount++;
+                        if (!groups[officeName]) {
+                            groups[officeName] = { title: officeName, subtitle: counties, candidates: [] };
+                        }
+                        groups[officeName].candidates.push(row);
+                    });
 
-                        tableBody += `
-                            <tr class="${bgClass} hover:bg-[#f1f1f1] transition-colors text-[#333333]">
-                                <td class="font-bold text-[#111111]">${row.name}</td>
-                                <td class="text-gray-600">
-                                    <div class="font-medium text-gray-800">${officeDisplay}</div>
-                                    ${countySubtitle}
-                                </td>
-                                <td class="text-gray-600">${row.party_full || 'N/A'}</td>
-                                <td class="text-right font-mono" data-order="${receipts}">${currencyFormatter.format(receipts)}</td>
-                                <td class="text-right font-mono text-gray-500" data-order="${pacMoney}">${currencyFormatter.format(pacMoney)}</td>
-                                <td class="text-right font-mono text-gray-500" data-order="${partyMoney}">${currencyFormatter.format(partyMoney)}</td>
-                                <td class="text-right font-mono text-gray-500" data-order="${disbursements}">${currencyFormatter.format(disbursements)}</td>
-                                <td class="text-right font-mono font-bold text-[#111111]" data-order="${coh}">${currencyFormatter.format(coh)}</td>
-                            </tr>
+                    const sortedRaces = Object.keys(groups).sort((a, b) => getRaceSortValue(a) - getRaceSortValue(b));
+
+                    let masterHTML = '';
+                    sortedRaces.forEach(raceKey => {
+                        const race = groups[raceKey];
+                        
+                        race.candidates.sort((a, b) => {
+                            const tierA = getPartyTier(a.party_full).rank;
+                            const tierB = getPartyTier(b.party_full).rank;
+                            if (tierA !== tierB) return tierA - tierB;
+                            return (a.name || '').localeCompare(b.name || '');
+                        });
+
+                        masterHTML += `
+                            <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white">
+                                <div class="mb-3">
+                                    <h2 class="text-lg font-bold text-gray-900 tracking-tight">${race.title}</h2>
+                                    ${race.subtitle ? `<p class="text-xs text-gray-400 tracking-wide mt-0.5 font-medium">${race.subtitle}</p>` : ''}
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm text-left border-collapse">
+                                        <thead>
+                                            <tr class="border-b-2 border-gray-800 text-gray-800 font-bold">
+                                                <th class="py-2 pr-4">Candidate Name</th>
+                                                <th class="py-2 px-2 text-center">Party</th>
+                                                <th class="py-2 px-4 text-right">Total Raised</th>
+                                                <th class="py-2 px-4 text-right">PAC Money</th>
+                                                <th class="py-2 px-4 text-right">Loans</th>
+                                                <th class="py-2 px-4 text-right">Total Spent</th>
+                                                <th class="py-2 pl-4 text-right">Cash On Hand</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200">
+                        `;
+
+                        race.candidates.forEach((cand, idx) => {
+                            const pt = getPartyTier(cand.party_full);
+                            const receipts = parseFloat(cand.receipts) || 0;
+                            const pac = parseFloat(cand.pac_money) || 0;
+                            const loans = parseFloat(cand.loans) || 0;
+                            const spent = parseFloat(cand.disbursements) || 0;
+                            const coh = parseFloat(cand.cash_on_hand_end_period) || 0;
+                            const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
+
+                            masterHTML += `
+                                <tr class="candidate-row ${rowBg} hover:bg-gray-100/70 transition-colors text-gray-700">
+                                    <td class="py-3 pr-4 font-bold text-gray-900">${cand.name}</td>
+                                    <td class="py-3 px-2 text-center">
+                                        <span class="inline-block px-2 py-0.5 text-[11px] font-bold tracking-wider border rounded-md uppercase ${pt.css}">
+                                            ${pt.label}
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-900">${currencyFormatter.format(receipts)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(pac)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(loans)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(spent)}</td>
+                                    <td class="py-3 pl-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(coh)}</td>
+                                </tr>
+                            `;
+                        });
+
+                        masterHTML += `
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         `;
                     });
 
-                    $('#fec-table tbody').html(tableBody);
+                    $('#tracker-container').html(masterHTML);
                     $('#loading').addClass('hidden');
-                    $('#table-container').removeClass('hidden');
-
-                    $('#fec-table').DataTable({
-                        pageLength: 25,
-                        order: [[3, "desc"]], 
-                        language: {
-                            searchPlaceholder: "Filter local races...",
-                            search: "",
-                            lengthMenu: "Show _MENU_ entries"
-                        }
-                    });
+                    $('#tracker-container').removeClass('hidden');
                 },
                 error: function(err) {
-                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error loading data file: ${err.message}</span>`);
+                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error processing data timeline: ${err.message}</span>`);
                 }
+            });
+
+            $('#search-filter').on('keyup', function() {
+                const query = $(this).val().toLowerCase();
+                
+                $('.race-section').each(function() {
+                    let sectionHasMatches = false;
+                    
+                    $(this).find('.candidate-row').each(function() {
+                        const rowText = $(this).text().toLowerCase();
+                        if (rowText.includes(query)) {
+                            $(this).show();
+                            sectionHasMatches = true;
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+
+                    if (sectionHasMatches) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
             });
         });
     </script>
