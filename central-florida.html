@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Florida 2026 Campaign Finance Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body class="bg-white text-[#333333] font-sans antialiased p-4 sm:p-6">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-6 border-b border-gray-200 pb-4">
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Central Florida 2026 campaign finance tracker</h1>
+            <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
+                Here are the latest fundraising numbers from candidates for the U.S. Senate and Central Florida Congressional Districts. <span class="italic text-gray-500 font-medium">Note: Candidates with no financial activity are excluded. Financial figures are rounded to the nearest dollar.</span>
+            </p>
+            
+            <div class="mt-4 max-w-md">
+                <input type="text" id="search-filter" placeholder="Filter regional races..." 
+                       class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
+            </div>
+        </header>
+
+        <div id="loading" class="text-center py-12 text-gray-400 text-sm font-medium">
+            Filtering Central Florida entries...
+        </div>
+
+        <div id="tracker-container" class="space-y-10 hidden"></div>
+        
+        <footer class="mt-8 border-t border-gray-200 pt-4 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-1">
+            <div id="update-timestamp" class="italic">Checking server for update metadata...</div>
+            <div>Source: Federal Election Commission (FEC) API</div>
+        </footer>
+    </div>
+
+    <script>
+        const currencyFormatter = new Intl.NumberFormat('en-US', {
+            style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0
+        });
+
+        const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
+
+        function fetchFileTimestamp() {
+            fetch(CSV_FILE, { method: 'HEAD' })
+                .then(response => {
+                    const lastModified = response.headers.get('Last-Modified');
+                    if (lastModified) {
+                        const dateObj = new Date(lastModified);
+                        $('#update-timestamp').text(`Data last updated: ${dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`);
+                    } else {
+                        $('#update-timestamp').text('Data automatically syncs daily');
+                    }
+                }).catch(() => $('#update-timestamp').text('Data automatically syncs daily'));
+        }
+
+        function getPartyTier(partyString) {
+            const p = (partyString || '').toUpperCase();
+            if (p.includes('REP')) return { rank: 1, label: 'R', css: 'bg-red-50 text-red-700 border-red-200' };
+            if (p.includes('DEM')) return { rank: 2, label: 'D', css: 'bg-blue-50 text-blue-700 border-blue-200' };
+            if (p.includes('NPA') || p.includes('NON-PARTY') || p.includes('NO PARTY')) return { rank: 3, label: 'NPA', css: 'bg-slate-100 text-slate-700 border-slate-300' };
+            if (p.includes('IND')) return { rank: 4, label: 'I', css: 'bg-purple-50 text-purple-700 border-purple-200' };
+            return { rank: 5, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
+        }
+
+        function getRaceSortValue(raceKey) {
+            if (raceKey.startsWith('Senate')) return -1;
+            const match = raceKey.match(/\d+/);
+            return match ? parseInt(match[0], 10) : 999;
+        }
+
+        $(document).ready(function() {
+            fetchFileTimestamp();
+
+            Papa.parse(CSV_FILE, {
+                download: true, header: true, skipEmptyLines: true,
+                complete: function(results) {
+                    const data = results.data;
+                    const groups = {};
+
+                    data.forEach(row => {
+                        const receipts = parseFloat(row.receipts) || 0;
+                        const disbursements = parseFloat(row.disbursements) || 0;
+                        if (receipts === 0 && disbursements === 0) return; 
+
+                        let rawOffice = row.office_full || 'Other';
+                        
+                        // GEOGRAPHIC FILTER: Target Central Florida specific boundaries
+                        const isStatewide = rawOffice.startsWith('Senate');
+                        const isCentralFlorida = rawOffice.includes('Orange') || 
+                                                 rawOffice.includes('Osceola') || 
+                                                 rawOffice.includes('Lake') || 
+                                                 rawOffice.includes('Seminole') || 
+                                                 rawOffice.includes('Volusia') || 
+                                                 rawOffice.includes('Brevard') || 
+                                                 rawOffice.includes('Polk') || 
+                                                 rawOffice.includes('Sumter') || 
+                                                 rawOffice.includes('Marion');
+                        
+                        if (!isStatewide && !isCentralFlorida) return; 
+
+                        let officeName = rawOffice;
+                        let counties = '';
+
+                        if (rawOffice.includes('|')) {
+                            const parts = rawOffice.split('|');
+                            officeName = parts[0];
+                            counties = parts[1];
+                        }
+
+                        if (!groups[officeName]) {
+                            groups[officeName] = { title: officeName, subtitle: counties, candidates: [] };
+                        }
+                        groups[officeName].candidates.push(row);
+                    });
+
+                    const sortedRaces = Object.keys(groups).sort((a, b) => getRaceSortValue(a) - getRaceSortValue(b));
+
+                    let masterHTML = '';
+                    sortedRaces.forEach(raceKey => {
+                        const race = groups[raceKey];
+                        
+                        race.candidates.sort((a, b) => {
+                            const tierA = getPartyTier(a.party_full).rank;
+                            const tierB = getPartyTier(b.party_full).rank;
+                            if (tierA !== tierB) return tierA - tierB;
+                            return (a.name || '').localeCompare(b.name || '');
+                        });
+
+                        masterHTML += `
+                            <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white">
+                                <div class="mb-3">
+                                    <h2 class="text-lg font-bold text-gray-900 tracking-tight">${race.title}</h2>
+                                    ${race.subtitle ? `<p class="text-xs text-gray-400 tracking-wide mt-0.5 font-medium">${race.subtitle}</p>` : ''}
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm text-left border-collapse">
+                                        <thead>
+                                            <tr class="border-b-2 border-gray-800 text-gray-800 font-bold">
+                                                <th class="py-2 pr-4">Candidate Name</th>
+                                                <th class="py-2 px-2 text-center">Party</th>
+                                                <th class="py-2 px-4 text-right">Total Raised</th>
+                                                <th class="py-2 px-4 text-right">PAC Money</th>
+                                                <th class="py-2 px-4 text-right">Loans</th>
+                                                <th class="py-2 px-4 text-right">Total Spent</th>
+                                                <th class="py-2 pl-4 text-right">Cash On Hand</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200">
+                        `;
+
+                        race.candidates.forEach((cand, idx) => {
+                            const pt = getPartyTier(cand.party_full);
+                            const receipts = parseFloat(cand.receipts) || 0;
+                            const pac = parseFloat(cand.pac_money) || 0;
+                            const loans = parseFloat(cand.loans) || 0;
+                            const spent = parseFloat(cand.disbursements) || 0;
+                            const coh = parseFloat(cand.cash_on_hand_end_period) || 0;
+                            const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
+
+                            masterHTML += `
+                                <tr class="candidate-row ${rowBg} hover:bg-gray-100/70 transition-colors text-gray-700">
+                                    <td class="py-3 pr-4 font-bold text-gray-900">${cand.name}</td>
+                                    <td class="py-3 px-2 text-center">
+                                        <span class="inline-block px-2 py-0.5 text-[11px] font-bold tracking-wider border rounded-md uppercase ${pt.css}">
+                                            ${pt.label}
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-900">${currencyFormatter.format(receipts)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(pac)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(loans)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(spent)}</td>
+                                    <td class="py-3 pl-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(coh)}</td>
+                                </tr>
+                            `;
+                        });
+
+                        masterHTML += `
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    $('#tracker-container').html(masterHTML);
+                    $('#loading').addClass('hidden');
+                    $('#tracker-container').removeClass('hidden');
+                },
+                error: function(err) {
+                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error processing data: ${err.message}</span>`);
+                }
+            });
+
+            $('#search-filter').on('keyup', function() {
+                const query = $(this).val().toLowerCase();
+                
+                $('.race-section').each(function() {
+                    let sectionHasMatches = false;
+                    
+                    $(this).find('.candidate-row').each(function() {
+                        const rowText = $(this).text().toLowerCase();
+                        if (rowText.includes(query)) {
+                            $(this).show();
+                            sectionHasMatches = true;
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+
+                    if (sectionHasMatches) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
