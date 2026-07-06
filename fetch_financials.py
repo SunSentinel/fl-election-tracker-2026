@@ -114,9 +114,35 @@ if __name__ == "__main__":
         if not financials_df.empty:
             merged_df = pd.merge(candidates_df, financials_df, on='candidate_id', how='inner')
             
+            # --- DE-DUPLICATION ENGINE ---
+            print("\nScanning dataset for candidate entry duplicates...")
+            initial_count = len(merged_df)
+            
+            # Standardize names to check for spelling variants (e.g., catching Carla A vs Carla Arlene)
+            # We take the first two words of the name (usually LASTNAME, FIRSTNAME)
+            merged_df['_name_clean'] = merged_df['name'].str.lower().str.replace(r'[^\w\s,]', '', regex=True)
+            merged_df['_name_key'] = merged_df['_name_clean'].apply(lambda x: ' '.join(x.split()[:2]))
+            
+            # Sort by total receipts descending so if we drop a row, we keep the one holding actual financial records
+            merged_df = merged_df.sort_values(by='receipts', ascending=False)
+            
+            # Drop duplicates based on Name Key AND Office
+            merged_df = merged_df.drop_duplicates(subset=['_name_key', 'office_full'], keep='first')
+            
+            # Drop duplicates based on principal committee ID if available (so two IDs pointing to the same bank account merge)
+            if 'principal_committee_ids' in merged_df.columns:
+                merged_df = merged_df.dropna(subset=['principal_committee_ids']).drop_duplicates(subset=['principal_committee_ids', 'office_full'], keep='first').combine_first(merged_df)
+            
+            # Clean up temporary matching columns
+            merged_df = merged_df.drop(columns=['_name_clean', '_name_key'], errors='ignore')
+            
+            final_count = len(merged_df)
+            print(f" -> Removed {initial_count - final_count} duplicate FEC candidate listings from tracking tables.")
+            # ------------------------------
+            
             export_filename = "fl_2026_tracker_master_latest.csv"
             merged_df.to_csv(export_filename, index=False)
-            print(f"\nSUCCESS! Master tracker dataset exported to {export_filename}")
+            print(f"SUCCESS! Clean master tracker dataset exported to {export_filename}")
         else:
             print("\nNo financial data could be retrieved.")
             
