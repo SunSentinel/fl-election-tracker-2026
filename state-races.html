@@ -16,9 +16,17 @@
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
                 Tracking qualified candidates for Governor, Cabinet, and the Florida Legislature. <span class="italic text-gray-500 font-medium">Note: Financial figures reflect official campaign accounts. Scraping for associated state political committees (PCs) is currently pending.</span>
             </p>
-            <div class="mt-4 max-w-md">
-                <input type="text" id="search-filter" placeholder="Search candidates, districts, or counties..." 
-                       class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
+            
+            <div class="mt-4 flex flex-col sm:flex-row gap-3 max-w-2xl">
+                <div class="flex-1">
+                    <input type="text" id="search-filter" placeholder="Search candidates, districts..." 
+                           class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
+                </div>
+                <div class="w-full sm:w-64">
+                    <select id="county-dropdown" class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black bg-white text-gray-700 cursor-pointer">
+                        <option value="">All Counties (Show Everything)</option>
+                        </select>
+                </div>
             </div>
         </header>
 
@@ -38,12 +46,24 @@
 
         const CSV_FILE = 'fl_2026_state_tracker_latest.csv'; 
 
+        // List of all 67 Florida counties to build the dropdown dynamically
+        const FL_COUNTIES = [
+            "Alachua", "Baker", "Bay", "Bradford", "Brevard", "Broward", "Calhoun", "Charlotte", "Citrus", "Clay", 
+            "Collier", "Columbia", "DeSoto", "Dixie", "Duval", "Escambia", "Flagler", "Franklin", "Gadsden", "Gilchrist", 
+            "Glades", "Gulf", "Hamilton", "Hardee", "Hendry", "Hernando", "Highlands", "Hillsborough", "Indian River", 
+            "Jackson", "Jefferson", "Lafayette", "Lake", "Lee", "Leon", "Levy", "Liberty", "Madison", "Manatee", 
+            "Marion", "Martin", "Miami-Dade", "Monroe", "Nassau", "Okaloosa", "Okeechobee", "Orange", "Osceola", 
+            "Palm Beach", "Pasco", "Pinellas", "Polk", "Putnam", "Santa Rosa", "Sarasota", "Seminole", "St. Johns", 
+            "St. Lucie", "Sumter", "Suwannee", "Taylor", "Union", "Volusia", "Wakulla", "Walton", "Washington"
+        ];
+
         function getPartyTier(partyString) {
             const p = (partyString || '').toUpperCase();
             if (p.includes('REP')) return { rank: 1, label: 'R', css: 'bg-red-50 text-red-700 border-red-200' };
             if (p.includes('DEM')) return { rank: 2, label: 'D', css: 'bg-blue-50 text-blue-700 border-blue-200' };
-            if (p.includes('NPA') || p.includes('NO PARTY')) return { rank: 3, label: 'NPA', css: 'bg-slate-100 text-slate-700 border-slate-300' };
-            return { rank: 4, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
+            if (p.includes('IND')) return { rank: 3, label: 'I', css: 'bg-purple-50 text-purple-700 border-purple-200' };
+            if (p.includes('NPA') || p.includes('NO PARTY')) return { rank: 4, label: 'NPA', css: 'bg-slate-100 text-slate-700 border-slate-300' };
+            return { rank: 5, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
         }
 
         function getRaceSortValue(raceKey) {
@@ -63,6 +83,11 @@
         }
 
         $(document).ready(function() {
+            // Build the county dropdown options dynamically
+            FL_COUNTIES.forEach(county => {
+                $('#county-dropdown').append(`<option value="${county}">${county} County</option>`);
+            });
+
             Papa.parse(CSV_FILE, {
                 download: true, header: true, skipEmptyLines: true,
                 complete: function(results) {
@@ -85,7 +110,7 @@
                         
                         const titleParts = race.title.split('|');
                         const displayTitle = titleParts[0];
-                        const displaySubtitle = titleParts[1] ? `<p class="text-xs text-gray-500 mt-0.5 font-normal tracking-wide">${titleParts[1]}</p>` : '';
+                        const displaySubtitle = titleParts[1] ? titleParts[1] : '';
 
                         let mapLink = '';
                         const districtMatch = displayTitle.match(/District (\d+)/);
@@ -115,10 +140,12 @@
                         });
 
                         masterHTML += `
-                            <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white">
+                            <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white" 
+                                 data-title="${displayTitle.toLowerCase()}" 
+                                 data-counties="${displaySubtitle.toLowerCase()}">
                                 <div class="mb-3">
                                     <h2 class="text-lg font-bold text-gray-900 tracking-tight flex items-center">${displayTitle} ${mapLink}</h2>
-                                    ${displaySubtitle}
+                                    ${displaySubtitle ? `<p class="race-subtitle text-xs text-gray-500 mt-0.5 font-normal tracking-wide">${displaySubtitle}</p>` : ''}
                                 </div>
                                 <div class="overflow-x-auto">
                                     <table class="w-full text-sm text-left border-collapse">
@@ -138,7 +165,6 @@
                             const pt = getPartyTier(cand.party_full);
                             const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
                             
-                            // Extract and safely parse the numbers scraped by Python
                             const receipts = parseFloat(cand.receipts) || 0;
                             const spent = parseFloat(cand.disbursements) || 0;
                             const coh = parseFloat(cand.cash_on_hand_end_period) || 0;
@@ -176,27 +202,51 @@
                 }
             });
 
-            $('#search-filter').on('keyup', function() {
-                const query = $(this).val().toLowerCase();
+            // Master Dual Filtering Logic Execution Engine
+            function filterRaces() {
+                const searchQuery = $('#search-filter').val().toLowerCase();
+                const selectedCounty = $('#county-dropdown').val().toLowerCase();
+
                 $('.race-section').each(function() {
-                    let sectionHasMatches = false;
+                    const raceTitle = $(this).attr('data-title') || '';
+                    const raceCounties = $(this).attr('data-counties') || '';
+                    
+                    // Match County Constraint Rule (Always preserve Statewide cards)
+                    let matchesCounty = false;
+                    if (selectedCounty === "" || raceCounties.includes(selectedCounty) || raceCounties.includes("statewide")) {
+                        matchesCounty = true;
+                    }
+
+                    // Match Text Query Constraint Rule across candidate contents
+                    let sectionHasTextMatch = false;
                     $(this).find('.candidate-row').each(function() {
-                        if ($(this).text().toLowerCase().includes(query)) {
+                        const candidateText = $(this).text().toLowerCase();
+                        if (candidateText.includes(searchQuery)) {
                             $(this).show();
-                            sectionHasMatches = true;
+                            sectionHasTextMatch = true;
                         } else {
                             $(this).hide();
                         }
                     });
-                    
-                    if ($(this).find('h2').text().toLowerCase().includes(query) || $(this).find('p').text().toLowerCase().includes(query)) {
+
+                    // Overriding Text check rule if heading itself absorbs structural token query
+                    if (raceTitle.includes(searchQuery) || raceCounties.includes(searchQuery)) {
                         $(this).find('.candidate-row').show();
-                        sectionHasMatches = true;
+                        sectionHasTextMatch = true;
                     }
 
-                    sectionHasMatches ? $(this).show() : $(this).hide();
+                    // Combine validation checks before modifying CSS display states
+                    if (matchesCounty && (searchQuery === "" || sectionHasTextMatch)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
                 });
-            });
+            }
+
+            // Wire combined filtering function to both interactive inputs
+            $('#search-filter').on('keyup', filterRaces);
+            $('#county-dropdown').on('change', filterRaces);
         });
     </script>
 </body>
