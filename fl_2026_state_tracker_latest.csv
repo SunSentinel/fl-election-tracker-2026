@@ -3,7 +3,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 88747,Shane Abbott,"State Representative (District 5)|Santa Rosa (Part), Okaloosa (Part)",REP,Y,130028.4,42321.14,87707.26,0.0,0.0
 89084,Keith Abel,State Representative (District 98)|Indian River,DEM,N,2221.0,4571.41,194.59000000000015,0.0,2545.0
 90433,Dean Ocean Abrams,Governor|Statewide (All 67 Counties),NPA,N,0.0,6538.61,961.79,0.0,7500.4
-88917,Jonathan Albert,State Representative (District 48)|Osceola (Part),REP,Y,83400.0,16646.96,66753.04000000001,0.0,0.0
+88917,Jonathan Albert,State Representative (District 48)|Osceola (Part),REP,Y,82400.0,16646.96,65753.04000000001,0.0,0.0
 88816,Daniel Danny Alvarez,State Representative (District 69)|Lake (Part),REP,Y,105400.0,23421.78,81978.22,0.0,0.0
 89005,Jose Alvarez,State Representative (District 46)|Orange (Part),DEM,Y,70850.0,48764.63,27085.370000000003,0.0,5000.0
 89291,Jane Aman,State Representative (District 37)|Seminole (Part),DEM,N,60198.59,46220.7,14477.89,0.0,500.0
@@ -55,7 +55,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 83614,Colleen Burton,"State Senator (District 12)|Seminole (Part), Orange (Part)",REP,Y,132600.0,38664.2,93935.8,0.0,0.0
 89989,James Bush Iii,State Representative (District 109)|Palm Beach (Part),DEM,N,7600.0,2131.82,6468.18,0.0,1000.0
 90254,Cynthia L. Butler,State Representative (District 75)|Pinellas (Part),DEM,N,3955.0,2087.71,1867.29,0.0,0.0
-90697,Lee Butler,State Representative (District 20)|Duval (Part),DEM,N,0.0,0.0,0.0,0.0,0.0
+90697,Lee Butler,State Representative (District 20)|Duval (Part),DEM,N,0.0,1784.82,17.180000000000064,0.0,1802.0
 92524,Paul Bybee,State Representative (District 54)|Brevard (Part),WRI,N,0.0,0.0,0.0,0.0,0.0
 92300,Steve Byers,State Representative (District 92)|Lee (Part),REP,N,0.0,1781.82,218.18000000000006,0.0,2000.0
 83774,Alexis Maria Calatayud,State Senator (District 38)|Miami-Dade (Part),REP,Y,357197.0,60056.17,297140.83,0.0,0.0
@@ -121,7 +121,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89351,Wancito Francius,State Representative (District 108)|Palm Beach (Part),REP,N,942.12,16392.0,-15449.88,0.0,0.0
 89944,Susan Frantz,State Representative (District 78)|Hillsborough (Part),REP,N,71811.0,6627.38,165183.62,0.0,100000.0
 89469,Terrance Freeman,State Representative (District 12)|Leon (Part),REP,N,174135.0,26258.25,147876.75,0.0,0.0
-92010,Jose Freites,"State Representative (District 56)|DeSoto, Hardee, Polk (Part)",DEM,N,0.0,0.0,0.0,0.0,0.0
+92010,Jose Freites,"State Representative (District 56)|DeSoto, Hardee, Polk (Part)",DEM,N,435.08,1823.26,275.78,0.0,1663.96
 88845,Michael Mike Friend,State Representative (District 102)|Palm Beach (Part),DEM,N,103352.0,30189.1,123162.9,0.0,50000.0
 90846,Zach Funkhouser,"State Representative (District 55)|Glades, Highlands, Okeechobee",DEM,N,1832.0,1809.09,1822.91,0.0,1800.0
 91230,Crescente Furnaguera,"State Senator (District 32)|Palm Beach (Part), Broward (Part)",NPA,N,1500.0,1187.88,312.1199999999999,0.0,0.0
@@ -240,7 +240,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89602,Judy M. Ngying,"State Senator (District 8)|Alachua (Part), Putnam (Part), Marion (Part), Levy, Gilchrist, Suwannee (Part)",DEM,N,14360.0,13041.84,2418.16,0.0,1100.0
 88877,Les Nichols,State Representative (District 74)|Pinellas (Part),REP,N,7237.12,7709.44,3777.6799999999994,0.0,4250.0
 88882,Anthony Nieves,"State Representative (District 47)|Orange (Part), Osceola (Part)",DEM,N,6576.0,3794.2,16781.8,0.0,14000.0
-88834,Danny Nix Jr.,State Representative (District 75)|Pinellas (Part),REP,Y,109800.0,30997.38,78802.62,0.0,0.0
+88834,Danny Nix Jr.,State Representative (District 75)|Pinellas (Part),REP,Y,109300.0,30977.08,78322.92,0.0,0.0
 90250,Daniel Nokovich,Governor|Statewide (All 67 Counties),REP,N,50.0,10182.5,9867.5,0.0,20000.0
 89987,Stephann Norman,Governor|Statewide (All 67 Counties),DEM,N,4162.56,0.0,4162.56,0.0,0.0
 88945,Vanessa Oliver,State Representative (District 76)|Hillsborough (Part),REP,Y,141800.0,58403.59,83396.41,0.0,0.0
@@ -303,7 +303,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 90633,Harvey Shifrin,State Representative (District 72)|Pinellas (Part),DEM,N,0.0,1855.63,744.3699999999999,0.0,2600.0
 89969,David Silverberg,"State Senator (District 28)|Sarasota (Part), Manatee (Part)",DEM,N,4238.96,2735.19,1503.77,0.0,0.0
 84028,David Silvers,"State Senator (District 26)|Hernando, Pasco (Part)",DEM,N,93702.0,13193.0,105509.0,0.0,25000.0
-90560,Wilton Simpson,Commissioner of Agriculture|Statewide (All 67 Counties),REP,Y,752270.0,19432.08,732837.92,0.0,0.0
+90560,Wilton Simpson,Commissioner of Agriculture|Statewide (All 67 Counties),REP,Y,750270.0,19432.08,730837.92,0.0,0.0
 88673,Kelly Skidmore,State Representative (District 92)|Lee (Part),DEM,Y,25072.28,5771.57,19300.71,0.0,0.0
 90698,Heather Anne Smith,State Representative (District 18)|Duval (Part),DEM,N,2000.0,1781.82,218.18000000000006,0.0,0.0
 89106,Jason Paul Smith,State Representative (District 102)|Palm Beach (Part),REP,N,44821.28,36960.47,7860.809999999998,0.0,0.0
@@ -352,7 +352,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 91644,Dan Weldon,State Representative (District 64)|Hernando (Part),REP,N,10635.0,1804.42,10830.58,0.0,2000.0
 89825,Luther Keith Wilkins,State Representative (District 70)|Pinellas (Part),DEM,N,2780.41,2040.46,739.9499999999998,0.0,0.0
 89988,Scott Wilkins,"State Representative (District 24)|Bradford, Union, Baker, Columbia",REP,N,200.0,1977.16,222.83999999999992,0.0,2000.0
-89032,Bobby Williams,Governor|Statewide (All 67 Counties),REP,N,59598.5,64597.46,501.0400000000009,0.0,5500.0
+89032,Bobby Williams,Governor|Statewide (All 67 Counties),REP,N,60298.5,64441.2,1357.300000000003,0.0,5500.0
 89439,Matt Woodside,State Representative (District 31)|Volusia (Part),REP,N,42167.4,10235.72,32031.68,0.0,100.0
 89632,Gabriel Jude Wozniak,"State Senator (District 8)|Alachua (Part), Putnam (Part), Marion (Part), Levy, Gilchrist, Suwannee (Part)",LPF,N,1314.0,1287.88,781.3400000000001,0.0,755.22
 91061,Jerry Wyche,State Representative (District 6)|Okaloosa (Part),DEM,N,1782.0,1782.0,0.0,0.0,0.0

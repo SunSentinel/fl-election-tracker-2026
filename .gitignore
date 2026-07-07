@@ -1,0 +1,5 @@
+venv/
+.env
+*.txt
+*.csv
+POTENTIAL_COMMITTEES_TO_REVIEW.csv
