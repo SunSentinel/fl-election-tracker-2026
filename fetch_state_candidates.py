@@ -18,13 +18,18 @@ def generate_state_candidates():
         print(f"Error reading file: {e}")
         return
 
-    # Filter for relevant state offices
-    target_offices = ['Governor', 'Attorney General', 'Chief Financial Officer', 'Commissioner of Agriculture', 'State Senator', 'State Representative']
-    pattern = '|'.join(target_offices)
-    
     # Fill NaN values to avoid string matching errors
     df['OfficeDesc'] = df['OfficeDesc'].fillna('')
-    state_df = df[df['OfficeDesc'].str.contains(pattern, case=False, na=False)].copy()
+    
+    # 1. Catch Governor and Cabinet
+    cabinet_pattern = 'Governor|Attorney General|Chief Financial Officer|Agriculture'
+    is_cabinet = df['OfficeDesc'].str.contains(cabinet_pattern, case=False, na=False)
+    
+    # 2. Catch State Legislature (Any Senator/Representative that is NOT federal)
+    is_leg = df['OfficeDesc'].str.contains('Senator|Representative', case=False, na=False) & ~df['OfficeDesc'].str.contains('United States', case=False, na=False)
+    
+    # Combine the filters to isolate state-level entries
+    state_df = df[is_cabinet | is_leg].copy()
     
     if state_df.empty:
         print("No state candidates found in the master file. Double-check your filters on the DOS download.")
