@@ -14,7 +14,7 @@
         <header class="mb-6 border-b border-gray-200 pb-4">
             <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Florida 2026 state campaign finance tracker</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
-                Tracking qualified candidates for Governor, Cabinet, and the Florida Legislature. <span class="italic text-gray-500 font-medium">Note: Financial scraping from state political committees is currently pending.</span>
+                Tracking qualified candidates for Governor, Cabinet, and the Florida Legislature. <span class="italic text-gray-500 font-medium">Note: Financial figures reflect official campaign accounts. Scraping for associated state political committees (PCs) is currently pending.</span>
             </p>
             <div class="mt-4 max-w-md">
                 <input type="text" id="search-filter" placeholder="Search candidates, districts, or counties..." 
@@ -83,12 +83,10 @@
                     sortedRaces.forEach(raceKey => {
                         const race = groups[raceKey];
                         
-                        // Split out the core office/district name from the county text
                         const titleParts = race.title.split('|');
                         const displayTitle = titleParts[0];
                         const displaySubtitle = titleParts[1] ? `<p class="text-xs text-gray-500 mt-0.5 font-normal tracking-wide">${titleParts[1]}</p>` : '';
 
-                        // Generate interactive map hyperlink logic
                         let mapLink = '';
                         const districtMatch = displayTitle.match(/District (\d+)/);
                         if (districtMatch) {
@@ -140,6 +138,11 @@
                             const pt = getPartyTier(cand.party_full);
                             const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
                             
+                            // Extract and safely parse the numbers scraped by Python
+                            const receipts = parseFloat(cand.receipts) || 0;
+                            const spent = parseFloat(cand.disbursements) || 0;
+                            const coh = parseFloat(cand.cash_on_hand_end_period) || 0;
+                            
                             const incumbentTag = (cand.is_incumbent === 'Y') 
                                 ? `<span class="ml-1.5 text-[10px] uppercase font-bold text-blue-600 tracking-wider">Incumbent</span>` 
                                 : '';
@@ -152,9 +155,9 @@
                                             ${pt.label}
                                         </span>
                                     </td>
-                                    <td class="py-3 px-4 text-right font-mono text-gray-400 italic">Pending</td>
-                                    <td class="py-3 px-4 text-right font-mono text-gray-400 italic">Pending</td>
-                                    <td class="py-3 pl-4 text-right font-mono font-bold text-gray-400 italic">Pending</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-900">${currencyFormatter.format(receipts)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(spent)}</td>
+                                    <td class="py-3 pl-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(coh)}</td>
                                 </tr>
                             `;
                         });
