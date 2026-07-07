@@ -12,9 +12,11 @@
 
     <div class="max-w-7xl mx-auto">
         <header class="mb-6 border-b border-gray-200 pb-4">
-            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Florida 2026 state campaign finance tracker</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Statewide and local campaign finances</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
-                Tracking qualified candidates for Governor, Cabinet, and the Florida Legislature. <span class="italic text-gray-500 font-medium">Note: Financial figures reflect official campaign accounts. Scraping for associated state political committees (PCs) is currently pending.</span>
+                <span class="italic text-gray-500 font-medium">
+                    Fundraising and spending of candidates who qualified for statewide and legislative races in Florida.
+                </span>
             </p>
             
             <div class="mt-4 flex flex-col sm:flex-row gap-3 max-w-2xl">
@@ -202,7 +204,6 @@
                 }
             });
 
-            // Master Dual Filtering Logic Execution Engine
             function filterRaces() {
                 const searchQuery = $('#search-filter').val().toLowerCase();
                 const selectedCounty = $('#county-dropdown').val().toLowerCase();
@@ -211,13 +212,11 @@
                     const raceTitle = $(this).attr('data-title') || '';
                     const raceCounties = $(this).attr('data-counties') || '';
                     
-                    // Match County Constraint Rule (Always preserve Statewide cards)
                     let matchesCounty = false;
                     if (selectedCounty === "" || raceCounties.includes(selectedCounty) || raceCounties.includes("statewide")) {
                         matchesCounty = true;
                     }
 
-                    // Match Text Query Constraint Rule across candidate contents
                     let sectionHasTextMatch = false;
                     $(this).find('.candidate-row').each(function() {
                         const candidateText = $(this).text().toLowerCase();
@@ -229,13 +228,11 @@
                         }
                     });
 
-                    // Overriding Text check rule if heading itself absorbs structural token query
                     if (raceTitle.includes(searchQuery) || raceCounties.includes(searchQuery)) {
                         $(this).find('.candidate-row').show();
                         sectionHasTextMatch = true;
                     }
 
-                    // Combine validation checks before modifying CSS display states
                     if (matchesCounty && (searchQuery === "" || sectionHasTextMatch)) {
                         $(this).show();
                     } else {
@@ -244,7 +241,6 @@
                 });
             }
 
-            // Wire combined filtering function to both interactive inputs
             $('#search-filter').on('keyup', filterRaces);
             $('#county-dropdown').on('change', filterRaces);
         });
