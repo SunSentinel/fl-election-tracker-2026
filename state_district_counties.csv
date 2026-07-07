@@ -1,0 +1,181 @@
+office,district_num,county_list
+Senate,1,"Escambia, Santa Rosa, Okaloosa (Part)"
+Senate,2,"Okaloosa (Part), Walton, Holmes, Washington, Bay, Jackson, Calhoun, Liberty, Gulf, Franklin, Gadsden (Part)"
+Senate,3,"Gadsden (Part), Leon, Jefferson, Madison, Taylor, Hamilton, Suwannee, Lafayette, Dixie, Columbia (Part)"
+Senate,4,"Nassau, Duval (Part)"
+Senate,5,Duval (Part)
+Senate,6,"Baker, Columbia (Part), Union, Bradford, Clay, Alachua (Part), Putnam (Part)"
+Senate,7,"St. Johns, Flagler, Volusia (Part)"
+Senate,8,"Alachua (Part), Putnam (Part), Marion (Part), Levy, Gilchrist, Suwannee (Part)"
+Senate,9,"Marion (Part), Citrus, Sumter, Pasco (Part)"
+Senate,10,"Volusia (Part), Seminole (Part)"
+Senate,11,Orange (Part)
+Senate,12,"Seminole (Part), Orange (Part)"
+Senate,13,Orange (Part)
+Senate,14,"Lake, Orange (Part)"
+Senate,15,"Orange (Part), Osceola (Part)"
+Senate,16,Brevard
+Senate,17,"Orange (Part), Osceola (Part), Indian River, St. Lucie (Part)"
+Senate,18,Polk (Part)
+Senate,19,"Pasco (Part), Hillsborough (Part)"
+Senate,20,Hillsborough (Part)
+Senate,21,"Hillsborough (Part), Manatee (Part)"
+Senate,22,Hillsborough (Part)
+Senate,23,Pinellas (Part)
+Senate,24,Pinellas (Part)
+Senate,25,"Hillsborough (Part), Pinellas (Part)"
+Senate,26,"Hernando, Pasco (Part)"
+Senate,27,"Hardee, Highlands, DeSoto, Charlotte, Sarasota (Part)"
+Senate,28,"Sarasota (Part), Manatee (Part)"
+Senate,29,"Glades, Hendry, Okeechobee, St. Lucie (Part), Martin"
+Senate,30,Palm Beach (Part)
+Senate,31,Palm Beach (Part)
+Senate,32,"Palm Beach (Part), Broward (Part)"
+Senate,33,Broward (Part)
+Senate,34,Broward (Part)
+Senate,35,Broward (Part)
+Senate,36,"Broward (Part), Miami-Dade (Part)"
+Senate,37,Miami-Dade (Part)
+Senate,38,Miami-Dade (Part)
+Senate,39,"Miami-Dade (Part), Monroe"
+Senate,40,Miami-Dade (Part)
+House,1,Escambia (Part)
+House,2,Escambia (Part)
+House,3,"Escambia (Part), Santa Rosa (Part)"
+House,4,Santa Rosa (Part)
+House,5,"Santa Rosa (Part), Okaloosa (Part)"
+House,6,Okaloosa (Part)
+House,7,"Okaloosa (Part), Walton (Part)"
+House,8,"Walton (Part), Bay (Part)"
+House,9,Bay (Part)
+House,10,"Washington, Holmes, Jackson, Calhoun, Liberty, Gadsden (Part)"
+House,11,"Wakulla, Franklin, Gulf, Liberty (Part), Gadsden (Part), Leon (Part)"
+House,12,Leon (Part)
+House,13,Leon (Part)
+House,14,"Jefferson, Madison, Taylor, Lafayette, Dixie, Gilchrist, Suwannee, Hamilton"
+House,15,"Nassau, Duval (Part)"
+House,16,Duval (Part)
+House,17,Duval (Part)
+House,18,Duval (Part)
+House,19,Duval (Part)
+House,20,Duval (Part)
+House,21,Duval (Part)
+House,22,"Duval (Part), Clay (Part)"
+House,23,Clay (Part)
+House,24,"Bradford, Union, Baker, Columbia"
+House,25,Alachua (Part)
+House,26,Alachua (Part)
+House,27,"Putnam, Marion (Part)"
+House,28,"Flagler, St. Johns (Part)"
+House,29,St. Johns (Part)
+House,30,St. Johns (Part)
+House,31,Volusia (Part)
+House,32,Volusia (Part)
+House,33,Volusia (Part)
+House,34,Volusia (Part)
+House,35,"Orange (Part), Osceola (Part)"
+House,36,Seminole (Part)
+House,37,Seminole (Part)
+House,38,"Seminole (Part), Orange (Part)"
+House,39,"Orange (Part), Seminole (Part)"
+House,40,Orange (Part)
+House,41,Orange (Part)
+House,42,Orange (Part)
+House,43,Orange (Part)
+House,44,Orange (Part)
+House,45,Orange (Part)
+House,46,Orange (Part)
+House,47,"Orange (Part), Osceola (Part)"
+House,48,Osceola (Part)
+House,49,Osceola (Part)
+House,50,"Brevaerd (Part), Orange (Part)"
+House,51,Brevard (Part)
+House,52,Brevard (Part)
+House,53,Brevard (Part)
+House,54,Brevard (Part)
+House,55,"Glades, Highlands, Okeechobee"
+House,56,"DeSoto, Hardee, Polk (Part)"
+House,57,Polk (Part)
+House,58,Polk (Part)
+House,59,Polk (Part)
+House,60,Polk (Part)
+House,61,Pasco (Part)
+House,62,Pasco (Part)
+House,63,Pasco (Part)
+House,64,Hernando (Part)
+House,65,"Citrus, Hernando (Part)"
+House,66,Marion (Part)
+House,67,"Marion (Part), Lake (Part)"
+House,68,Lake (Part)
+House,69,Lake (Part)
+House,70,Pinellas (Part)
+House,71,Pinellas (Part)
+House,72,Pinellas (Part)
+House,73,Pinellas (Part)
+House,74,Pinellas (Part)
+House,75,Pinellas (Part)
+House,76,Hillsborough (Part)
+House,77,Hillsborough (Part)
+House,78,Hillsborough (Part)
+House,79,Hillsborough (Part)
+House,80,Hillsborough (Part)
+House,81,Hillsborough (Part)
+House,82,Hillsborough (Part)
+House,83,Hillsborough (Part)
+House,84,Hillsborough (Part)
+House,85,Manatee (Part)
+House,86,Mantie (Part)
+House,87,Sarasota (Part)
+House,88,Sarasota (Part)
+House,89,"Charlotte (Part), Sarasota (Part)"
+House,90,Charlotte (Part)
+House,91,Lee (Part)
+House,92,Lee (Part)
+House,93,Lee (Part)
+House,94,Lee (Part)
+House,95,"Hendry, Collier (Part)"
+House,96,Collier (Part)
+House,97,Collier (Part)
+House,98,Indian River
+House,99,St. Lucie (Part)
+House,100,"St. Lucie (Part), Martin (Part)"
+House,101,"Martin (Part), Palm Beach (Part)"
+House,102,Palm Beach (Part)
+House,103,Palm Beach (Part)
+House,104,Palm Beach (Part)
+House,105,Palm Beach (Part)
+House,106,Palm Beach (Part)
+House,107,Palm Beach (Part)
+House,108,Palm Beach (Part)
+House,109,Palm Beach (Part)
+House,110,Broward (Part)
+House,111,Broward (Part)
+House,112,Broward (Part)
+House,113,Broward (Part)
+House,114,Broward (Part)
+House,115,Broward (Part)
+House,116,Broward (Part)
+House,117,Broward (Part)
+House,118,Broward (Part)
+House,119,Broward (Part)
+House,120,"Miami-Dade (Part), Monroe"
+House,121,Miami-Dade (Part)
+House,122,Miami-Dade (Part)
+House,123,Miami-Dade (Part)
+House,124,Miami-Dade (Part)
+House,125,Miami-Dade (Part)
+House,126,Miami-Dade (Part)
+House,127,Miami-Dade (Part)
+House,128,Miami-Dade (Part)
+House,129,Miami-Dade (Part)
+House,130,Miami-Dade (Part)
+House,131,Miami-Dade (Part)
+House,132,Miami-Dade (Part)
+House,133,Miami-Dade (Part)
+House,134,Miami-Dade (Part)
+House,135,Miami-Dade (Part)
+House,136,Miami-Dade (Part)
+House,137,Miami-Dade (Part)
+House,138,Miami-Dade (Part)
+House,139,Miami-Dade (Part)
+House,140,Miami-Dade (Part)
