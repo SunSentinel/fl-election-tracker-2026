@@ -14,8 +14,9 @@
         <header class="mb-6 border-b border-gray-200 pb-4">
             <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Statewide and local campaign finances</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
-                <span class="italic text-gray-500 font-medium">
-                    Fundraising and spending of candidates who qualified for statewide and legislative races in Florida.
+                Fundraising and spending of candidates who qualified for statewide and legislative races in Florida. 
+                <span class="italic text-gray-500 font-medium block mt-1">
+                    NOTE: Cash on hand includes candidates' personal loans to their campaigns. All figures rounded to the nearest dollar.
                 </span>
             </p>
             
@@ -36,7 +37,7 @@
         <div id="tracker-container" class="space-y-10 hidden"></div>
         
         <footer class="mt-8 border-t border-gray-200 pt-4 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-1">
-            <div id="update-timestamp" class="italic">Baseline Candidate Roster Loaded</div>
+            <div id="update-timestamp" class="italic">Checking server for update metadata...</div>
             <div>Source: Florida Division of Elections</div>
         </footer>
     </div>
@@ -48,7 +49,6 @@
 
         const CSV_FILE = 'fl_2026_state_tracker_latest.csv'; 
 
-        // List of all 67 Florida counties to build the dropdown dynamically
         const FL_COUNTIES = [
             "Alachua", "Baker", "Bay", "Bradford", "Brevard", "Broward", "Calhoun", "Charlotte", "Citrus", "Clay", 
             "Collier", "Columbia", "DeSoto", "Dixie", "Duval", "Escambia", "Flagler", "Franklin", "Gadsden", "Gilchrist", 
@@ -58,6 +58,20 @@
             "Palm Beach", "Pasco", "Pinellas", "Polk", "Putnam", "Santa Rosa", "Sarasota", "Seminole", "St. Johns", 
             "St. Lucie", "Sumter", "Suwannee", "Taylor", "Union", "Volusia", "Wakulla", "Walton", "Washington"
         ];
+
+        function fetchFileTimestamp() {
+            fetch(CSV_FILE, { method: 'HEAD' })
+                .then(response => {
+                    const lastModified = response.headers.get('Last-Modified');
+                    if (lastModified) {
+                        const dateObj = new Date(lastModified);
+                        const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+                        $('#update-timestamp').text(`Figures update automatically overnight each day. Last updated: ${formattedDate}`);
+                    } else {
+                        $('#update-timestamp').text('Figures update automatically overnight each day.');
+                    }
+                }).catch(() => $('#update-timestamp').text('Figures update automatically overnight each day.'));
+        }
 
         function getPartyTier(partyString) {
             const p = (partyString || '').toUpperCase();
@@ -85,7 +99,8 @@
         }
 
         $(document).ready(function() {
-            // Build the county dropdown options dynamically
+            fetchFileTimestamp();
+
             FL_COUNTIES.forEach(county => {
                 $('#county-dropdown').append(`<option value="${county}">${county} County</option>`);
             });
@@ -219,8 +234,8 @@
 
                     let sectionHasTextMatch = false;
                     $(this).find('.candidate-row').each(function() {
-                        const candidateText = $(this).text().toLowerCase();
-                        if (candidateText.includes(searchQuery)) {
+                        const rowText = $(this).text().toLowerCase();
+                        if (rowText.includes(query)) {
                             $(this).show();
                             sectionHasTextMatch = true;
                         } else {
