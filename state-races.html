@@ -17,7 +17,7 @@
                 Tracking qualified candidates for Governor, Cabinet, and the Florida Legislature. <span class="italic text-gray-500 font-medium">Note: Financial scraping from state political committees is currently pending.</span>
             </p>
             <div class="mt-4 max-w-md">
-                <input type="text" id="search-filter" placeholder="Search candidates or districts..." 
+                <input type="text" id="search-filter" placeholder="Search candidates, districts, or counties..." 
                        class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
             </div>
         </header>
@@ -46,7 +46,6 @@
             return { rank: 4, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
         }
 
-        // Custom sorting to put Governor and Cabinet at the top
         function getRaceSortValue(raceKey) {
             if (raceKey.includes('Governor')) return 1;
             if (raceKey.includes('Attorney General')) return 2;
@@ -84,6 +83,11 @@
                     sortedRaces.forEach(raceKey => {
                         const race = groups[raceKey];
                         
+                        // --- NEW: SPLIT THE OFFICE NAME AND COUNTY LIST ---
+                        const titleParts = race.title.split('|');
+                        const displayTitle = titleParts[0];
+                        const displaySubtitle = titleParts[1] ? `<p class="text-xs text-gray-500 mt-0.5 font-normal tracking-wide">${titleParts[1]}</p>` : '';
+
                         race.candidates.sort((a, b) => {
                             const tierA = getPartyTier(a.party_full).rank;
                             const tierB = getPartyTier(b.party_full).rank;
@@ -94,7 +98,8 @@
                         masterHTML += `
                             <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white">
                                 <div class="mb-3">
-                                    <h2 class="text-lg font-bold text-gray-900 tracking-tight">${race.title}</h2>
+                                    <h2 class="text-lg font-bold text-gray-900 tracking-tight">${displayTitle}</h2>
+                                    ${displaySubtitle}
                                 </div>
                                 <div class="overflow-x-auto">
                                     <table class="w-full text-sm text-left border-collapse">
@@ -112,12 +117,8 @@
 
                         race.candidates.forEach((cand, idx) => {
                             const pt = getPartyTier(cand.party_full);
-                            const receipts = parseFloat(cand.receipts) || 0;
-                            const spent = parseFloat(cand.disbursements) || 0;
-                            const coh = parseFloat(cand.cash_on_hand_end_period) || 0;
                             const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
                             
-                            // Check for incumbent status
                             const incumbentTag = (cand.is_incumbent === 'Y') 
                                 ? `<span class="ml-1.5 text-[10px] uppercase font-bold text-blue-600 tracking-wider">Incumbent</span>` 
                                 : '';
@@ -163,6 +164,13 @@
                             $(this).hide();
                         }
                     });
+                    
+                    // Also search the header text (allows searching by county name)
+                    if ($(this).find('h2').text().toLowerCase().includes(query) || $(this).find('p').text().toLowerCase().includes(query)) {
+                        $(this).find('.candidate-row').show();
+                        sectionHasMatches = true;
+                    }
+
                     sectionHasMatches ? $(this).show() : $(this).hide();
                 });
             });
