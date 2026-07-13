@@ -27,24 +27,29 @@ jobs:
         python -m pip install --upgrade pip
         pip install requests pandas python-dotenv
 
-    # 4. Run Phase 1: Candidate Roster
+    # 4. Run Phase 1: Candidate Roster (Ensure this filename matches your active setup)
     - name: Fetch Candidates
-      env:
-        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
-      run: python fetch_candidates.py
+      run: |
+        if [ -f "fetch_state_candidates.py" ]; then
+          python fetch_state_candidates.py
+        elif [ -f "fetch_candidates.py" ]; then
+          python fetch_candidates.py
+        else
+          echo "[!] Roster script not found, skipping step safely."
+        fi
 
-    # 5. Run Phase 2: Financial Totals
+    # 5. Run Phase 2: Financial Totals (Pointed exactly to our updated safety wrapper script)
     - name: Fetch Financial Totals
-      env:
-        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
-      run: python fetch_financials.py
+      run: python fetch_state_financials.py
 
     # 6. Check if changes were made, and if so, commit the new CSV to the repo
     - name: Commit and Push changes
       run: |
         git config --global user.name "FEC Data Bot"
         git config --global user.email "data-bot@newsroom.com"
-        git add fl_2026_*.csv
+        
+        # Force add both the main tracker file and the crosswalk data
+        git add -f fl_2026_*.csv state_pc_crosswalk.csv
         
         # Only commit if there are actually changes to avoid workflow errors
         git diff --quiet && git diff --staged --quiet || (git commit -m "Automated daily FEC data update: $(date +'%Y-%m-%d')" && git push)
