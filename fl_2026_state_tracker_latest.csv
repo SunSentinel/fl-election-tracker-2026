@@ -10,7 +10,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 88741,Adam C. Anderson,State Representative (District 57)|Polk (Part),REP,Y,122685.0,39168.58,83516.42,0.0,0.0
 90612,Kathy Anderson,Governor|Statewide (All 67 Counties),WRI,N,0.0,0.0,0.0,0.0,0.0
 89796,Christopher Anger,State Representative (District 53)|Brevard (Part),CPF,N,100.0,1834.77,275.23,0.0,2010.0
-88940,Yoni Anijar,"State Representative (District 100)|St. Lucie (Part), Martin (Part)",REP,N,36103.01,43698.58,227404.43,0.0,235000.0
+88940,Yoni Anijar,"State Representative (District 100)|St. Lucie (Part), Martin (Part)",REP,N,36333.01,57664.38,213668.63,0.0,235000.0
 89892,Robert Anzalone,State Representative (District 49)|Osceola (Part),DEM,N,2793.24,2449.65,343.5899999999997,0.0,0.0
 89310,Lucia Baez-Geller,State Representative (District 106)|Palm Beach (Part),DEM,N,73035.76,138807.48,184228.28,0.0,250000.0
 88832,Jessica Baker,State Representative (District 17)|Duval (Part),REP,Y,88478.1,8168.63,80309.47,0.0,0.0
@@ -57,7 +57,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 90254,Cynthia L. Butler,State Representative (District 75)|Pinellas (Part),DEM,N,3955.0,2087.71,1867.29,0.0,0.0
 90697,Lee Butler,State Representative (District 20)|Duval (Part),DEM,N,0.0,1784.82,17.180000000000064,0.0,1802.0
 92524,Paul Bybee,State Representative (District 54)|Brevard (Part),WRI,N,0.0,0.0,0.0,0.0,0.0
-92300,Steve Byers,State Representative (District 92)|Lee (Part),REP,N,0.0,1781.82,218.18000000000006,0.0,2000.0
+92300,Steve Byers,State Representative (District 92)|Lee (Part),REP,N,150.0,1886.41,263.5899999999999,0.0,2000.0
 83774,Alexis Maria Calatayud,State Senator (District 38)|Miami-Dade (Part),REP,Y,357197.0,60056.17,297140.83,0.0,0.0
 89131,Daphne Campbell,State Representative (District 108)|Palm Beach (Part),DEM,N,13072.51,77227.56,46844.95,0.0,111000.0
 88751,Jennifer Canady,"State Representative (District 50)|Brevaerd (Part), Orange (Part)",REP,Y,118350.0,14479.5,103870.5,0.0,0.0
@@ -98,12 +98,12 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89975,Sylvain Dore,State Representative (District 21)|Duval (Part),DEM,N,1615.0,3100.4,20014.6,0.0,21500.0
 89305,Fentrice Driskell,State Senator (District 16)|Brevard,DEM,N,220530.55,158863.15,61917.399999999994,0.0,250.0
 89098,Emily Duda Buckley,"State Representative (District 38)|Seminole (Part), Orange (Part)",REP,N,162070.0,57420.53,104649.47,0.0,0.0
-90603,H. Alexander Duncan,"State Senator (District 10)|Volusia (Part), Seminole (Part)",DEM,N,1980.0,2101.72,-121.7199999999998,0.0,0.0
+90603,H. Alexander Duncan,"State Senator (District 10)|Volusia (Part), Seminole (Part)",DEM,N,2080.0,2113.72,-33.7199999999998,0.0,0.0
 88664,Jervonte Tae Edmonds,State Representative (District 88)|Sarasota (Part),DEM,Y,63990.17,53278.04,10712.129999999997,0.0,0.0
 90641,John Peter Emerling,State Representative (District 4)|Santa Rosa (Part),DEM,N,1004.6,233.43,1596.1699999999998,0.0,825.0
 88725,Dinah J. Escarment,State Representative (District 108)|Palm Beach (Part),DEM,N,46687.76,22079.24,44608.520000000004,0.0,20000.0
 88761,Tiffany Esposito,State Representative (District 77)|Hillsborough (Part),REP,Y,209475.0,54365.92,155109.08000000002,0.0,0.0
-90327,Leigh Estes,State Representative (District 83)|Hillsborough (Part),DEM,N,1065.0,6406.36,742.6400000000003,0.0,6084.0
+90327,Leigh Estes,State Representative (District 83)|Hillsborough (Part),DEM,N,1260.0,6526.0,818.0,0.0,6084.0
 89095,Jon Fay,State Representative (District 2)|Escambia (Part),REP,N,134784.73,49724.43,85060.30000000002,0.0,0.0
 90148,Michael Terence Ferguson,"State Representative (District 100)|St. Lucie (Part), Martin (Part)",DEM,N,35078.0,11334.96,56743.04,0.0,33000.0
 89629,Thomas Eloy Fernandez,Governor|Statewide (All 67 Counties),DEM,N,50.0,17558.1,-8308.099999999999,0.0,9200.0
@@ -228,11 +228,11 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 88815,Monique Miller,State Representative (District 33)|Volusia (Part),REP,Y,100710.0,15703.6,85006.4,0.0,0.0
 90981,Dylan Paul Modarelli,State Representative (District 71)|Pinellas (Part),REP,N,0.0,0.0,0.0,0.0,0.0
 89445,Imtiaz Mohammad,State Representative (District 103)|Palm Beach (Part),REP,N,0.0,1781.82,218.18000000000006,0.0,2000.0
-89420,Xavier J. Monroe,State Representative (District 21)|Duval (Part),DEM,N,19746.0,14241.8,5514.200000000001,0.0,10.0
+89420,Xavier J. Monroe,State Representative (District 21)|Duval (Part),DEM,N,19986.0,16162.24,3833.76,0.0,10.0
 89442,Malik J. Moore,State Representative (District 21)|Duval (Part),DEM,N,25218.0,9525.04,15692.96,0.0,0.0
 91471,Daisy Morales,State Representative (District 43)|Orange (Part),DEM,N,0.0,1781.82,1518.18,0.0,3300.0
 89939,Erik Morris,Governor|Statewide (All 67 Counties),WRI,N,99.0,122.76,-14.579999999999998,0.0,9.18
-90802,William Moskal,State Representative (District 80)|Hillsborough (Part),DEM,N,4460.0,828.2,3631.8,0.0,0.0
+90802,William Moskal,State Representative (District 80)|Hillsborough (Part),DEM,N,5560.0,1626.33,3933.67,0.0,0.0
 90845,Edwin Munoz,State Representative (District 30)|St. Johns (Part),DEM,N,1962.0,1837.69,124.30999999999995,0.0,0.0
 90006,Brian Nathan,"State Senator (District 14)|Lake, Orange (Part)",DEM,Y,27190.0,19902.48,7287.52,0.0,0.0
 89971,Ryan Neill,State Representative (District 74)|Pinellas (Part),DEM,N,4984.0,3312.89,1671.1100000000001,0.0,0.0
@@ -262,7 +262,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89584,Walter Price,"State Representative (District 55)|Glades, Highlands, Okeechobee",REP,N,56980.0,13772.66,58207.34,0.0,15000.0
 90847,"Donald A. ""Don"" Prichard",Commissioner of Agriculture|Statewide (All 67 Counties),DEM,N,24085.0,10660.58,13424.42,0.0,0.0
 89380,Liesa Priddy,State Representative (District 82)|Hillsborough (Part),REP,N,182725.0,82417.58,148307.41999999998,0.0,48000.0
-90897,Alethea Pugh,State Representative (District 48)|Osceola (Part),DEM,N,3015.0,2018.35,1116.65,0.0,120.0
+90897,Alethea Pugh,State Representative (District 48)|Osceola (Part),DEM,N,5015.0,2208.28,2926.72,0.0,120.0
 91874,Michael Pultorak,State Representative (District 54)|Brevard (Part),REP,N,600.0,1781.82,818.1800000000001,0.0,2000.0
 89979,Angel Ramos,State Representative (District 64)|Hernando (Part),REP,N,6480.0,5480.65,999.3500000000004,0.0,0.0
 91024,Nicolas Ramos,State Representative (District 116)|Broward (Part),DEM,N,1800.0,0.0,1800.0,0.0,0.0
@@ -271,7 +271,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 88796,Michele K. Rayner,State Senator (District 16)|Brevard,DEM,N,95607.0,79738.6,15868.399999999994,0.0,0.0
 88975,Mike Redondo,State Representative (District 118)|Broward (Part),REP,Y,90726.0,28057.3,62668.7,0.0,0.0
 89414,Paul Renner,Governor|Statewide (All 67 Counties),REP,N,422267.98,250979.34,171288.63999999998,0.0,0.0
-91141,Marcos Reyes,State Representative (District 115)|Broward (Part),DEM,N,2495.0,1817.75,677.25,0.0,0.0
+91141,Marcos Reyes,State Representative (District 115)|Broward (Part),DEM,N,2545.0,1820.0,725.0,0.0,0.0
 89267,Alfred Reynolds,"State Senator (District 12)|Seminole (Part), Orange (Part)",DEM,N,2050.0,2398.96,-348.96000000000004,0.0,0.0
 89886,Wayne Richter,State Representative (District 85)|Manatee (Part),DEM,N,92320.0,41765.09,54554.91,0.0,4000.0
 92596,Hector Rivera,State Senator (District 30)|Palm Beach (Part),REP,N,1900.0,1781.82,118.18000000000006,0.0,0.0
@@ -317,7 +317,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89102,Eric Doc Stelnicki,"State Representative (District 100)|St. Lucie (Part), Martin (Part)",REP,N,221933.12,97980.94,246052.18,0.0,122100.0
 92114,Hunter Stone,State Representative (District 85)|Manatee (Part),WRI,N,0.0,0.0,0.0,0.0,0.0
 91115,Jose Antonio Stoute,State Senator (District 40)|Miami-Dade (Part),DEM,N,0.0,1901.19,1098.81,0.0,3000.0
-90683,Art Stresing,State Representative (District 18)|Duval (Part),DEM,N,4945.0,2101.22,2843.78,0.0,0.0
+90683,Art Stresing,State Representative (District 18)|Duval (Part),DEM,N,7170.0,2896.11,4273.889999999999,0.0,0.0
 89413,Mike Suarez,State Representative (District 64)|Hernando (Part),DEM,N,78175.0,49049.91,29125.089999999997,0.0,0.0
 89052,Caneste Succe,Governor|Statewide (All 67 Counties),REP,N,10000.0,17234.0,-7234.0,0.0,0.0
 91310,Annette Taddeo,Chief Financial Officer|Statewide (All 67 Counties),DEM,N,36256.0,9822.13,32433.870000000003,0.0,6000.0
@@ -327,7 +327,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 88972,Debra Tendrich,"State Representative (District 89)|Charlotte (Part), Sarasota (Part)",DEM,Y,41164.0,4946.33,36217.67,0.0,0.0
 89968,May Thach,State Representative (District 61)|Pasco (Part),DEM,N,14027.0,3987.32,10039.68,0.0,0.0
 89512,Johnny Austin Thompson,State Representative (District 2)|Escambia (Part),DEM,N,561.0,0.0,561.0,0.0,0.0
-90858,Joseph Thornton,"State Senator (District 6)|Baker, Columbia (Part), Union, Bradford, Clay, Alachua (Part), Putnam (Part)",ASP,N,2516.66,1814.1,702.56,0.0,0.0
+90858,Joseph Thornton,"State Senator (District 6)|Baker, Columbia (Part), Union, Bradford, Clay, Alachua (Part), Putnam (Part)",ASP,N,3236.66,1858.45,1378.2099999999998,0.0,0.0
 90135,Josie Tomkow,"State Senator (District 14)|Lake, Orange (Part)",REP,N,64700.0,11215.05,53484.95,0.0,0.0
 88745,Dana Trabulsy,State Representative (District 84)|Hillsborough (Part),REP,Y,130194.09,42828.9,87365.19,0.0,0.0
 88777,Chase Tramont,State Representative (District 30)|St. Johns (Part),REP,Y,107928.06,54591.22,53336.84,0.0,0.0
@@ -347,10 +347,10 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89468,Kelly Ann Walker,State Representative (District 74)|Pinellas (Part),REP,N,65726.0,112415.5,53310.5,0.0,100000.0
 90600,Peter Walsh,State Representative (District 108)|Palm Beach (Part),DEM,N,13800.0,10425.05,5374.950000000001,0.0,2000.0
 91333,Jarvis Washington,"State Representative (District 50)|Brevaerd (Part), Orange (Part)",NPA,N,100.0,1187.88,62.11999999999989,0.0,1150.0
-91154,Lew Wasserman,State Senator (District 22)|Hillsborough (Part),DEM,N,3738.5,2216.85,61546.65,0.0,60025.0
+91154,Lew Wasserman,State Senator (District 22)|Hillsborough (Part),DEM,N,3843.5,2221.2,61647.3,0.0,60025.0
 88865,Megan Weinberger,State Representative (District 94)|Lee (Part),REP,Y,168026.78,54987.35,113039.43,0.0,0.0
 91644,Dan Weldon,State Representative (District 64)|Hernando (Part),REP,N,10635.0,1804.42,10830.58,0.0,2000.0
-89825,Luther Keith Wilkins,State Representative (District 70)|Pinellas (Part),DEM,N,2780.41,2040.46,739.9499999999998,0.0,0.0
+89825,Luther Keith Wilkins,State Representative (District 70)|Pinellas (Part),DEM,N,2868.88,2614.22,254.6600000000003,0.0,0.0
 89988,Scott Wilkins,"State Representative (District 24)|Bradford, Union, Baker, Columbia",REP,N,200.0,1977.16,222.83999999999992,0.0,2000.0
 89032,Bobby Williams,Governor|Statewide (All 67 Counties),REP,N,61188.31,66539.97,148.3399999999965,0.0,5500.0
 89439,Matt Woodside,State Representative (District 31)|Volusia (Part),REP,N,42167.4,10235.72,32031.68,0.0,100.0
