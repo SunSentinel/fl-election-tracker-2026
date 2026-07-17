@@ -220,6 +220,7 @@ def main():
             cand_id = matched_fec_node.get('candidate_id')
             print(f"✅ Paired: {s_cand['clean_display_name']} ➔ FEC ID: {cand_id}")
         
+        # FIX: Re-instated "pac_money" field back as a 0 tracker to satisfy frontend schema expectations and kill $NaN errors
         candidate_obj = {
             "name": s_cand['clean_display_name'],
             "id": cand_id,
@@ -236,7 +237,6 @@ def main():
         
         if cand_id != "NO_FEC_ID":
             try:
-                # Query historical candidate relationships without a cycle filter to prevent missing committees
                 url_comm = f"{BASE_URL}/candidate/{cand_id}/committees/"
                 res_comm = fec_session.get(url_comm, params={"api_key": API_KEY}, timeout=20)
                 
@@ -249,42 +249,45 @@ def main():
                         designation = comm.get('designation')
                         designation_full = comm.get('designation_full', '').lower()
                         
-                        # Apply the 2026 cycle constraint strictly to the financial lookup
                         p_data = fetch_committee_financials(c_id)
                         
-                        # Check if the committee has active transaction data for the 2026 cycle
+                        # FIX: Audit candidate specific fields for House/Senate (Form 3) loan reporting rules
+                        by_candidate = float(p_data.get('loans_made_by_candidate', 0) or 0)
+                        other_loans = float(p_data.get('other_loans_received', 0) or 0)
+                        generic_loans = float(p_data.get('loans_received', 0) or 0)
+                        
+                        calculated_total_loans = by_candidate + other_loans + generic_loans
+                        
                         has_active_totals = (
                             float(p_data.get('receipts', 0) or 0) > 0 or 
                             float(p_data.get('disbursements', 0) or 0) > 0 or 
-                            float(p_data.get('last_cash_on_hand_end_period', 0) or 0) > 0
+                            float(p_data.get('last_cash_on_hand_end_period', 0) or 0) > 0 or
+                            calculated_total_loans > 0
                         )
                         
-                        # Process structural matches based on type and validation filter
                         if designation == "P" or "principal" in designation_full:
-                            # We always display the principal committee even if its 2026 baseline starts at 0
                             candidate_obj.update({
                                 "receipts": p_data.get('receipts', 0),
-                                "pac_money": p_data.get('contributions_from_other_political_committees', 0),
-                                "loans": p_data.get('loans_received_from_candidate', 0) + p_data.get('other_loans_received', 0),
+                                "loans": calculated_total_loans,
                                 "disbursements": p_data.get('disbursements', 0),
                                 "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0)
                             })
                         else:
-                            # Filter pass: Only add JFCs/Leadership PACs if they are actively funding in 2026
                             if has_active_totals:
                                 candidate_obj["joint_funds"].append({
                                     "name": c_name, 
                                     "id": c_id,
                                     "receipts": p_data.get('receipts', 0), 
                                     "disbursements": p_data.get('disbursements', 0), 
-                                    "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0)
+                                    "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0),
+                                    "loans": calculated_total_loans
                                 })
                             
             except requests.exceptions.RequestException as e:
                 print(f"   ⚠️ Network timeout fetching committee financial data for {s_cand['clean_display_name']} - Skipping financials")
         
         master_output.append(candidate_obj)
-        time.sleep(0.2)  # Balanced throttling to preserve performance
+        time.sleep(0.2)
 
     os.makedirs('data', exist_ok=True)
     with open('data/election_data.json', 'w') as f:
