@@ -6,7 +6,6 @@
     <title>South Florida 2026 Campaign Finance Tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body class="bg-white text-[#333333] font-sans antialiased p-4 sm:p-6">
 
@@ -14,11 +13,11 @@
         <header class="mb-6 border-b border-gray-200 pb-4">
             <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">South Florida 2026 campaign finance tracker</h1>
             <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
-                Here are the latest fundraising numbers from candidates for the U.S. Senate and South Florida Congressional Districts. <span class="italic text-gray-500 font-medium">Note: Candidates with zero financial activity are excluded. Financial figures are rounded to the nearest dollar.</span>
+                Here are the latest fundraising numbers from candidates for the U.S. Senate and South Florida Congressional Districts. <span class="italic text-gray-500 font-medium">Note: Click on candidates with the "📋 Committees" tag to see affiliated Joint Fundraising Committees.</span>
             </p>
             
             <div class="mt-4 max-w-md">
-                <input type="text" id="search-filter" placeholder="Filter local races..." 
+                <input type="text" id="search-filter" placeholder="Search for candidates or races..." 
                        class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
             </div>
         </header>
@@ -40,32 +39,39 @@
             style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0
         });
 
-        const CSV_FILE = 'fl_2026_tracker_master_latest.csv'; 
+        const DATA_FEED = 'data/election_data.json'; 
 
         function fetchFileTimestamp() {
-            fetch(CSV_FILE, { method: 'HEAD' })
+            fetch(DATA_FEED, { method: 'HEAD' })
                 .then(response => {
                     const lastModified = response.headers.get('Last-Modified');
                     if (lastModified) {
                         const dateObj = new Date(lastModified);
                         $('#update-timestamp').text(`Data last updated: ${dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' })}`);
                     } else {
-                        $('#update-timestamp').text('Data automatically syncs daily');
+                        $('#update-timestamp').text('Data automatically syncs dynamically');
                     }
-                }).catch(() => $('#update-timestamp').text('Data automatically syncs daily'));
+                }).catch(() => $('#update-timestamp').text('Data automatically syncs dynamically'));
         }
 
-        function getPartyTier(partyString) {
+        function getPartyStyle(partyString) {
             const p = (partyString || '').toUpperCase();
-            if (p.includes('REP')) return { rank: 1, label: 'R', css: 'bg-red-50 text-red-700 border-red-200' };
-            if (p.includes('DEM')) return { rank: 2, label: 'D', css: 'bg-blue-50 text-blue-700 border-blue-200' };
-            if (p.includes('NPA') || p.includes('NON-PARTY') || p.includes('NO PARTY')) return { rank: 3, label: 'NPA', css: 'bg-slate-100 text-slate-700 border-slate-300' };
-            if (p.includes('IND')) return { rank: 4, label: 'I', css: 'bg-purple-50 text-purple-700 border-purple-200' };
-            return { rank: 5, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
+            if (p.includes('REPUBLICAN') || p.includes('REP')) return { label: 'R', css: 'bg-red-50 text-red-700 border-red-200' };
+            if (p.includes('DEMOCRAT') || p.includes('DEM')) return { label: 'D', css: 'bg-blue-50 text-blue-700 border-blue-200' };
+            if (p.includes('INDEPENDENT') || p.includes('IND')) return { label: 'IND', css: 'bg-purple-50 text-purple-700 border-purple-200' };
+            return { label: 'OTH', css: 'bg-gray-50 text-gray-600 border-gray-200' };
+        }
+
+        function getPartyWeight(partyString) {
+            const p = (partyString || '').toUpperCase();
+            if (p.includes('REPUBLICAN') || p.includes('REP')) return 1; 
+            if (p.includes('DEMOCRAT') || p.includes('DEM')) return 2;   
+            if (p.includes('INDEPENDENT') || p.includes('IND')) return 3; 
+            return 4; 
         }
 
         function getRaceSortValue(raceKey) {
-            if (raceKey.startsWith('Senate')) return -1;
+            if (raceKey.startsWith('U.S. Senate')) return -1;
             const match = raceKey.match(/\d+/);
             return match ? parseInt(match[0], 10) : 999;
         }
@@ -73,147 +79,161 @@
         $(document).ready(function() {
             fetchFileTimestamp();
 
-            Papa.parse(CSV_FILE, {
-                download: true, header: true, skipEmptyLines: true,
-                complete: function(results) {
-                    const data = results.data;
-                    const groups = {};
+            $.getJSON(DATA_FEED + '?nocache=' + new Date().getTime(), function(data) {
+                const groups = {};
 
-                    data.forEach(row => {
-                        const receipts = parseFloat(row.receipts) || 0;
-                        const disbursements = parseFloat(row.disbursements) || 0;
-                        if (receipts === 0 && disbursements === 0) return; 
+                data.forEach(candidate => {
+                    let officeName = candidate.office_full;
+                    if (!groups[officeName]) {
+                        groups[officeName] = { title: officeName, subtitle: candidate.counties, candidates: [] };
+                    }
+                    groups[officeName].candidates.push(candidate);
+                });
 
-                        let rawOffice = row.office_full || 'Other';
+                const sortedRaces = Object.keys(groups).sort((a, b) => getRaceSortValue(a) - getRaceSortValue(b));
+                let masterHTML = '';
+
+                sortedRaces.forEach(raceKey => {
+                    const race = groups[raceKey];
+                    
+                    let mapLink = '';
+                    const districtMatch = race.title.match(/District (\d+)/);
+                    
+                    if (districtMatch) {
+                        const distNum = parseInt(districtMatch[1], 10);
                         
-                        const isStatewide = rawOffice.startsWith('Senate');
-                        const isSouthFlorida = rawOffice.includes('Palm Beach') || 
-                                               rawOffice.includes('Broward') || 
-                                               rawOffice.includes('Miami-Dade');
+                        // Dynamically inject the specific district number and append the query string parameter 
+                        // to force ArcGIS Experience Builder to zoom tightly on the selection boundary.
+                        const arcgisUrl = `https://experience.arcgis.com/experience/69a85aceed7847d295f78f1c44baff64#data_s=id%3AdataSource_8-bb04ec9ec0874340b248b67fa1bc09ac%3A${distNum}&zoom_to_selection=true`;
                         
-                        if (!isStatewide && !isSouthFlorida) return; 
+                        mapLink = `<a href="${arcgisUrl}" target="_blank" class="text-[10px] font-bold text-blue-600 hover:text-blue-800 tracking-wider uppercase ml-3 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded-md transition-colors shadow-sm cursor-pointer whitespace-nowrap inline-flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3 h-3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                            See Map
+                        </a>`;
+                    }
 
-                        let officeName = rawOffice;
-                        let counties = '';
+                    race.candidates.sort((a, b) => {
+                        const partyA = getPartyWeight(a.party_full);
+                        const partyB = getPartyWeight(b.party_full);
 
-                        if (rawOffice.includes('|')) {
-                            const parts = rawOffice.split('|');
-                            officeName = parts[0];
-                            counties = parts[1];
+                        if (partyA !== partyB) {
+                            return partyA - partyB;
                         }
 
-                        if (!groups[officeName]) {
-                            groups[officeName] = { title: officeName, subtitle: counties, candidates: [] };
-                        }
-                        groups[officeName].candidates.push(row);
+                        const nameA = (a.name || '').toLowerCase();
+                        const nameB = (b.name || '').toLowerCase();
+                        
+                        return nameA.localeCompare(nameB);
                     });
 
-                    const sortedRaces = Object.keys(groups).sort((a, b) => getRaceSortValue(a) - getRaceSortValue(b));
+                    masterHTML += `
+                        <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white">
+                            <div class="mb-3 flex items-center flex-wrap gap-2">
+                                <h2 class="text-lg font-bold text-gray-900 tracking-tight flex items-center">${race.title} ${mapLink}</h2>
+                                <p class="text-xs text-gray-400 mt-0.5 w-full">${race.subtitle}</p>
+                            </div>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left border-collapse">
+                                    <thead>
+                                        <tr class="border-b-2 border-gray-800 text-gray-800 font-bold">
+                                            <th class="py-2 pr-4">Candidate Name</th>
+                                            <th class="py-2 px-2 text-center">Party</th>
+                                            <th class="py-2 px-4 text-right">Total Raised</th>
+                                            <th class="py-2 px-4 text-right">PAC Money</th>
+                                            <th class="py-2 px-4 text-right">Loans</th>
+                                            <th class="py-2 px-4 text-right">Total Spent</th>
+                                            <th class="py-2 pl-4 text-right">Cash On Hand</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                    `;
 
-                    let masterHTML = '';
-                    sortedRaces.forEach(raceKey => {
-                        const race = groups[raceKey];
-                        
-                        // --- NEW: GENERATE INTERACTIVE MAP BUTTONS FOR U.S. HOUSE ---
-                        let mapLink = '';
-                        const districtMatch = race.title.match(/District (\d+)/);
-                        
-                        if (districtMatch) {
-                            const distNum = parseInt(districtMatch[1], 10);
-                            
-                            const getOrdinal = (n) => {
-                                const s = ["th", "st", "nd", "rd"];
-                                const v = n % 100;
-                                return n + (s[(v - 20) % 10] || s[v] || s[0]);
-                            };
-                            
-                            const ordinalDist = getOrdinal(distNum);
-                            const bpUrl = `https://ballotpedia.org/Florida%27s_${ordinalDist}_Congressional_District`;
-                            
-                            mapLink = `<a href="${bpUrl}" target="_blank" class="text-[10px] font-bold text-blue-600 hover:text-blue-800 tracking-wider uppercase ml-3 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded-md transition-colors shadow-sm cursor-pointer whitespace-nowrap inline-flex items-center gap-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3 h-3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
-                                View Map
-                            </a>`;
-                        }
-
-                        race.candidates.sort((a, b) => {
-                            const tierA = getPartyTier(a.party_full).rank;
-                            const tierB = getPartyTier(b.party_full).rank;
-                            if (tierA !== tierB) return tierA - tierB;
-                            return (a.name || '').localeCompare(b.name || '');
-                        });
+                    race.candidates.forEach((cand, idx) => {
+                        const pt = getPartyStyle(cand.party_full);
+                        const hasNetwork = cand.joint_funds && cand.joint_funds.length > 0;
+                        const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
+                        const candUniqueId = `cand-${cand.id}`;
 
                         masterHTML += `
-                            <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white">
-                                <div class="mb-3">
-                                    <h2 class="text-lg font-bold text-gray-900 tracking-tight flex items-center">${race.title} ${mapLink}</h2>
-                                    ${race.subtitle ? `<p class="text-xs text-gray-400 tracking-wide mt-0.5 font-medium">${race.subtitle}</p>` : ''}
-                                </div>
-                                <div class="overflow-x-auto">
-                                    <table class="w-full text-sm text-left border-collapse">
-                                        <thead>
-                                            <tr class="border-b-2 border-gray-800 text-gray-800 font-bold">
-                                                <th class="py-2 pr-4">Candidate Name</th>
-                                                <th class="py-2 px-2 text-center">Party</th>
-                                                <th class="py-2 px-4 text-right">Total Raised</th>
-                                                <th class="py-2 px-4 text-right">PAC Money</th>
-                                                <th class="py-2 px-4 text-right">Loans</th>
-                                                <th class="py-2 px-4 text-right">Total Spent</th>
-                                                <th class="py-2 pl-4 text-right">Cash On Hand</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-gray-200">
+                            <tr class="candidate-row ${rowBg} hover:bg-gray-100/70 transition-colors text-gray-700 ${hasNetwork ? 'cursor-pointer' : ''}" 
+                                ${hasNetwork ? `onclick="$('#${candUniqueId}').toggle()"` : ''}>
+                                <td class="py-3 pr-4 font-bold text-gray-900 flex items-center gap-2">
+                                    ${cand.name}
+                                    ${hasNetwork ? `<span class="bg-amber-50 text-amber-800 text-[10px] px-1.5 py-0.5 font-bold rounded-sm border border-amber-200 animate-pulse">📋 Committees</span>` : ''}
+                                </td>
+                                <td class="py-3 px-2 text-center">
+                                    <span class="inline-block px-2 py-0.5 text-[11px] font-bold border rounded-md uppercase ${pt.css}">${pt.label}</span>
+                                </td>
+                                <td class="py-3 px-4 text-right font-mono text-gray-900">${currencyFormatter.format(cand.receipts)}</td>
+                                <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(cand.pac_money)}</td>
+                                <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(cand.loans)}</td>
+                                <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(cand.disbursements)}</td>
+                                <td class="py-3 pl-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(cand.cash_on_hand)}</td>
+                            </tr>
                         `;
 
-                        race.candidates.forEach((cand, idx) => {
-                            const pt = getPartyTier(cand.party_full);
-                            const receipts = parseFloat(cand.receipts) || 0;
-                            const pac = parseFloat(cand.pac_money) || 0;
-                            const loans = parseFloat(cand.loans) || 0;
-                            const spent = parseFloat(cand.disbursements) || 0;
-                            const coh = parseFloat(cand.cash_on_hand_end_period) || 0;
-                            const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
-
+                        if (hasNetwork) {
                             masterHTML += `
-                                <tr class="candidate-row ${rowBg} hover:bg-gray-100/70 transition-colors text-gray-700">
-                                    <td class="py-3 pr-4 font-bold text-gray-900">${cand.name}</td>
-                                    <td class="py-3 px-2 text-center">
-                                        <span class="inline-block px-2 py-0.5 text-[11px] font-bold tracking-wider border rounded-md uppercase ${pt.css}">
-                                            ${pt.label}
-                                        </span>
+                                <tr id="${candUniqueId}" class="hidden bg-slate-50/80">
+                                    <td colspan="7" class="p-3 pl-8 border-l-4 border-amber-400">
+                                        <div class="text-xs font-bold text-gray-500 tracking-wider uppercase mb-2">Affiliated Joint Fundraising Committee Details</div>
+                                        <table class="w-full text-xs text-left border border-gray-200 bg-white rounded-md shadow-xs">
+                                            <thead>
+                                                <tr class="bg-gray-100 text-gray-600 font-bold border-b border-gray-200">
+                                                    <th class="p-2">Joint Committee Name (ID)</th>
+                                                    <th class="p-2 text-right">Raised This Cycle</th>
+                                                    <th class="p-2 text-right">Total Spent</th>
+                                                    <th class="p-2 text-right">Current Cash Balance</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-100 text-gray-600">
+                            `;
+                            cand.joint_funds.forEach(jfc => {
+                                masterHTML += `
+                                    <tr>
+                                        <td class="p-2 font-semibold text-gray-700">${jfc.name} <span class="text-gray-400">(${jfc.id})</span></td>
+                                        <td class="p-2 text-right font-mono">${currencyFormatter.format(jfc.receipts)}</td>
+                                        <td class="p-2 text-right font-mono">${currencyFormatter.format(jfc.disbursements)}</td>
+                                        <td class="p-2 text-right font-mono font-bold text-gray-700">${currencyFormatter.format(jfc.cash_on_hand)}</td>
+                                    </tr>
+                                `;
+                            });
+                            masterHTML += `
+                                            </tbody>
+                                        </table>
                                     </td>
-                                    <td class="py-3 px-4 text-right font-mono text-gray-900">${currencyFormatter.format(receipts)}</td>
-                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(pac)}</td>
-                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(loans)}</td>
-                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(spent)}</td>
-                                    <td class="py-3 pl-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(coh)}</td>
                                 </tr>
                             `;
-                        });
-
-                        masterHTML += `
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        `;
+                        }
                     });
 
-                    $('#tracker-container').html(masterHTML);
-                    $('#loading').addClass('hidden');
-                    $('#tracker-container').removeClass('hidden');
-                },
-                error: function(err) {
-                    $('#loading').html(`<span class="text-red-500 font-bold">[!] Error processing data timeline: ${err.message}</span>`);
-                }
+                    masterHTML += `
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                $('#tracker-container').html(masterHTML);
+                $('#loading').addClass('hidden');
+                $('#tracker-container').removeClass('hidden');
+            })
+            .fail(function(jqXHR, textStatus, errorThrown) {
+                $('#loading').html(`
+                    <div class="text-red-600 font-bold p-4 bg-red-50 border border-red-200 rounded-md max-w-md mx-auto text-left">
+                        ⚠️ Data Feed Unavailable<br/>
+                        <span class="text-xs font-normal text-gray-500 block mt-1">
+                            Status: ${jqXHR.status} (${errorThrown || 'Check if file exists or CORS is blocked'})
+                        </span>
+                    </div>
+                `);
             });
 
             $('#search-filter').on('keyup', function() {
                 const query = $(this).val().toLowerCase();
-                
                 $('.race-section').each(function() {
                     let sectionHasMatches = false;
-                    
                     $(this).find('.candidate-row').each(function() {
                         const rowText = $(this).text().toLowerCase();
                         if (rowText.includes(query)) {
@@ -223,12 +243,7 @@
                             $(this).hide();
                         }
                     });
-
-                    if (sectionHasMatches) {
-                        $(this).show();
-                    } else {
-                        $(this).hide();
-                    }
+                    $(this).toggle(sectionHasMatches);
                 });
             });
         });
