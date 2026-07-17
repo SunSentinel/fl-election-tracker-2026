@@ -7,7 +7,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 156043.74,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 52026.0,
     "disbursements": 123903.99,
     "cash_on_hand": 35747.89,
     "joint_funds": []
@@ -20,7 +20,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 62126.49,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 15573.4,
     "cash_on_hand": 46553.09,
     "joint_funds": []
@@ -33,7 +33,7 @@
     "counties": "Miami-Dade",
     "receipts": 25798.15,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 20000.0,
     "disbursements": 13835.43,
     "cash_on_hand": 11962.72,
     "joint_funds": []
@@ -46,7 +46,7 @@
     "counties": "Palm Beach",
     "receipts": 2501510.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 2500000.0,
     "disbursements": 265266.14,
     "cash_on_hand": 2236243.86,
     "joint_funds": []
@@ -59,7 +59,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 21838.69,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 21676.78,
     "cash_on_hand": 161.91,
     "joint_funds": []
@@ -72,7 +72,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 313318.49,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 306068.33,
     "disbursements": 14692.9,
     "cash_on_hand": 298625.59,
     "joint_funds": []
@@ -85,7 +85,7 @@
     "counties": "Palm Beach",
     "receipts": 204954.63,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 125569.39,
     "cash_on_hand": 79385.24,
     "joint_funds": []
@@ -98,7 +98,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 110788.18,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 7850.0,
     "disbursements": 55127.25,
     "cash_on_hand": 55660.93,
     "joint_funds": [
@@ -107,7 +107,8 @@
         "id": "C00940379",
         "receipts": 37128.18,
         "disbursements": 11067.85,
-        "cash_on_hand": 26060.33
+        "cash_on_hand": 26060.33,
+        "loans": 7850.0
       }
     ]
   },
@@ -119,7 +120,7 @@
     "counties": "Palm Beach",
     "receipts": 5867348.7,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 3772597.84,
     "disbursements": 4524861.36,
     "cash_on_hand": 1342487.34,
     "joint_funds": []
@@ -132,7 +133,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 382527.14,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 11254.0,
     "disbursements": 376410.2,
     "cash_on_hand": 2552.3,
     "joint_funds": []
@@ -145,7 +146,7 @@
     "counties": "St. Lucie, Martin, Palm Beach",
     "receipts": 19543.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 13000.0,
     "disbursements": 18877.58,
     "cash_on_hand": 665.42,
     "joint_funds": []
@@ -158,7 +159,7 @@
     "counties": "Palm Beach",
     "receipts": 2095602.68,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 247000.0,
     "disbursements": 730219.02,
     "cash_on_hand": 1365383.66,
     "joint_funds": []
@@ -171,7 +172,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -184,7 +185,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 13046.25,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 14010.4,
     "cash_on_hand": -864.15,
     "joint_funds": []
@@ -197,7 +198,7 @@
     "counties": "Miami-Dade, Collier",
     "receipts": 1902246.19,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 1269136.31,
     "cash_on_hand": 2452430.08,
     "joint_funds": []
@@ -210,7 +211,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 341017.82,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 200020.0,
     "disbursements": 340052.65,
     "cash_on_hand": 965.17,
     "joint_funds": []
@@ -223,7 +224,7 @@
     "counties": "Palm Beach",
     "receipts": 15657.25,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 11200.0,
     "disbursements": 12506.39,
     "cash_on_hand": 3150.86,
     "joint_funds": []
@@ -236,7 +237,7 @@
     "counties": "Miami-Dade, Monroe",
     "receipts": 277301.32,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 200000.0,
     "disbursements": 625.1,
     "cash_on_hand": 366568.55,
     "joint_funds": [
@@ -245,7 +246,8 @@
         "id": "C00845750",
         "receipts": 146888.04,
         "disbursements": 75697.24,
-        "cash_on_hand": 88041.72
+        "cash_on_hand": 88041.72,
+        "loans": 133000.0
       }
     ]
   },
@@ -283,7 +285,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -296,7 +298,7 @@
     "counties": "Broward",
     "receipts": 1477367.05,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 1271711.5,
     "disbursements": 378215.87,
     "cash_on_hand": 1109079.67,
     "joint_funds": []
@@ -309,7 +311,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 524317.8,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 301219.97,
     "cash_on_hand": 223097.83,
     "joint_funds": []
@@ -335,7 +337,7 @@
     "counties": "Miami-Dade, Monroe",
     "receipts": 567482.18,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 443993.45,
     "cash_on_hand": 699516.7,
     "joint_funds": []
@@ -348,7 +350,7 @@
     "counties": "Statewide",
     "receipts": 19689.77,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 200.0,
     "disbursements": 18244.15,
     "cash_on_hand": 1445.62,
     "joint_funds": []
@@ -361,7 +363,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 1333.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 1200.0,
     "disbursements": 1236.64,
     "cash_on_hand": 96.36,
     "joint_funds": []
@@ -374,7 +376,7 @@
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -387,7 +389,7 @@
     "counties": "Broward",
     "receipts": 778445.79,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 542000.0,
     "disbursements": 666493.22,
     "cash_on_hand": 111952.57,
     "joint_funds": []
@@ -400,7 +402,7 @@
     "counties": "Palm Beach",
     "receipts": 32400.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 15000.0,
     "disbursements": 13896.09,
     "cash_on_hand": 18503.91,
     "joint_funds": []
@@ -413,7 +415,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 380767.89,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 71000.0,
     "disbursements": 69243.38,
     "cash_on_hand": 330606.82,
     "joint_funds": []
@@ -426,7 +428,7 @@
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -439,7 +441,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 11002.3,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 10400.0,
     "disbursements": 10897.65,
     "cash_on_hand": 129.65,
     "joint_funds": []
@@ -452,7 +454,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 148028.75,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 90756.54,
     "cash_on_hand": 57272.21,
     "joint_funds": []
@@ -465,7 +467,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 88416.77,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 76289.39,
     "cash_on_hand": 12127.38,
     "joint_funds": []
@@ -478,7 +480,7 @@
     "counties": "Broward",
     "receipts": 631592.54,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 158934.71,
     "cash_on_hand": 527451.29,
     "joint_funds": []
@@ -491,7 +493,7 @@
     "counties": "Palm Beach",
     "receipts": 3213868.36,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 3000000.0,
     "disbursements": 1326585.99,
     "cash_on_hand": 1887282.37,
     "joint_funds": []
@@ -504,7 +506,7 @@
     "counties": "Broward",
     "receipts": 541944.63,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 348967.41,
     "cash_on_hand": 192977.22,
     "joint_funds": []
@@ -517,7 +519,7 @@
     "counties": "Miami-Dade, Collier",
     "receipts": 304480.06,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 250000.0,
     "disbursements": 114222.96,
     "cash_on_hand": 190257.1,
     "joint_funds": []
@@ -530,7 +532,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 955386.36,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 919388.38,
     "cash_on_hand": 35997.98,
     "joint_funds": []
@@ -543,7 +545,7 @@
     "counties": "St. Lucie, Martin, Palm Beach",
     "receipts": 570133.2,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 150000.0,
     "disbursements": 254007.31,
     "cash_on_hand": 316125.89,
     "joint_funds": []
@@ -556,7 +558,7 @@
     "counties": "St. Lucie, Martin, Palm Beach",
     "receipts": 4090031.89,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 2958247.37,
     "cash_on_hand": 2903162.18,
     "joint_funds": []
@@ -569,7 +571,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 6229.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 1233.48,
     "cash_on_hand": 4995.52,
     "joint_funds": []
@@ -582,7 +584,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 486552.36,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 67854.46,
     "cash_on_hand": 418697.9,
     "joint_funds": []
@@ -595,7 +597,7 @@
     "counties": "Miami-Dade, Collier",
     "receipts": 8923.82,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 8500.0,
     "disbursements": 7383.82,
     "cash_on_hand": 1540.0,
     "joint_funds": []
@@ -608,7 +610,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -621,7 +623,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 57265.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 27706.2,
     "cash_on_hand": 29558.8,
     "joint_funds": []
@@ -634,7 +636,7 @@
     "counties": "Statewide",
     "receipts": 10802229.65,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 2380993.25,
     "cash_on_hand": 8421236.4,
     "joint_funds": []
@@ -647,7 +649,7 @@
     "counties": "Broward",
     "receipts": 839339.8,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 110000.0,
     "disbursements": 307321.4,
     "cash_on_hand": 532018.4,
     "joint_funds": []
@@ -660,7 +662,7 @@
     "counties": "Broward",
     "receipts": 2657093.11,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 1117933.94,
     "cash_on_hand": 1888445.87,
     "joint_funds": []
@@ -673,7 +675,7 @@
     "counties": "Statewide",
     "receipts": 625119.49,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 506543.05,
     "cash_on_hand": 118576.44,
     "joint_funds": []
@@ -686,7 +688,7 @@
     "counties": "Miami-Dade",
     "receipts": 1022259.02,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 538800.56,
     "cash_on_hand": 483458.46,
     "joint_funds": []
@@ -712,7 +714,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -725,7 +727,7 @@
     "counties": "Statewide",
     "receipts": 15872.71,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 10700.0,
     "disbursements": 12505.16,
     "cash_on_hand": 3367.55,
     "joint_funds": []
@@ -738,7 +740,7 @@
     "counties": "Miami-Dade",
     "receipts": 616733.36,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 171193.4,
     "cash_on_hand": 445539.96,
     "joint_funds": []
@@ -751,7 +753,7 @@
     "counties": "Miami-Dade, Monroe",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -764,7 +766,7 @@
     "counties": "Miami-Dade",
     "receipts": 1951029.65,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 1095253.76,
     "cash_on_hand": 2266603.03,
     "joint_funds": []
@@ -777,7 +779,7 @@
     "counties": "Broward",
     "receipts": 1994942.75,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 574010.0,
     "disbursements": 1037144.63,
     "cash_on_hand": 957798.12,
     "joint_funds": []
@@ -790,7 +792,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 2496.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 139.25,
     "cash_on_hand": 2356.75,
     "joint_funds": [
@@ -799,7 +801,8 @@
         "id": "C00727164",
         "receipts": 5038.21,
         "disbursements": 14789.64,
-        "cash_on_hand": 17247.65
+        "cash_on_hand": 17247.65,
+        "loans": 0.0
       }
     ]
   },
@@ -811,7 +814,7 @@
     "counties": "St. Lucie, Martin, Palm Beach",
     "receipts": 591221.59,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 406750.06,
     "cash_on_hand": 199582.71,
     "joint_funds": []
@@ -824,7 +827,7 @@
     "counties": "Palm Beach",
     "receipts": 18413.0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 15387.54,
     "cash_on_hand": 3025.46,
     "joint_funds": []
@@ -837,7 +840,7 @@
     "counties": "Miami-Dade, Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -850,7 +853,7 @@
     "counties": "Statewide",
     "receipts": 14595387.39,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 7288082.36,
     "cash_on_hand": 7307305.03,
     "joint_funds": []
@@ -863,7 +866,7 @@
     "counties": "Palm Beach, Broward",
     "receipts": 3146282.87,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 1400298.13,
     "cash_on_hand": 2803293.66,
     "joint_funds": []
