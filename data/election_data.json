@@ -101,7 +101,15 @@
     "loans": 0,
     "disbursements": 55127.25,
     "cash_on_hand": 55660.93,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "LUTHER UNCLE LUKE CAMPBELL FOR CONGRESS",
+        "id": "C00940379",
+        "receipts": 37128.18,
+        "disbursements": 11067.85,
+        "cash_on_hand": 26060.33
+      }
+    ]
   },
   {
     "name": "CARBONARA, MICHAEL",
@@ -192,15 +200,7 @@
     "loans": 0,
     "disbursements": 1269136.31,
     "cash_on_hand": 2452430.08,
-    "joint_funds": [
-      {
-        "name": "MARIO DIAZ-BALART VICTORY FUND",
-        "id": "C00858290",
-        "receipts": 15000.0,
-        "disbursements": 21315.0,
-        "cash_on_hand": 81694.54
-      }
-    ]
+    "joint_funds": []
   },
   {
     "name": "DOYLE, VICTORIA",
@@ -239,7 +239,15 @@
     "loans": 0,
     "disbursements": 625.1,
     "cash_on_hand": 366568.55,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "PHIL EHR FOR CONGRESS",
+        "id": "C00845750",
+        "receipts": 146888.04,
+        "disbursements": 75697.24,
+        "cash_on_hand": 88041.72
+      }
+    ]
   },
   {
     "name": "EVANS, RICHARD",
@@ -273,11 +281,11 @@
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach, Broward",
-    "receipts": 2215066.45,
+    "receipts": 0,
     "pac_money": 0,
     "loans": 0,
-    "disbursements": 927145.05,
-    "cash_on_hand": 1575363.65,
+    "disbursements": 0,
+    "cash_on_hand": 0,
     "joint_funds": []
   },
   {
@@ -598,11 +606,11 @@
     "party_full": "DEM",
     "office_full": "House District 24",
     "counties": "Miami-Dade, Broward",
-    "receipts": 631672.0,
+    "receipts": 0,
     "pac_money": 0,
     "loans": 0,
-    "disbursements": 555845.63,
-    "cash_on_hand": 75826.37,
+    "disbursements": 0,
+    "cash_on_hand": 0,
     "joint_funds": []
   },
   {
@@ -629,22 +637,7 @@
     "loans": 0,
     "disbursements": 2380993.25,
     "cash_on_hand": 8421236.4,
-    "joint_funds": [
-      {
-        "name": "ASHLEY MOODY VICTORY COMMITTEE",
-        "id": "C00953471",
-        "receipts": 11001.0,
-        "disbursements": 352.0,
-        "cash_on_hand": 10649.0
-      },
-      {
-        "name": "ASHLEY MOODY VICTORY FUND",
-        "id": "C00896332",
-        "receipts": 6683150.72,
-        "disbursements": 5560626.77,
-        "cash_on_hand": 1122523.95
-      }
-    ]
+    "joint_funds": []
   },
   {
     "name": "MORAITIS, GEORGE",
@@ -802,11 +795,11 @@
     "cash_on_hand": 2356.75,
     "joint_funds": [
       {
-        "name": "FRIENDS OF CARLA SPALDING",
-        "id": "C00830166",
-        "receipts": 3500.0,
-        "disbursements": 2212.11,
-        "cash_on_hand": 1706.17
+        "name": "CARLA SPALDING FOR CONGRESS",
+        "id": "C00727164",
+        "receipts": 5038.21,
+        "disbursements": 14789.64,
+        "cash_on_hand": 17247.65
       }
     ]
   },
@@ -860,15 +853,7 @@
     "loans": 0,
     "disbursements": 7288082.36,
     "cash_on_hand": 7307305.03,
-    "joint_funds": [
-      {
-        "name": "ALEX VINDMAN VICTORY FUND",
-        "id": "C00947580",
-        "receipts": 2102795.92,
-        "disbursements": 66970.12,
-        "cash_on_hand": 2035825.8
-      }
-    ]
+    "joint_funds": []
   },
   {
     "name": "WASSERMAN SCHULTZ, DEBBIE",

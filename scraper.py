@@ -17,8 +17,6 @@ warnings.filterwarnings("ignore", category=UserWarning, module='urllib3')
 # SOUTH FLORIDA REDISTRICTING CONFIG (AUDITED FOR CURRENT MAP)
 # ==============================================================================
 SOUTH_FLORIDA_MAP = {
-    # District 18 removed (Central Florida)
-    # District 19 removed per request (Collier, Lee)
     "USC 020": {"office": "House District 20", "counties": "Palm Beach, Broward"},
     "USC 021": {"office": "House District 21", "counties": "St. Lucie, Martin, Palm Beach"},
     "USC 022": {"office": "House District 22", "counties": "Palm Beach"},
@@ -125,7 +123,7 @@ def get_state_roster():
 def fetch_fec_bulk_pool():
     print("📥 Extracting Florida 2026 master data matrix from FEC...")
     endpoint = f"{BASE_URL}/candidates/"
-    params = {"api_key": API_KEY, "state": "FL", "cycle": "2026", "election_year": "2026", "per_page": 100}
+    params = {"api_key": API_KEY, "state": "FL", "cycle": CYCLE, "election_year": "2026", "per_page": 100}
     
     all_candidates = []
     while True:
@@ -146,6 +144,17 @@ def fetch_fec_bulk_pool():
             break
     return all_candidates
 
+def fetch_committee_financials(comm_id):
+    """Helper to safely fetch 2026 totals for a specific committee ID."""
+    endpoint = f"{BASE_URL}/committee/{comm_id}/totals/"
+    try:
+        res = fec_session.get(endpoint, params={"api_key": API_KEY, "cycle": CYCLE}, timeout=20)
+        if res.status_code == 200 and res.json().get('results'):
+            return res.json()['results'][0]
+    except Exception as e:
+        print(f"   ⚠️ Error fetching totals for committee {comm_id}: {e}")
+    return {}
+
 def main():
     print(f"[{datetime.now()}] Initializing clean committee data matrix...")
     state_roster = get_state_roster()
@@ -157,7 +166,6 @@ def main():
     fec_pool = fetch_fec_bulk_pool()
     master_output = []
 
-    # === MANUAL FEC CROSSWALK OVERRIDES ===
     MANUAL_OVERRIDES = {
         "NIXON, ANGIE": {"last": "nixon", "first": "angela"},
         "KAUFMAN, JOSEPH": {"last": "kaufman", "first": "joe"},
@@ -166,7 +174,6 @@ def main():
         "EVANS, RICHARD": {"last": "evans", "first": "rick"}        
     }
     
-    # === MANUAL PARTY OVERRIDES ===
     PARTY_OVERRIDES = {
         "GILLESPIE, NEIL": "NPA",
         "SIMMONS, DEVA": "NPA",
@@ -229,43 +236,55 @@ def main():
         
         if cand_id != "NO_FEC_ID":
             try:
+                # Query historical candidate relationships without a cycle filter to prevent missing committees
                 url_comm = f"{BASE_URL}/candidate/{cand_id}/committees/"
-                res_comm = fec_session.get(url_comm, params={"api_key": API_KEY, "cycle": CYCLE, "designation": "P"}, timeout=20)
+                res_comm = fec_session.get(url_comm, params={"api_key": API_KEY}, timeout=20)
                 
-                if res_comm.status_code == 200 and res_comm.json().get('results'):
-                    p_id = res_comm.json()['results'][0].get('committee_id')
+                if res_comm.status_code == 200:
+                    committees = res_comm.json().get('results', [])
                     
-                    res_tot = fec_session.get(f"{BASE_URL}/committee/{p_id}/totals/", params={"api_key": API_KEY, "cycle": CYCLE}, timeout=20)
-                    if res_tot.status_code == 200 and res_tot.json().get('results'):
-                        p_data = res_tot.json()['results'][0]
-                        candidate_obj.update({
-                            "receipts": p_data.get('receipts', 0),
-                            "pac_money": p_data.get('contributions_from_other_political_committees', 0),
-                            "loans": p_data.get('loans_received_from_candidate', 0) + p_data.get('other_loans_received', 0),
-                            "disbursements": p_data.get('disbursements', 0),
-                            "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0)
-                        })
-                    
-                    res_jfc = fec_session.get(f"{BASE_URL}/committees/", params={"api_key": API_KEY, "cycle": CYCLE, "q": s_cand['clean_display_name'], "designation": "J"}, timeout=20)
-                    if res_jfc.status_code == 200:
-                        for jfc in res_jfc.json().get('results', []):
-                            j_id = jfc.get('committee_id')
-                            res_j_tot = fec_session.get(f"{BASE_URL}/committee/{j_id}/totals/", params={"api_key": API_KEY, "cycle": CYCLE}, timeout=20)
-                            
-                            if res_j_tot.status_code == 200 and res_j_tot.json().get('results'):
-                                j_data = res_j_tot.json()['results'][0]
+                    for comm in committees:
+                        c_id = comm.get('committee_id')
+                        c_name = comm.get('name')
+                        designation = comm.get('designation')
+                        designation_full = comm.get('designation_full', '').lower()
+                        
+                        # Apply the 2026 cycle constraint strictly to the financial lookup
+                        p_data = fetch_committee_financials(c_id)
+                        
+                        # Check if the committee has active transaction data for the 2026 cycle
+                        has_active_totals = (
+                            float(p_data.get('receipts', 0) or 0) > 0 or 
+                            float(p_data.get('disbursements', 0) or 0) > 0 or 
+                            float(p_data.get('last_cash_on_hand_end_period', 0) or 0) > 0
+                        )
+                        
+                        # Process structural matches based on type and validation filter
+                        if designation == "P" or "principal" in designation_full:
+                            # We always display the principal committee even if its 2026 baseline starts at 0
+                            candidate_obj.update({
+                                "receipts": p_data.get('receipts', 0),
+                                "pac_money": p_data.get('contributions_from_other_political_committees', 0),
+                                "loans": p_data.get('loans_received_from_candidate', 0) + p_data.get('other_loans_received', 0),
+                                "disbursements": p_data.get('disbursements', 0),
+                                "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0)
+                            })
+                        else:
+                            # Filter pass: Only add JFCs/Leadership PACs if they are actively funding in 2026
+                            if has_active_totals:
                                 candidate_obj["joint_funds"].append({
-                                    "name": jfc.get('name'), 
-                                    "id": j_id,
-                                    "receipts": j_data.get('receipts', 0), 
-                                    "disbursements": j_data.get('disbursements', 0), 
-                                    "cash_on_hand": j_data.get('last_cash_on_hand_end_period', 0)
+                                    "name": c_name, 
+                                    "id": c_id,
+                                    "receipts": p_data.get('receipts', 0), 
+                                    "disbursements": p_data.get('disbursements', 0), 
+                                    "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0)
                                 })
+                            
             except requests.exceptions.RequestException as e:
                 print(f"   ⚠️ Network timeout fetching committee financial data for {s_cand['clean_display_name']} - Skipping financials")
         
         master_output.append(candidate_obj)
-        time.sleep(0.1)
+        time.sleep(0.2)  # Balanced throttling to preserve performance
 
     os.makedirs('data', exist_ok=True)
     with open('data/election_data.json', 'w') as f:
