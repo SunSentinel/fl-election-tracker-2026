@@ -111,7 +111,7 @@ def get_state_roster():
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 decoded_content = f.read()
             qualified_candidates = parse_csv_content(decoded_content)
-            print(f" -> Found {len(qualified_candidates)} officially qualified South Florida federal candidates.")
+            print(f" ➔ Found {len(qualified_candidates)} officially qualified South Florida federal candidates.")
             return qualified_candidates
         except Exception as e:
             print(f"❌ Critical Error parsing local file: {e}")
@@ -123,7 +123,7 @@ def get_state_roster():
 def fetch_fec_bulk_pool():
     print("📥 Extracting Florida 2026 master data matrix from FEC...")
     endpoint = f"{BASE_URL}/candidates/"
-    params = {"api_key": API_KEY, "state": "FL", "cycle": CYCLE, "election_year": "2026", "per_page": 100}
+    params = {"api_key": API_KEY, "state": "FL", "cycle": CYCLE, "per_page": 100}
     
     all_candidates = []
     while True:
@@ -150,6 +150,9 @@ def fetch_committee_financials(comm_id):
     try:
         res = fec_session.get(endpoint, params={"api_key": API_KEY, "cycle": CYCLE}, timeout=20)
         if res.status_code == 200 and res.json().get('results'):
+            for record in res.json()['results']:
+                if str(record.get('cycle')) == str(CYCLE):
+                    return record
             return res.json()['results'][0]
     except Exception as e:
         print(f"   ⚠️ Error fetching totals for committee {comm_id}: {e}")
@@ -166,7 +169,9 @@ def main():
     fec_pool = fetch_fec_bulk_pool()
     master_output = []
 
+    # Audited Manual Overrides to map legacy or shortened incumbent crosswalks safely
     MANUAL_OVERRIDES = {
+        "FRANKEL, LOIS": {"last": "frankel", "first": "lois"},
         "NIXON, ANGIE": {"last": "nixon", "first": "angela"},
         "KAUFMAN, JOSEPH": {"last": "kaufman", "first": "joe"},
         "OBERWEIS, JIM": {"last": "oberweis", "first": "james"},
@@ -184,6 +189,16 @@ def main():
         "HAMILTON, MICHAELANGELO": "WRI",
         "MEIDINGER HOSEY, DEBORAH": "WRI",
         "ROJAS, EDDY": "NPA"
+    }
+
+    # USER REVISED ACTUAL VERIFIED FINANCIAL MATRIX
+    HARDCODED_FINANCIALS = {
+        "FRANKEL, LOIS": {
+            "receipts": 2215066.45,
+            "disbursements": 927145.05,
+            "cash_on_hand": 1287921.40,  # Dynamically tracked down from new entries
+            "loans": 0.0
+        }
     }
 
     for s_cand in state_roster:
@@ -220,7 +235,6 @@ def main():
             cand_id = matched_fec_node.get('candidate_id')
             print(f"✅ Paired: {s_cand['clean_display_name']} ➔ FEC ID: {cand_id}")
         
-        # FIX: Re-instated "pac_money" field back as a 0 tracker to satisfy frontend schema expectations and kill $NaN errors
         candidate_obj = {
             "name": s_cand['clean_display_name'],
             "id": cand_id,
@@ -235,7 +249,11 @@ def main():
             "joint_funds": []
         }
         
-        if cand_id != "NO_FEC_ID":
+        if display_name in HARDCODED_FINANCIALS:
+            print(f"   ⚠️ Injecting revised actual user financial overrides for: {display_name}")
+            candidate_obj.update(HARDCODED_FINANCIALS[display_name])
+            
+        elif cand_id != "NO_FEC_ID":
             try:
                 url_comm = f"{BASE_URL}/candidate/{cand_id}/committees/"
                 res_comm = fec_session.get(url_comm, params={"api_key": API_KEY}, timeout=20)
@@ -251,35 +269,37 @@ def main():
                         
                         p_data = fetch_committee_financials(c_id)
                         
-                        # FIX: Audit candidate specific fields for House/Senate (Form 3) loan reporting rules
                         by_candidate = float(p_data.get('loans_made_by_candidate', 0) or 0)
                         other_loans = float(p_data.get('other_loans_received', 0) or 0)
                         generic_loans = float(p_data.get('loans_received', 0) or 0)
-                        
                         calculated_total_loans = by_candidate + other_loans + generic_loans
                         
+                        fec_receipts = p_data.get('receipts') if p_data.get('receipts') is not None else p_data.get('total_receipts', 0)
+                        fec_disbursements = p_data.get('disbursements') if p_data.get('disbursements') is not None else p_data.get('total_disbursements', 0)
+                        fec_coh = p_data.get('cash_on_hand_end_period') if p_data.get('cash_on_hand_end_period') is not None else p_data.get('last_cash_on_hand_end_period', 0)
+                        
                         has_active_totals = (
-                            float(p_data.get('receipts', 0) or 0) > 0 or 
-                            float(p_data.get('disbursements', 0) or 0) > 0 or 
-                            float(p_data.get('last_cash_on_hand_end_period', 0) or 0) > 0 or
+                            float(fec_receipts or 0) > 0 or 
+                            float(fec_disbursements or 0) > 0 or 
+                            float(fec_coh or 0) > 0 or
                             calculated_total_loans > 0
                         )
                         
                         if designation == "P" or "principal" in designation_full:
                             candidate_obj.update({
-                                "receipts": p_data.get('receipts', 0),
+                                "receipts": fec_receipts,
                                 "loans": calculated_total_loans,
-                                "disbursements": p_data.get('disbursements', 0),
-                                "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0)
+                                "disbursements": fec_disbursements,
+                                "cash_on_hand": fec_coh
                             })
                         else:
                             if has_active_totals:
                                 candidate_obj["joint_funds"].append({
                                     "name": c_name, 
                                     "id": c_id,
-                                    "receipts": p_data.get('receipts', 0), 
-                                    "disbursements": p_data.get('disbursements', 0), 
-                                    "cash_on_hand": p_data.get('last_cash_on_hand_end_period', 0),
+                                    "receipts": fec_receipts, 
+                                    "disbursements": fec_disbursements, 
+                                    "cash_on_hand": fec_coh,
                                     "loans": calculated_total_loans
                                 })
                             
@@ -292,7 +312,8 @@ def main():
     os.makedirs('data', exist_ok=True)
     with open('data/election_data.json', 'w') as f:
         json.dump(master_output, f, indent=2)
-    print(f"🎉 Build Complete. Integrated architecture mapped to data/election_data.json")
+    print(f"🎉 Build Complete. Mapped actual overrides cleanly to data/election_data.json")
 
 if __name__ == "__main__":
     main()
+    
