@@ -1,55 +1,72 @@
-name: Daily FEC Data Sync
+name: Daily Campaign Finance Data Sync
 
 on:
   schedule:
-    # Runs at 06:00 UTC (2:00 AM Eastern Time) every single day
+    # Runs automatically every day at 06:00 UTC (2:00 AM EST)
     - cron: '0 6 * * *'
-  workflow_dispatch: # Allows us to also run it manually from GitHub with a click of a button
+  workflow_dispatch:
+    # Allows you to click a button in the GitHub UI to run it manually anytime
 
 jobs:
-  scrape-and-update:
+  scrape-and-deploy:
     runs-on: ubuntu-latest
-
+    
     steps:
-    # 1. Check out the repository code so the server can access it
-    - name: Check out repository
+    # Step 1: Clone the repository onto the GitHub runner environment
+    - name: Checkout Repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
-    # 2. Set up a clean Python environment on the virtual machine
-    - name: Set up Python
+    # Step 2: Establish a stable Python 3.10 runtime environment
+    - name: Set Up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
+        python-python: '3.10'
+        cache: 'pip' # Speeds up subsequent workflow execution builds
 
-    # 3. Cache dependencies to make the run faster
-    - name: Install dependencies
+    # Step 3: Install the required web parsing and network routing dependencies
+    - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests pandas python-dotenv
+        pip install requests beautifulsoup4 urllib3
 
-    # 4. Run Phase 1: Candidate Roster (Ensure this filename matches your active setup)
-    - name: Fetch Candidates
+    # Step 4: Execute the South Florida Campaign Finance Scraper
+    - name: Execute South Florida Scraper Pipeline
+      env:
+        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
       run: |
-        if [ -f "fetch_state_candidates.py" ]; then
-          python fetch_state_candidates.py
-        elif [ -f "fetch_candidates.py" ]; then
-          python fetch_candidates.py
+        if [ -f scraper.py ]; then
+          python scraper.py
         else
-          echo "[!] Roster script not found, skipping step safely."
+          echo "⚠️ scraper.py not found, skipping South Florida extraction."
         fi
 
-    # 5. Run Phase 2: Financial Totals (Pointed exactly to our updated safety wrapper script)
-    - name: Fetch Financial Totals
-      run: python fetch_state_financials.py
-
-    # 6. Check if changes were made, and if so, commit the new CSV to the repo
-    - name: Commit and Push changes
+    # Step 5: Execute the newly refined Central Florida Campaign Finance Scraper
+    - name: Execute Central Florida Scraper Pipeline
+      env:
+        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
       run: |
-        git config --global user.name "FEC Data Bot"
-        git config --global user.email "data-bot@newsroom.com"
+        if [ -f scraper_central.py ]; then
+          python scraper_central.py
+        else
+          echo "🚨 CRITICAL: scraper_central.py missing. Cannot compile Central feed."
+          exit 1
+        fi
+
+    # Step 6: Commit and Push both updated target data matrices safely back to main branch
+    - name: Commit and Push Compiled Data Feeds
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
         
-        # Force add both the main tracker file and the crosswalk data
-        git add -f fl_2026_*.csv state_pc_crosswalk.csv
+        # Explicitly stage both generated relative data assets
+        git add data/election_data.json data/election_data_central.json
         
-        # Only commit if there are actually changes to avoid workflow errors
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Automated daily FEC data update: $(date +'%Y-%m-%d')" && git push)
+        # Commit only if files have changed; prevent structural workflow exits on empty changes
+        if git diff --staged --quiet; then
+          echo "No campaign finance changes detected today. Skipping commit."
+        else
+          git commit -m "data: automated daily campaign finance sync [South & Central Florida]"
+          git push origin main
+        fi
