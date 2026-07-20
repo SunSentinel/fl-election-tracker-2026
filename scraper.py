@@ -14,13 +14,13 @@ from urllib3.util.retry import Retry
 warnings.filterwarnings("ignore", category=UserWarning, module='urllib3')
 
 # ==============================================================================
-# SOUTH FLORIDA REDISTRICTING CONFIG (AUDITED FOR CURRENT MAP)
+# SOUTH FLORIDA REDISTRICTING CONFIG (CORRECTED FOR AUDITED MAP BOUNDARIES)
 # ==============================================================================
 SOUTH_FLORIDA_MAP = {
     "USC 020": {"office": "House District 20", "counties": "Palm Beach, Broward"},
     "USC 021": {"office": "House District 21", "counties": "St. Lucie, Martin, Palm Beach"},
     "USC 022": {"office": "House District 22", "counties": "Palm Beach"},
-    "USC 023": {"office": "House District 23", "counties": "Palm Beach, Broward"},
+    "USC 023": {"office": "House District 23", "counties": "Palm Beach"},  # FIXED: Removed Broward
     "USC 024": {"office": "House District 24", "counties": "Miami-Dade, Broward"},
     "USC 025": {"office": "House District 25", "counties": "Broward"},
     "USC 026": {"office": "House District 26", "counties": "Miami-Dade, Collier"},
@@ -196,7 +196,7 @@ def main():
         "FRANKEL, LOIS": {
             "receipts": 2215066.45,
             "disbursements": 927145.05,
-            "cash_on_hand": 1287921.40,  # Dynamically tracked down from new entries
+            "cash_on_hand": 1287921.40,
             "loans": 0.0
         }
     }
@@ -316,4 +316,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
