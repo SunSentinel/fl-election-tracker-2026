@@ -149,15 +149,15 @@
   },
   {
     "name": "ELIJAH, RYAN",
-    "id": "NO_FEC_ID",
+    "id": "H6FL07231",
     "party_full": "REP",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
-    "receipts": 0,
+    "receipts": 301661.75,
     "pac_money": 0,
-    "loans": 0,
-    "disbursements": 0,
-    "cash_on_hand": 0,
+    "loans": 134000.0,
+    "disbursements": 33790.78,
+    "cash_on_hand": 267870.97,
     "joint_funds": []
   },
   {
@@ -409,15 +409,15 @@
   },
   {
     "name": "NIXON, ANGIE",
-    "id": "NO_FEC_ID",
+    "id": "S6FL00830",
     "party_full": "DEM",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 0,
+    "receipts": 625119.49,
     "pac_money": 0,
-    "loans": 0,
-    "disbursements": 0,
-    "cash_on_hand": 0,
+    "loans": 0.0,
+    "disbursements": 506543.05,
+    "cash_on_hand": 118576.44,
     "joint_funds": []
   },
   {
