@@ -98,7 +98,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89975,Sylvain Dore,State Representative (District 21)|Duval (Part),DEM,N,1615.0,3225.4,19889.6,0.0,21500.0
 89305,Fentrice Driskell,State Senator (District 16)|Brevard,DEM,N,237823.88,181622.87,56451.01000000001,0.0,250.0
 89098,Emily Duda Buckley,"State Representative (District 38)|Seminole (Part), Orange (Part)",REP,N,162320.0,58814.74,103505.26000000001,0.0,0.0
-90603,H. Alexander Duncan,"State Senator (District 10)|Volusia (Part), Seminole (Part)",DEM,N,2080.0,2113.72,-33.7199999999998,0.0,0.0
+90603,H. Alexander Duncan,"State Senator (District 10)|Volusia (Part), Seminole (Part)",DEM,N,2193.0,2113.72,79.2800000000002,0.0,0.0
 88664,Jervonte Tae Edmonds,State Representative (District 88)|Sarasota (Part),DEM,Y,63990.17,55401.53,8588.64,0.0,0.0
 90641,John Peter Emerling,State Representative (District 4)|Santa Rosa (Part),DEM,N,1004.6,233.43,1596.1699999999998,0.0,825.0
 88725,Dinah J. Escarment,State Representative (District 108)|Palm Beach (Part),DEM,N,68231.76,28429.24,59802.51999999999,0.0,20000.0
@@ -321,7 +321,7 @@ candidate_id,name,office_full,party_full,is_incumbent,receipts,disbursements,cas
 89413,Mike Suarez,State Representative (District 64)|Hernando (Part),DEM,N,80025.0,65572.91,14452.089999999997,0.0,0.0
 89052,Caneste Succe,Governor|Statewide (All 67 Counties),REP,N,10000.0,17234.0,-7234.0,0.0,0.0
 91310,Annette Taddeo,Chief Financial Officer|Statewide (All 67 Counties),DEM,N,45143.0,10043.19,41099.81,0.0,6000.0
-88773,Allison Tant,State Representative (District 9)|Bay (Part),DEM,Y,259984.31,15067.34,244916.97,0.0,0.0
+88773,Allison Tant,State Representative (District 9)|Bay (Part),DEM,Y,261969.31,17139.0,244830.31,0.0,0.0
 91157,John H. Taylor Jr.,State Representative (District 109)|Palm Beach (Part),DEM,N,35982.0,22703.56,13278.439999999999,0.0,0.0
 89531,Matt Taylor,Commissioner of Agriculture|Statewide (All 67 Counties),REP,N,255680.53,165630.04,90050.48999999999,0.0,0.0
 88972,Debra Tendrich,"State Representative (District 89)|Charlotte (Part), Sarasota (Part)",DEM,Y,43663.98,14312.24,29351.740000000005,0.0,0.0
