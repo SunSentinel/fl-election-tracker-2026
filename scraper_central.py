@@ -36,6 +36,10 @@ retries = Retry(total=3, backoff_factor=1, status_forcelist=[429, 500, 502, 503,
 fec_session.mount('https://', HTTPAdapter(max_retries=retries))
 
 def clean_name_string(name):
+    """
+    Normalizes human name entries by removing casing discrepancies,
+    common punctuation marks, and structural legislative trailing suffixes.
+    """
     name = str(name).lower().replace('.', '').replace(',', '').replace("'", "").replace('"', "")
     suffixes = [' jr', ' sr', ' ii', ' iii', ' iv', ' md']
     for suffix in suffixes:
@@ -148,11 +152,10 @@ def main():
     fec_pool = fetch_fec_bulk_pool()
     master_output = []
 
-    # RE-INDEXED CROSSWALK DICTIONARY FOR SPECIAL BALlOT CASES
+    # CROSSWALK DICTIONARY FOR SPECIAL BALLOT CASES
+    # Used exclusively when the structural text strings are completely distinct ("Angie" -> "Angela")
     MANUAL_OVERRIDES = {
-        "ELIJAH, RYAN": {"last": "werling", "first": "ryan"}, 
-        "BILZERIAN, DAN": {"last": "bilzerian", "first": "daniel"},
-        "WELLS, TOM": {"last": "wells", "first": "thomas"}
+        "NIXON, ANGIE": {"last": "nixon", "first": "angela"}
     }
 
     for s_cand in state_roster:
@@ -251,6 +254,7 @@ def main():
                                 })
                             
             except Exception as e:
+                print(f"   ⚠️ Error processing committee routing metrics: {e}")
                 pass
         
         master_output.append(candidate_obj)
