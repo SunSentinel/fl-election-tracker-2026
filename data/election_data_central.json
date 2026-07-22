@@ -14,7 +14,7 @@
   },
   {
     "name": "BAKER, AARON",
-    "id": "H6FL06324",
+    "id": "H6FL06241",
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
@@ -305,15 +305,15 @@
   },
   {
     "name": "JENKINS, JENNIFER",
-    "id": "H6FL06399",
+    "id": "S6FL00798",
     "party_full": "DEM",
     "office_full": "House District 8",
     "counties": "Brevard, Orange",
-    "receipts": 697538.88,
+    "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 564774.02,
-    "cash_on_hand": 132764.86,
+    "loans": 0,
+    "disbursements": 0,
+    "cash_on_hand": 0,
     "joint_funds": []
   },
   {
@@ -474,7 +474,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00780",
+    "id": "S6FL00764",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
