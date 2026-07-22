@@ -176,10 +176,13 @@ def main():
         "KAUFMAN, JOSEPH": {"last": "kaufman", "first": "joe"},
         "OBERWEIS, JIM": {"last": "oberweis", "first": "james"},
         "FABRIKANT, DAVID": {"last": "fabrikant", "first": "dave"}, 
-        "EVANS, RICHARD": {"last": "evans", "first": "rick"}        
+        "EVANS, RICHARD": {"last": "evans", "first": "rick"},
+        "GILLESPIE, NEIL JOSEPH": {"last": "gilespie", "first": "neil joseph"},
+        "GILLESPIE, NEIL": {"last": "gilespie", "first": "neil"}
     }
     
     PARTY_OVERRIDES = {
+        "GILLESPIE, NEIL JOSEPH": "NPA",
         "GILLESPIE, NEIL": "NPA",
         "SIMMONS, DEVA": "NPA",
         "COOKE, ALEXANDER": "NPA",
