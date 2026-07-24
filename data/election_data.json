@@ -40,7 +40,7 @@
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H0FL19221",
+    "id": "H6FL22248",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
@@ -49,16 +49,7 @@
     "loans": 2500000.0,
     "disbursements": 265266.14,
     "cash_on_hand": 2236243.86,
-    "joint_funds": [
-      {
-        "name": "CASEY ASKAR FOR CONGRESS",
-        "id": "C00742528",
-        "receipts": 0.0,
-        "disbursements": 0.0,
-        "cash_on_hand": 43.0,
-        "loans": 0.0
-      }
-    ]
+    "joint_funds": []
   },
   {
     "name": "BRANDA, PAOLA",
@@ -244,7 +235,7 @@
     "party_full": "DEM",
     "office_full": "House District 28",
     "counties": "Miami-Dade, Monroe",
-    "receipts": 277301.32,
+    "receipts": 291398.16,
     "pac_money": 0,
     "loans": 200000.0,
     "disbursements": 625.1,
@@ -327,15 +318,15 @@
   },
   {
     "name": "GILLESPIE, NEIL",
-    "id": "S6FL00863",
+    "id": "NO_FEC_ID",
     "party_full": "NPA",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 11997.21,
+    "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 10997.37,
-    "cash_on_hand": 999.84,
+    "loans": 0,
+    "disbursements": 0,
+    "cash_on_hand": 0,
     "joint_funds": []
   },
   {
@@ -717,7 +708,7 @@
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL23134",
+    "id": "H4FL20080",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
