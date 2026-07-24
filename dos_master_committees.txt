@@ -1,0 +1,315 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Reply-To:" content="DivElections@mail.dos.state.fl.us">
+<meta http-equiv="Keywords" content="political committees, political committees in florida, florida political committees">
+<title>Download Committee List - Florida Division of Elections - Department of State</title>
+<link type="text/css" rel="stylesheet" media="print" href="/css/print.css">
+<!--[if IE]><link rel="stylesheet" type="text/css" href="../css/printIE.css" media="print"><![endif]-->
+
+<style type="text/css"> 
+@import url(/css/main.css); /*IE and NN6x styles*/
+
+@import url(/css/committee.css); /*IE and NN6x styles*/
+</style>
+<!--<script type="text/javascript" src="../js/core.js"></script><!--load function to load all scripts-->
+<!--<script type="text/javascript" src="../js/smallText.js"></script><!--load function to load all scripts-->
+<script type="text/javascript" src="/js/global.js"></script><!--load function to load all scripts-->
+<script type="text/javascript" src="/js/bookmarks.js"></script><!--bookmarks-->
+
+<script type="text/javascript" src="/js/stripeTables.js"></script><!--highlights current page-->
+
+</head>
+
+<body>
+
+
+
+
+<div id="wrapper">
+
+	
+
+	<div id="content"> <!--This is the beginning of the content-->
+		<div id="mainContentWrap">
+		  <div id="rightContent">
+		   <p class="backLeft"><a href="/committees/">Back</a></p>
+			<h2>Committees</h2>
+			<h3>Download Committee List</h3>
+			  <p align="justify"><font face="Arial, Helvetica, sans-serif" size="2">The 
+Division of Elections has provided this utility for downloading information
+on active committees. When selecting the ï¿½Downloadï¿½ button below, 
+a tab-delimited file of committee data will be downloaded to your machine. 
+The format of this file can be opened and further processed in most spreadsheet 
+and database programs. The table below provides a description of the fields 
+comprising the data extract file.     <a target="_blank" href="https://dos.myflorida.com/elections/candidates-committees/campaign-finance/campaign-finance-database/" title="Campaign Finance Database">More Information About Downloading Data.</a>
+</font></p>
+	  <center>
+		  
+	    <form name="CanDownload" action="extractComList.asp" method="post">
+	      <input type="submit" name="FormSubmit" value="Download" class="btn btn-standard"/>
+	    </form>
+	  </center>
+	  <br>
+     <h4>Committee Extract File Layout</h4>
+  	  <table class="data2" title="Committee Extract File Layout"><!--class data2 is altered in committee style sheet-->
+	  <thead>
+        <tr> 
+      	  <th> 
+            Field
+		  </th>
+		  <th> 
+            Format
+		  </th>
+		  <th> 
+           Usage
+		  </th>
+		</tr>
+		</thead>
+		<tbody>
+        <tr> 
+      	  <td> 
+           AcctNum
+		  </td>
+		  <td> 
+          Number
+		  </td>
+		  <td> 
+           Committee ID 
+		  </td>
+		</tr>
+        <tr> 
+      	  <td > 
+           Name
+		  </td>
+		  <td > 
+            Char 
+		  </td>
+		  <td > 
+        Committee Name
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+          Type
+		  </td>
+		  <td> 
+           Char (3)
+		  </td>
+		  <td> 
+            CCE / PAC / PTY / ECO / IXO 
+		  </td>
+		</tr>
+        <tr> 
+      	  <td > 
+            TypeDesc
+		  </td>
+		  <td > 
+          Char 
+		  </td>
+		  <td > 
+           Type Description
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+           Addr1
+		  </td>
+		  <td> 
+           Char 
+		  </td>
+		  <td>Address Line 1
+      </td>
+		</tr>
+        <tr> 
+      	  <td > 
+          Addr2
+		  </td>
+		  <td > 
+Char 
+		  </td>
+		  <td> 
+           Address Line 2
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+         City
+		  </td>
+		  <td> 
+           Char  
+(3)
+		  </td>
+		  <td>
+           City 
+		  </td>
+		</tr>
+        <tr> 
+      	  <td > 
+          State
+		  </td>
+		  <td > 
+Char (2)
+		  </td>
+		  <td> 
+         State
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+           Zip
+		  </td>
+		  <td> 
+            Char  
+(3)
+		  </td>
+		  <td>
+           Zip Code 
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+         County
+		  </td>
+		  <td> 
+           Char  
+		  </td>
+		  <td>
+           County Name
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+            Phone
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Phone Number
+		  </td>
+		</tr>
+   		<tr> 
+      	  <td> 
+            ChrNameLast
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Chairperson's 
+Last Name
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+            ChrNameFirst
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Chairperson's 
+First Name
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+            ChrNameMiddle
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Chairperson's 
+Middle Name
+		  </td>
+		</tr>
+   		<tr> 
+      	  <td> 
+            TrsNameLast
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Treasurer's 
+Last Name
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+            TrsNameFirst
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Treasurer's 
+First Name
+		  </td>
+		</tr>
+        <tr> 
+      	  <td> 
+            TrsNameMiddle
+		  </td>
+		  <td> 
+            Char 
+		  </td>
+		  <td> 
+            Treasurer's 
+Middle Name
+		  </td>
+		</tr>
+		</tbody>
+  	  </table>
+	      </div>
+        </div>
+    </div>
+
+<div id="footer">
+<div>
+<!--
+<a target="_blank" href="http://www.dos.state.fl.us/"accesskey="m">Depart<em>m</em>ent of State</a><img class="separator" src="/images/greystar.gif" alt="star divider" width="15" height="14" /><a target="_blank" href="http://oss.dos.state.fl.us/accessibility.cfm" accesskey="b">Accessi<em>b</em>ility</a><img class="separator" src="/images/greystar.gif" alt="star divider" width="15" height="14" /><a target="_blank" href="http://oss.dos.state.fl.us/privacy-policy.cfm" accesskey="i">Pr<em>i</em>vacy Policy<img class="separator" src="/images/greystar.gif" alt="star divider" width="15" height="14" /></a>
+<a href="/contact-us/contact.shtml" accesskey="c"><em>C</em>ontact Us</a><img class="separator" src="/images/greystar.gif" alt="star divider" width="15" height="14" />-->
+<p><a href="http://dos.myflorida.com/elections/">Florida Division of Elections</a>, Room 316, R.A. Gray Building, 500 South Bronough Street, Tallahassee, Fl. 32399-0250, 850.245.6200</p>
+<!--<p><span style="color:#F00">Some components of this webpage are incompatible with Internet Explorer 10. If you are having<br /> problems, please try running your browser in compatibility mode. Instructions can be found <a style="color:#F00" href="http://windows.microsoft.com/en-us/internet-explorer/use-compatibility-view">here</a>.</span></p>-->
+</div> 
+<!---- Secondary DOS Site Banner code snippet starts ----->
+
+<div id="dosbanner">
+	<div class="clearfix">
+	<div>
+		<!--- leave alone --->
+
+		<p class="replace" id="dosLogo"><a href="http://dos.myflorida.com" target="_blank"><span></span>Florida Department of State</a></p>
+		<ul class="clearfix division-name" id="dosDivision">
+			<!--- update with appropriate division name, website and title --->
+			<li><a href="http://dos.myflorida.com/elections/" target="_blank">Division of Elections</a></li>
+		</ul>
+	</div>
+	</div>
+</div>
+
+<!----/ Secondary DOS Site Banner code snippet starts ----->
+
+<script type="text/javascript">
+
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-3263504-2']);
+ _gaq.push(['_setDomainName', 'dos.state.fl.us']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+
+</script>
+</div>
+</div>
+</body>
+</html>

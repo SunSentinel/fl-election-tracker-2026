@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Florida 2026 State Campaign Finance Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body class="bg-white text-[#333333] font-sans antialiased p-4 sm:p-6">
+
+    <div class="max-w-7xl mx-auto">
+        <header class="mb-6 border-b border-gray-200 pb-4">
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">Statewide and local campaign finances</h1>
+            <p class="text-sm sm:text-base text-gray-600 mt-1.5 leading-relaxed">
+                Fundraising and spending of candidates who qualified for statewide and legislative races in Florida. 
+                <span class="italic text-gray-500 font-medium block mt-1">
+                    NOTE: Cash on hand includes candidates' personal loans to their campaigns. All figures rounded to the nearest dollar.
+                </span>
+            </p>
+
+            <!-- Contextual Note Explainer Panel -->
+            <div class="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs sm:text-sm text-slate-700 leading-relaxed max-w-4xl shadow-xs">
+                <strong class="text-slate-900 block mb-1 uppercase tracking-wider text-[11px]">Reporting Methodology & The Florida Loophole:</strong>
+                Individual campaign accounts face strict statutory contribution limits ($1,000 for legislative races, $3,000 for statewide races). However, candidates can also raise **unlimited funding** via independent Political Committees (PACs). 
+                To ensure absolute clarity, this tracker combines official campaign cash with candidate-controlled PAC cash directly inside the totals. Candidates utilizing these deep-pocketed secondary accounts are flagged with a <span class="inline-block px-1.5 py-0.5 text-[10px] uppercase font-bold bg-red-100 text-red-800 rounded border border-red-200">Loophole PAC Linked</span> badge.
+            </div>
+            
+            <!-- Filter Bar Layout -->
+            <div class="mt-5 flex flex-col sm:flex-row gap-3 max-w-2xl">
+                <div class="flex-1">
+                    <input type="text" id="search-filter" placeholder="Search candidates, districts..." 
+                           class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black placeholder-gray-400" />
+                </div>
+                <div class="w-full sm:w-64">
+                    <select id="county-dropdown" class="w-full px-3 py-1.5 text-sm border border-gray-300 rounded-md shadow-sm outline-none focus:border-black bg-white text-gray-700 cursor-pointer">
+                        <option value="">All Counties (Show Everything)</option>
+                        <!-- Automatically populated via JavaScript -->
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <div id="loading" class="text-center py-12 text-gray-400 text-sm font-medium">Loading state candidates...</div>
+        <div id="tracker-container" class="space-y-10 hidden"></div>
+        
+        <footer class="mt-8 border-t border-gray-200 pt-4 text-xs text-gray-400 flex flex-col sm:flex-row justify-between gap-1">
+            <div id="update-timestamp" class="italic">Checking server for update metadata...</div>
+            <div>Source: Florida Division of Elections</div>
+        </footer>
+    </div>
+
+    <script>
+        const currencyFormatter = new Intl.NumberFormat('en-US', {
+            style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0
+        });
+
+        const CSV_FILE = 'fl_2026_state_tracker_latest.csv'; 
+
+        const FL_COUNTIES = [
+            "Alachua", "Baker", "Bay", "Bradford", "Brevard", "Broward", "Calhoun", "Charlotte", "Citrus", "Clay", 
+            "Collier", "Columbia", "DeSoto", "Dixie", "Duval", "Escambia", "Flagler", "Franklin", "Gadsden", "Gilchrist", 
+            "Glades", "Gulf", "Hamilton", "Hardee", "Hendry", "Hernando", "Highlands", "Hillsborough", "Indian River", 
+            "Jackson", "Jefferson", "Lafayette", "Lake", "Lee", "Leon", "Levy", "Liberty", "Madison", "Manatee", 
+            "Marion", "Martin", "Miami-Dade", "Monroe", "Nassau", "Okaloosa", "Okeechobee", "Orange", "Osceola", 
+            "Palm Beach", "Pasco", "Pinellas", "Polk", "Putnam", "Santa Rosa", "Sarasota", "Seminole", "St. Johns", 
+            "St. Lucie", "Sumter", "Suwannee", "Taylor", "Union", "Volusia", "Wakulla", "Walton", "Washington"
+        ];
+
+        function fetchFileTimestamp() {
+            fetch(CSV_FILE, { method: 'HEAD' })
+                .then(response => {
+                    const lastModified = response.headers.get('Last-Modified');
+                    if (lastModified) {
+                        const dateObj = new Date(lastModified);
+                        const formattedDate = dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+                        $('#update-timestamp').text(`Figures update automatically overnight each day. Last updated: ${formattedDate}`);
+                    } else {
+                        $('#update-timestamp').text('Figures update automatically overnight each day.');
+                    }
+                }).catch(() => $('#update-timestamp').text('Figures update automatically overnight each day.'));
+        }
+
+        function getPartyTier(partyString) {
+            const p = (partyString || '').toUpperCase();
+            if (p.includes('REP')) return { rank: 1, label: 'R', css: 'bg-red-50 text-red-700 border-red-200' };
+            if (p.includes('DEM')) return { rank: 2, label: 'D', css: 'bg-blue-50 text-blue-700 border-blue-200' };
+            if (p.includes('IND')) return { rank: 3, label: 'I', css: 'bg-purple-50 text-purple-700 border-purple-200' };
+            if (p.includes('NPA') || p.includes('NO PARTY')) return { rank: 4, label: 'NPA', css: 'bg-slate-100 text-slate-700 border-slate-300' };
+            return { rank: 5, label: 'Oth', css: 'bg-gray-50 text-gray-600 border-gray-200' };
+        }
+
+        function getRaceSortValue(raceKey) {
+            if (raceKey.includes('Governor')) return 1;
+            if (raceKey.includes('Attorney General')) return 2;
+            if (raceKey.includes('Chief Financial Officer')) return 3;
+            if (raceKey.includes('Agriculture')) return 4;
+            if (raceKey.includes('Senator')) {
+                const match = raceKey.match(/\d+/);
+                return match ? 100 + parseInt(match[0], 10) : 199;
+            }
+            if (raceKey.includes('Representative')) {
+                const match = raceKey.match(/\d+/);
+                return match ? 200 + parseInt(match[0], 10) : 299;
+            }
+            return 999;
+        }
+
+        $(document).ready(function() {
+            fetchFileTimestamp();
+
+            FL_COUNTIES.forEach(county => {
+                $('#county-dropdown').append(`<option value="${county}">${county} County</option>`);
+            });
+
+            Papa.parse(CSV_FILE, {
+                download: true, header: true, skipEmptyLines: true,
+                complete: function(results) {
+                    const data = results.data;
+                    const groups = {};
+
+                    data.forEach(row => {
+                        let officeName = row.office_full || 'Other';
+                        if (!groups[officeName]) {
+                            groups[officeName] = { title: officeName, candidates: [] };
+                        }
+                        groups[officeName].candidates.push(row);
+                    });
+
+                    const sortedRaces = Object.keys(groups).sort((a, b) => getRaceSortValue(a) - getRaceSortValue(b));
+
+                    let masterHTML = '';
+                    sortedRaces.forEach(raceKey => {
+                        const race = groups[raceKey];
+                        
+                        const titleParts = race.title.split('|');
+                        const displayTitle = titleParts[0];
+                        const displaySubtitle = titleParts[1] ? titleParts[1] : '';
+
+                        let mapLink = '';
+                        const districtMatch = displayTitle.match(/District (\d+)/);
+                        if (districtMatch) {
+                            const distNum = districtMatch[1];
+                            let bpUrl = '';
+                            
+                            if (displayTitle.includes('Senator')) {
+                                bpUrl = `https://ballotpedia.org/Florida_State_Senate_District_${distNum}`;
+                            } else if (displayTitle.includes('Representative')) {
+                                bpUrl = `https://ballotpedia.org/Florida_House_of_Representatives_District_${distNum}`;
+                            }
+                            
+                            if (bpUrl) {
+                                mapLink = `<a href="${bpUrl}" target="_blank" class="text-[10px] font-bold text-blue-600 hover:text-blue-800 tracking-wider uppercase ml-3 border border-blue-200 hover:bg-blue-50 px-2 py-0.5 rounded-md transition-colors shadow-sm cursor-pointer whitespace-nowrap inline-flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3 h-3"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                                    View Map
+                                </a>`;
+                            }
+                        }
+
+                        race.candidates.sort((a, b) => {
+                            const tierA = getPartyTier(a.party_full).rank;
+                            const tierB = getPartyTier(b.party_full).rank;
+                            if (tierA !== tierB) return tierA - tierB;
+                            return (a.name || '').localeCompare(b.name || '');
+                        });
+
+                        masterHTML += `
+                            <div class="race-section border border-gray-200 rounded-lg p-4 sm:p-5 shadow-xs bg-white" 
+                                 data-title="${displayTitle.toLowerCase()}" 
+                                 data-counties="${displaySubtitle.toLowerCase()}">
+                                <div class="mb-3">
+                                    <h2 class="text-lg font-bold text-gray-900 tracking-tight flex items-center">${displayTitle} ${mapLink}</h2>
+                                    ${displaySubtitle ? `<p class="race-subtitle text-xs text-gray-500 mt-0.5 font-normal tracking-wide">${displaySubtitle}</p>` : ''}
+                                </div>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-sm text-left border-collapse">
+                                        <thead>
+                                            <tr class="border-b-2 border-gray-800 text-gray-800 font-bold">
+                                                <th class="py-2 pr-4">Candidate Name</th>
+                                                <th class="py-2 px-2 text-center">Party</th>
+                                                <th class="py-2 px-4 text-right">Total Raised*</th>
+                                                <th class="py-2 px-4 text-right">Total Spent</th>
+                                                <th class="py-2 pl-4 text-right">Net Cash on Hand</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200">
+                        `;
+
+                        race.candidates.forEach((cand, idx) => {
+                            const pt = getPartyTier(cand.party_full);
+                            const rowBg = idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50';
+                            
+                            const combinedReceipts = parseFloat(cand.receipts) || 0;
+                            const totalSpent = parseFloat(cand.disbursements) || 0;
+                            const pcMoney = parseFloat(cand.pc_money) || 0;
+                            const finalCoh = parseFloat(cand.cash_on_hand_end_period) || 0;
+                            
+                            const incumbentTag = (cand.is_incumbent === 'Y') 
+                                ? `<span class="ml-1.5 text-[10px] uppercase font-bold text-blue-600 tracking-wider">Incumbent</span>` 
+                                : '';
+
+                            // ETHICAL DESIGN SHIFT: Instead of empty table grid holes, apply an inline 
+                            // warning badge that clearly discloses the specific data presence
+                            const loopholeBadge = pcMoney > 0 
+                                ? `<span class="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-red-50 text-red-800 border border-red-200 uppercase tracking-wide cursor-help" title="Includes ${currencyFormatter.format(pcMoney)} from candidate-controlled Political Committee">Loophole PAC Linked</span>` 
+                                : '';
+
+                            masterHTML += `
+                                <tr class="candidate-row ${rowBg} hover:bg-gray-100/70 transition-colors text-gray-700">
+                                    <td class="py-3 pr-4 font-bold text-gray-900 flex items-center flex-wrap gap-y-1">${cand.name} ${incumbentTag} ${loopholeBadge}</td>
+                                    <td class="py-3 px-2 text-center">
+                                        <span class="inline-block px-2 py-0.5 text-[11px] font-bold tracking-wider border rounded-md uppercase ${pt.css}">
+                                            ${pt.label}
+                                        </span>
+                                    </td>
+                                    <td class="py-3 px-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(combinedReceipts)}</td>
+                                    <td class="py-3 px-4 text-right font-mono text-gray-500">${currencyFormatter.format(totalSpent)}</td>
+                                    <td class="py-3 pl-4 text-right font-mono font-bold text-gray-900">${currencyFormatter.format(finalCoh)}</td>
+                                </tr>
+                            `;
+                        });
+
+                        masterHTML += `
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    $('#tracker-container').html(masterHTML);
+                    $('#loading').addClass('hidden');
+                    $('#tracker-container').removeClass('hidden');
+                }
+            });
+
+            function filterRaces() {
+                const searchQuery = $('#search-filter').val().toLowerCase();
+                const selectedCounty = $('#county-dropdown').val().toLowerCase();
+
+                $('.race-section').each(function() {
+                    const raceTitle = $(this).attr('data-title') || '';
+                    const raceCounties = $(this).attr('data-counties') || '';
+                    
+                    let matchesCounty = false;
+                    if (selectedCounty === "" || raceCounties.includes(selectedCounty) || raceCounties.includes("statewide")) {
+                        matchesCounty = true;
+                    }
+
+                    let sectionHasTextMatch = false;
+                    $(this).find('.candidate-row').each(function() {
+                        const rowText = $(this).text().toLowerCase();
+                        if (rowText.includes(searchQuery)) {
+                            $(this).show();
+                            sectionHasTextMatch = true;
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+
+                    if (raceTitle.includes(searchQuery) || raceCounties.includes(searchQuery)) {
+                        $(this).find('.candidate-row').show();
+                        sectionHasTextMatch = true;
+                    }
+
+                    if (matchesCounty && (searchQuery === "" || sectionHasTextMatch)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            }
+
+            $('#search-filter').on('keyup', filterRaces);
+            $('#county-dropdown').on('change', filterRaces);
+        });
+    </script>
+</body>
+</html>
