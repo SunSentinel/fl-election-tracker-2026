@@ -1,0 +1,72 @@
+name: Daily Campaign Finance Data Sync
+
+on:
+  schedule:
+    # Runs automatically every day at 06:00 UTC (2:00 AM EST)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    # Allows you to click a button in the GitHub UI to run it manually anytime
+
+jobs:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    # Step 1: Clone the repository onto the GitHub runner environment
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    # Step 2: Establish a stable Python 3.10 runtime environment
+    - name: Set Up Python
+      uses: actions/setup-python@v5
+      with:
+        python-python: '3.10'
+        cache: 'pip' # Speeds up subsequent workflow execution builds
+
+    # Step 3: Install the required web parsing and network routing dependencies
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 urllib3
+
+    # Step 4: Execute the South Florida Campaign Finance Scraper
+    - name: Execute South Florida Scraper Pipeline
+      env:
+        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+      run: |
+        if [ -f scraper.py ]; then
+          python scraper.py
+        else
+          echo "⚠️ scraper.py not found, skipping South Florida extraction."
+        fi
+
+    # Step 5: Execute the newly refined Central Florida Campaign Finance Scraper
+    - name: Execute Central Florida Scraper Pipeline
+      env:
+        FEC_API_KEY: ${{ secrets.FEC_API_KEY }}
+      run: |
+        if [ -f scraper_central.py ]; then
+          python scraper_central.py
+        else
+          echo "🚨 CRITICAL: scraper_central.py missing. Cannot compile Central feed."
+          exit 1
+        fi
+
+    # Step 6: Commit and Push both updated target data matrices safely back to main branch
+    - name: Commit and Push Compiled Data Feeds
+      run: |
+        git config --global user.name "GitHub Actions Bot"
+        git config --global user.email "actions@github.com"
+        
+        # Explicitly stage both generated relative data assets
+        git add data/election_data.json data/election_data_central.json
+        
+        # Commit only if files have changed; prevent structural workflow exits on empty changes
+        if git diff --staged --quiet; then
+          echo "No campaign finance changes detected today. Skipping commit."
+        else
+          git commit -m "data: automated daily campaign finance sync [South & Central Florida]"
+          git push origin main
+        fi
