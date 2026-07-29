@@ -40,7 +40,7 @@
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H6FL22248",
+    "id": "H0FL19221",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
@@ -49,7 +49,16 @@
     "loans": 2500000.0,
     "disbursements": 265266.14,
     "cash_on_hand": 2236243.86,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "CASEY ASKAR FOR CONGRESS",
+        "id": "C00742528",
+        "receipts": 0.0,
+        "disbursements": 0.0,
+        "cash_on_hand": 43.0,
+        "loans": 0.0
+      }
+    ]
   },
   {
     "name": "BRANDA, PAOLA",
@@ -370,13 +379,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "S6FL00632",
+    "id": "H6FL23105",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -695,7 +704,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00772",
+    "id": "S6FL00780",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
@@ -821,15 +830,15 @@
   },
   {
     "name": "THOMPSON, MICHAEL",
-    "id": "H6FL01275",
+    "id": "H6FL22180",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 86975.7,
+    "receipts": 18413.0,
     "pac_money": 0,
-    "loans": 25000.0,
-    "disbursements": 111975.7,
-    "cash_on_hand": -25000.0,
+    "loans": 0.0,
+    "disbursements": 15387.54,
+    "cash_on_hand": 3025.46,
     "joint_funds": []
   },
   {
