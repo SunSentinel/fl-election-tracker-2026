@@ -301,7 +301,7 @@
   },
   {
     "name": "FRANZESE, DAN",
-    "id": "H2FL21108",
+    "id": "H6FL22149",
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
@@ -704,20 +704,20 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "H4FL14109",
+    "id": "S6FL00772",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL23134",
+    "id": "H4FL20080",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
