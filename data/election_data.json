@@ -31,11 +31,11 @@
     "party_full": "REP",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 25798.15,
+    "receipts": 45356.15,
     "pac_money": 0,
-    "loans": 20000.0,
-    "disbursements": 13835.43,
-    "cash_on_hand": 11962.72,
+    "loans": 30000.0,
+    "disbursements": 26153.55,
+    "cash_on_hand": 19202.6,
     "joint_funds": []
   },
   {
@@ -301,7 +301,7 @@
   },
   {
     "name": "FRANZESE, DAN",
-    "id": "H6FL22149",
+    "id": "H2FL21108",
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
@@ -379,13 +379,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "H6FL23105",
+    "id": "S6FL00632",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -704,7 +704,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00772",
+    "id": "S6FL00780",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
@@ -830,15 +830,15 @@
   },
   {
     "name": "THOMPSON, MICHAEL",
-    "id": "H6FL01275",
+    "id": "H6FL22180",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 86975.7,
+    "receipts": 18413.0,
     "pac_money": 0,
-    "loans": 25000.0,
-    "disbursements": 111975.7,
-    "cash_on_hand": -25000.0,
+    "loans": 0.0,
+    "disbursements": 15387.54,
+    "cash_on_hand": 3025.46,
     "joint_funds": []
   },
   {
