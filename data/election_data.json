@@ -704,7 +704,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00780",
+    "id": "S6FL00772",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
@@ -717,7 +717,7 @@
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL20080",
+    "id": "H4FL23134",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
@@ -830,15 +830,15 @@
   },
   {
     "name": "THOMPSON, MICHAEL",
-    "id": "H6FL22180",
+    "id": "H6FL01275",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 18413.0,
+    "receipts": 86975.7,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 15387.54,
-    "cash_on_hand": 3025.46,
+    "loans": 25000.0,
+    "disbursements": 111975.7,
+    "cash_on_hand": -25000.0,
     "joint_funds": []
   },
   {
