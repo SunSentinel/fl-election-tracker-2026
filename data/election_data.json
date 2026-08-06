@@ -209,11 +209,11 @@
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
-    "receipts": 341017.82,
+    "receipts": 483604.55,
     "pac_money": 0,
-    "loans": 200020.0,
-    "disbursements": 340052.65,
-    "cash_on_hand": 965.17,
+    "loans": 325020.0,
+    "disbursements": 445158.24,
+    "cash_on_hand": 38446.31,
     "joint_funds": []
   },
   {
@@ -465,11 +465,11 @@
     "party_full": "REP",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 88416.77,
+    "receipts": 98824.74,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 76289.39,
-    "cash_on_hand": 12127.38,
+    "disbursements": 82642.35,
+    "cash_on_hand": 16182.39,
     "joint_funds": []
   },
   {
@@ -647,11 +647,11 @@
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 839339.8,
+    "receipts": 931848.95,
     "pac_money": 0,
     "loans": 110000.0,
-    "disbursements": 307321.4,
-    "cash_on_hand": 532018.4,
+    "disbursements": 660014.96,
+    "cash_on_hand": 271833.99,
     "joint_funds": []
   },
   {
@@ -695,7 +695,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00764",
+    "id": "S6FL00780",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
@@ -821,15 +821,15 @@
   },
   {
     "name": "THOMPSON, MICHAEL",
-    "id": "H6FL22180",
+    "id": "H6FL01275",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 23613.0,
+    "receipts": 86975.7,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 20645.74,
-    "cash_on_hand": 2967.26,
+    "loans": 25000.0,
+    "disbursements": 111975.7,
+    "cash_on_hand": -25000.0,
     "joint_funds": []
   },
   {
