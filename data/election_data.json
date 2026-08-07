@@ -322,11 +322,11 @@
     "party_full": "NPA",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 11997.21,
+    "receipts": 12297.21,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 10997.37,
-    "cash_on_hand": 999.84,
+    "disbursements": 11460.17,
+    "cash_on_hand": 837.04,
     "joint_funds": []
   },
   {
@@ -370,13 +370,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "S6FL00632",
+    "id": "H6FL23105",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -426,11 +426,11 @@
     "party_full": "LPF",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 0,
+    "receipts": 10500.0,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 0,
-    "cash_on_hand": 0,
+    "disbursements": 10440.0,
+    "cash_on_hand": 60.0,
     "joint_funds": []
   },
   {
@@ -695,13 +695,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00780",
+    "id": "H4FL14109",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []

@@ -14,15 +14,15 @@
   },
   {
     "name": "BAKER, AARON",
-    "id": "H6FL06324",
+    "id": "H6FL06241",
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-    "receipts": 73131.34,
+    "receipts": 76652.14,
     "pac_money": 0,
     "loans": 375.0,
-    "disbursements": 72652.74,
-    "cash_on_hand": 470.86,
+    "disbursements": 76129.26,
+    "cash_on_hand": 515.14,
     "joint_funds": [
       {
         "name": "AARON 4 FL 6",
@@ -253,7 +253,7 @@
   },
   {
     "name": "GRAYSON, ALAN",
-    "id": "S2FL00581",
+    "id": "S6FL00376",
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
@@ -387,11 +387,11 @@
     "party_full": "DEM",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-    "receipts": 6810.0,
+    "receipts": 8250.0,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 12599.3,
-    "cash_on_hand": -5789.3,
+    "disbursements": 15200.1,
+    "cash_on_hand": -6950.1,
     "joint_funds": []
   },
   {
@@ -474,13 +474,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00780",
+    "id": "H4FL14109",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
