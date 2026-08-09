@@ -105,11 +105,11 @@
     "party_full": "DEM",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 110788.18,
+    "receipts": 126493.68,
     "pac_money": 0,
     "loans": 7850.0,
-    "disbursements": 55127.25,
-    "cash_on_hand": 55660.93,
+    "disbursements": 90008.64,
+    "cash_on_hand": 36485.04,
     "joint_funds": [
       {
         "name": "LUTHER UNCLE LUKE CAMPBELL FOR CONGRESS",
@@ -231,11 +231,11 @@
     "party_full": "DEM",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 15657.25,
+    "receipts": 25903.63,
     "pac_money": 0,
     "loans": 11200.0,
-    "disbursements": 12506.39,
-    "cash_on_hand": 3150.86,
+    "disbursements": 21638.63,
+    "cash_on_hand": 4265.0,
     "joint_funds": []
   },
   {
@@ -379,13 +379,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "S6FL00632",
+    "id": "H6FL23105",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -487,11 +487,11 @@
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 631592.54,
+    "receipts": 632264.36,
     "pac_money": 0,
     "loans": 0.0,
     "disbursements": 158934.71,
-    "cash_on_hand": 527451.29,
+    "cash_on_hand": 528123.11,
     "joint_funds": []
   },
   {
@@ -704,20 +704,20 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "H4FL14109",
+    "id": "S6FL00772",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL20080",
+    "id": "H4FL23134",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
@@ -747,11 +747,11 @@
     "party_full": "DEM",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 616733.36,
+    "receipts": 661173.11,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 171193.4,
-    "cash_on_hand": 445539.96,
+    "disbursements": 336075.74,
+    "cash_on_hand": 325097.37,
     "joint_funds": []
   },
   {
@@ -860,11 +860,11 @@
     "party_full": "DEM",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 14595387.39,
+    "receipts": 16273862.45,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 7288082.36,
-    "cash_on_hand": 7307305.03,
+    "disbursements": 9020003.41,
+    "cash_on_hand": 7253859.04,
     "joint_funds": []
   },
   {
