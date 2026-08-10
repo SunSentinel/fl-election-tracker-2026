@@ -622,7 +622,16 @@
     "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "MOISE FOR CONGRESS",
+        "id": "C00935460",
+        "receipts": 631672.0,
+        "disbursements": 555845.63,
+        "cash_on_hand": 75826.37,
+        "loans": 400000.0
+      }
+    ]
   },
   {
     "name": "MONESTIME, JEAN",
@@ -821,11 +830,11 @@
     "party_full": "DEM",
     "office_full": "House District 21",
     "counties": "St. Lucie, Martin, Palm Beach",
-    "receipts": 591221.59,
+    "receipts": 993379.66,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 406750.06,
-    "cash_on_hand": 199582.71,
+    "disbursements": 856522.36,
+    "cash_on_hand": 151968.48,
     "joint_funds": []
   },
   {
