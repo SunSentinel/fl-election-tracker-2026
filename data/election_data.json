@@ -301,7 +301,7 @@
   },
   {
     "name": "FRANZESE, DAN",
-    "id": "H2FL21108",
+    "id": "H6FL22149",
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
@@ -626,9 +626,9 @@
       {
         "name": "MOISE FOR CONGRESS",
         "id": "C00935460",
-        "receipts": 631672.0,
+        "receipts": 651697.0,
         "disbursements": 555845.63,
-        "cash_on_hand": 75826.37,
+        "cash_on_hand": 100851.37,
         "loans": 400000.0
       }
     ]
@@ -713,7 +713,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00772",
+    "id": "S6FL00780",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
