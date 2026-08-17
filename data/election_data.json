@@ -704,20 +704,20 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00764",
+    "id": "H4FL14109",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL20080",
+    "id": "H4FL23134",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
