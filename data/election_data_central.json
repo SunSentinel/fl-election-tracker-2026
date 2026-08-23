@@ -253,7 +253,7 @@
   },
   {
     "name": "GRAYSON, ALAN",
-    "id": "S2FL00581",
+    "id": "S6FL00376",
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
@@ -483,13 +483,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "H4FL14109",
+    "id": "S6FL00780",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
