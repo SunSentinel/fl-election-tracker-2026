@@ -40,7 +40,7 @@
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H6FL22248",
+    "id": "H0FL19221",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
@@ -49,7 +49,16 @@
     "loans": 2500000.0,
     "disbursements": 1519363.96,
     "cash_on_hand": 1048396.04,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "CASEY ASKAR FOR CONGRESS",
+        "id": "C00742528",
+        "receipts": 0.0,
+        "disbursements": 0.0,
+        "cash_on_hand": 43.0,
+        "loans": 0.0
+      }
+    ]
   },
   {
     "name": "BRANDA, PAOLA",
