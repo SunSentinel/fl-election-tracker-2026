@@ -305,15 +305,15 @@
   },
   {
     "name": "JENKINS, JENNIFER",
-    "id": "H6FL06399",
+    "id": "S6FL00798",
     "party_full": "DEM",
     "office_full": "House District 8",
     "counties": "Brevard, Orange",
-    "receipts": 725730.74,
+    "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 617619.46,
-    "cash_on_hand": 108111.28,
+    "loans": 0,
+    "disbursements": 0,
+    "cash_on_hand": 0,
     "joint_funds": []
   },
   {
@@ -483,7 +483,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00764",
+    "id": "S6FL00780",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
