@@ -370,13 +370,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "H6FL23105",
+    "id": "S6FL00632",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -713,13 +713,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00764",
+    "id": "H4FL14109",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
