@@ -49,7 +49,16 @@
     "loans": 2500000.0,
     "disbursements": 1519363.96,
     "cash_on_hand": 1048396.04,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "CASEY FOR CONGRESS - EMB NOMINEE FUND FL-22",
+        "id": "C00951087",
+        "receipts": 10758.57,
+        "disbursements": 500.0,
+        "cash_on_hand": 10258.57,
+        "loans": 0.0
+      }
+    ]
   },
   {
     "name": "BRANDA, PAOLA",
@@ -118,10 +127,10 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 6332572.73,
+    "receipts": 4763903.49,
     "pac_money": 0,
     "loans": 4236901.87,
-    "disbursements": 6295983.29,
+    "disbursements": 5172508.2,
     "cash_on_hand": 36589.44,
     "joint_funds": []
   },
@@ -364,8 +373,8 @@
     "receipts": 1333.0,
     "pac_money": 0,
     "loans": 1200.0,
-    "disbursements": 1236.64,
-    "cash_on_hand": 96.36,
+    "disbursements": 1333.0,
+    "cash_on_hand": 0.0,
     "joint_funds": []
   },
   {
@@ -800,7 +809,16 @@
     "loans": 724010.0,
     "disbursements": 1779740.69,
     "cash_on_hand": 466219.45,
-    "joint_funds": []
+    "joint_funds": [
+      {
+        "name": "SCOTT SINGER FOR CONGRESS - EMB NOMINEE FUND FL-25",
+        "id": "C00951103",
+        "receipts": 10758.57,
+        "disbursements": 500.0,
+        "cash_on_hand": 10258.57,
+        "loans": 0.0
+      }
+    ]
   },
   {
     "name": "SPALDING, CARLA",
