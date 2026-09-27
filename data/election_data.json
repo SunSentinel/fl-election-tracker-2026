@@ -40,7 +40,7 @@
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H6FL22248",
+    "id": "H0FL19221",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
@@ -51,11 +51,11 @@
     "cash_on_hand": 1048396.04,
     "joint_funds": [
       {
-        "name": "CASEY FOR CONGRESS - EMB NOMINEE FUND FL-22",
-        "id": "C00951087",
-        "receipts": 10758.57,
-        "disbursements": 500.0,
-        "cash_on_hand": 10258.57,
+        "name": "CASEY ASKAR FOR CONGRESS",
+        "id": "C00742528",
+        "receipts": 0.0,
+        "disbursements": 0.0,
+        "cash_on_hand": 43.0,
         "loans": 0.0
       }
     ]
@@ -735,7 +735,7 @@
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL20080",
+    "id": "H4FL23134",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
