@@ -31,16 +31,16 @@
     "party_full": "REP",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 45356.15,
+    "receipts": 57816.02,
     "pac_money": 0,
     "loans": 30000.0,
-    "disbursements": 26153.55,
-    "cash_on_hand": 19202.6,
+    "disbursements": 38668.93,
+    "cash_on_hand": 19147.09,
     "joint_funds": []
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H0FL19221",
+    "id": "H6FL22248",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
@@ -51,11 +51,11 @@
     "cash_on_hand": 1048396.04,
     "joint_funds": [
       {
-        "name": "CASEY ASKAR FOR CONGRESS",
-        "id": "C00742528",
-        "receipts": 0.0,
-        "disbursements": 0.0,
-        "cash_on_hand": 43.0,
+        "name": "CASEY FOR CONGRESS - EMB NOMINEE FUND FL-22",
+        "id": "C00951087",
+        "receipts": 10758.57,
+        "disbursements": 500.0,
+        "cash_on_hand": 10258.57,
         "loans": 0.0
       }
     ]
@@ -722,13 +722,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00772",
+    "id": "H4FL14109",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
