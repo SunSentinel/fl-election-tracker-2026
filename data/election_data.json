@@ -57,6 +57,14 @@
         "disbursements": 500.0,
         "cash_on_hand": 10258.57,
         "loans": 0.0
+      },
+      {
+        "name": "CASEY FOR CONGRESS-GTM NOMINEE FUND: FL-22",
+        "id": "C00954933",
+        "receipts": 8983.0,
+        "disbursements": 0.0,
+        "cash_on_hand": 8983.0,
+        "loans": 0.0
       }
     ]
   },
@@ -816,6 +824,14 @@
         "receipts": 10758.57,
         "disbursements": 500.0,
         "cash_on_hand": 10258.57,
+        "loans": 0.0
+      },
+      {
+        "name": "SCOTT SINGER FOR CONGRESS-GTM NOMINEE FUND: FL-25",
+        "id": "C00954941",
+        "receipts": 8983.0,
+        "disbursements": 0.0,
+        "cash_on_hand": 8983.0,
         "loans": 0.0
       }
     ]
