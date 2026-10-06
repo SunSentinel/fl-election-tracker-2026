@@ -101,11 +101,11 @@
     "party_full": "REP",
     "office_full": "House District 9",
     "counties": "Glades, Highlands, Indian River, Okeechobee, Orange, Osceola, Polk",
-    "receipts": 3139737.1,
+    "receipts": 3155928.75,
     "pac_money": 0,
     "loans": 3003713.19,
-    "disbursements": 1776688.94,
-    "cash_on_hand": 1966256.05,
+    "disbursements": 3687317.83,
+    "cash_on_hand": 71818.81,
     "joint_funds": []
   },
   {
@@ -253,7 +253,7 @@
   },
   {
     "name": "GRAYSON, ALAN",
-    "id": "S2FL00581",
+    "id": "H6FL08213",
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
@@ -305,15 +305,15 @@
   },
   {
     "name": "JENKINS, JENNIFER",
-    "id": "S6FL00798",
+    "id": "H6FL06399",
     "party_full": "DEM",
     "office_full": "House District 8",
     "counties": "Brevard, Orange",
-    "receipts": 0,
+    "receipts": 725730.74,
     "pac_money": 0,
-    "loans": 0,
-    "disbursements": 0,
-    "cash_on_hand": 0,
+    "loans": 0.0,
+    "disbursements": 617619.46,
+    "cash_on_hand": 108111.28,
     "joint_funds": []
   },
   {
@@ -483,13 +483,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "H4FL14109",
+    "id": "S6FL00772",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -513,11 +513,11 @@
     "party_full": "REP",
     "office_full": "House District 11",
     "counties": "Lake, Orange, Sumter",
-    "receipts": 932552.0,
+    "receipts": 956142.0,
     "pac_money": 0,
     "loans": 740000.0,
-    "disbursements": 768563.78,
-    "cash_on_hand": 163988.22,
+    "disbursements": 863094.36,
+    "cash_on_hand": 93047.64,
     "joint_funds": []
   },
   {
