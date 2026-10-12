@@ -127,10 +127,10 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 4763903.49,
+    "receipts": 4669794.42,
     "pac_money": 0,
     "loans": 4236901.87,
-    "disbursements": 5172508.2,
+    "disbursements": 4043384.25,
     "cash_on_hand": 36589.44,
     "joint_funds": []
   },
@@ -218,11 +218,11 @@
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
-    "receipts": 483604.55,
+    "receipts": 572631.25,
     "pac_money": 0,
-    "loans": 325020.0,
-    "disbursements": 445158.24,
-    "cash_on_hand": 38446.31,
+    "loans": 385520.0,
+    "disbursements": 566406.89,
+    "cash_on_hand": 6224.36,
     "joint_funds": []
   },
   {
