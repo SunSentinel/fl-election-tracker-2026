@@ -127,10 +127,10 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 4669794.42,
+    "receipts": 4080724.41,
     "pac_money": 0,
     "loans": 4236901.87,
-    "disbursements": 4043384.25,
+    "disbursements": 4044134.97,
     "cash_on_hand": 36589.44,
     "joint_funds": []
   },
@@ -474,11 +474,11 @@
     "party_full": "REP",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 98824.74,
+    "receipts": 105472.35,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 82642.35,
-    "cash_on_hand": 16182.39,
+    "disbursements": 105115.28,
+    "cash_on_hand": 357.07,
     "joint_funds": []
   },
   {
@@ -517,7 +517,7 @@
     "pac_money": 0,
     "loans": 0.0,
     "disbursements": 519802.77,
-    "cash_on_hand": 169741.75,
+    "cash_on_hand": 169604.61,
     "joint_funds": []
   },
   {
@@ -722,13 +722,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00772",
+    "id": "H4FL14109",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0,
+    "loans": 0.0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -752,11 +752,11 @@
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 15972.71,
+    "receipts": 16234.63,
     "pac_money": 0,
     "loans": 10700.0,
-    "disbursements": 15003.16,
-    "cash_on_hand": 969.55,
+    "disbursements": 15350.16,
+    "cash_on_hand": 884.47,
     "joint_funds": []
   },
   {
@@ -813,9 +813,9 @@
       {
         "name": "SCOTT SINGER FOR CONGRESS - EMB NOMINEE FUND FL-25",
         "id": "C00951103",
-        "receipts": 10758.57,
-        "disbursements": 500.0,
-        "cash_on_hand": 10258.57,
+        "receipts": 19459.62,
+        "disbursements": 19459.62,
+        "cash_on_hand": 0.0,
         "loans": 0.0
       },
       {
@@ -865,15 +865,15 @@
   },
   {
     "name": "THOMPSON, MICHAEL",
-    "id": "H6FL22180",
+    "id": "H6FL01275",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 25663.0,
+    "receipts": 86975.7,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 27221.37,
-    "cash_on_hand": 0.0,
+    "loans": 25000.0,
+    "disbursements": 111975.7,
+    "cash_on_hand": -25000.0,
     "joint_funds": []
   },
   {
