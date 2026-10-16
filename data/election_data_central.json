@@ -253,7 +253,7 @@
   },
   {
     "name": "GRAYSON, ALAN",
-    "id": "S2FL00581",
+    "id": "H6FL08213",
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
@@ -348,11 +348,11 @@
     "party_full": "REP",
     "office_full": "House District 9",
     "counties": "Glades, Highlands, Indian River, Okeechobee, Orange, Osceola, Polk",
-    "receipts": 854897.76,
+    "receipts": 1015655.55,
     "pac_money": 0,
-    "loans": 550000.0,
-    "disbursements": 564749.25,
-    "cash_on_hand": 290148.51,
+    "loans": 700000.0,
+    "disbursements": 1015655.55,
+    "cash_on_hand": 0.0,
     "joint_funds": []
   },
   {
