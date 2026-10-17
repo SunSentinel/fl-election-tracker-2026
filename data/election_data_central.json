@@ -14,7 +14,7 @@
   },
   {
     "name": "BAKER, AARON",
-    "id": "H6FL06241",
+    "id": "H6FL06324",
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
@@ -66,11 +66,11 @@
     "party_full": "REP",
     "office_full": "House District 9",
     "counties": "Glades, Highlands, Indian River, Okeechobee, Orange, Osceola, Polk",
-    "receipts": 386672.75,
+    "receipts": 460648.7,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 274397.84,
-    "cash_on_hand": 112274.91,
+    "loans": 3095.52,
+    "disbursements": 459648.7,
+    "cash_on_hand": 1000.0,
     "joint_funds": []
   },
   {
@@ -114,11 +114,11 @@
     "party_full": "DEM",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-    "receipts": 68204.84,
+    "receipts": 81087.84,
     "pac_money": 0,
     "loans": 19000.0,
-    "disbursements": 64510.07,
-    "cash_on_hand": -1026.78,
+    "disbursements": 74957.88,
+    "cash_on_hand": -16470.69,
     "joint_funds": []
   },
   {
@@ -127,11 +127,11 @@
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
-    "receipts": 1378109.29,
+    "receipts": 2137357.53,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 902251.45,
-    "cash_on_hand": 475857.84,
+    "disbursements": 1693850.45,
+    "cash_on_hand": 443507.08,
     "joint_funds": []
   },
   {
@@ -166,11 +166,11 @@
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-    "receipts": 4286207.08,
+    "receipts": 4615231.29,
     "pac_money": 0,
     "loans": 950000.0,
-    "disbursements": 3095148.29,
-    "cash_on_hand": 1191058.79,
+    "disbursements": 4454318.34,
+    "cash_on_hand": 160912.95,
     "joint_funds": []
   },
   {
@@ -179,11 +179,11 @@
     "party_full": "REP",
     "office_full": "House District 18",
     "counties": "Osceola, Polk",
-    "receipts": 849999.59,
+    "receipts": 987521.71,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 371131.43,
-    "cash_on_hand": 960763.64,
+    "disbursements": 393572.74,
+    "cash_on_hand": 1075844.45,
     "joint_funds": []
   },
   {
@@ -192,11 +192,11 @@
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-    "receipts": 351423.27,
+    "receipts": 357898.27,
     "pac_money": 0,
     "loans": 262128.27,
-    "disbursements": 347690.77,
-    "cash_on_hand": 3732.5,
+    "disbursements": 354753.68,
+    "cash_on_hand": 3144.59,
     "joint_funds": []
   },
   {
@@ -253,15 +253,15 @@
   },
   {
     "name": "GRAYSON, ALAN",
-    "id": "H6FL08213",
+    "id": "S2FL00581",
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
-    "receipts": 388153.35,
+    "receipts": 743096.82,
     "pac_money": 0,
-    "loans": 318646.74,
-    "disbursements": 386772.28,
-    "cash_on_hand": 128298.88,
+    "loans": 647102.75,
+    "disbursements": 715853.28,
+    "cash_on_hand": 154161.35,
     "joint_funds": []
   },
   {
@@ -270,11 +270,11 @@
     "party_full": "REP",
     "office_full": "House District 9",
     "counties": "Glades, Highlands, Indian River, Okeechobee, Orange, Osceola, Polk",
-    "receipts": 1298516.0,
+    "receipts": 2187321.82,
     "pac_money": 0,
-    "loans": 1140000.0,
-    "disbursements": 935272.55,
-    "cash_on_hand": 363243.45,
+    "loans": 1840000.0,
+    "disbursements": 1671485.88,
+    "cash_on_hand": 516285.94,
     "joint_funds": []
   },
   {
@@ -309,11 +309,11 @@
     "party_full": "DEM",
     "office_full": "House District 8",
     "counties": "Brevard, Orange",
-    "receipts": 725730.74,
+    "receipts": 913654.1,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 617619.46,
-    "cash_on_hand": 108111.28,
+    "disbursements": 707758.49,
+    "cash_on_hand": 205895.61,
     "joint_funds": []
   },
   {
@@ -361,11 +361,11 @@
     "party_full": "REP",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
-    "receipts": 880710.88,
+    "receipts": 899203.02,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 853938.09,
-    "cash_on_hand": 67664.8,
+    "disbursements": 876474.97,
+    "cash_on_hand": 63620.06,
     "joint_funds": []
   },
   {
@@ -374,18 +374,18 @@
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 11259073.98,
+    "receipts": 13326013.39,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 2776253.29,
-    "cash_on_hand": 8482820.69,
+    "disbursements": 10506406.67,
+    "cash_on_hand": 2819606.72,
     "joint_funds": [
       {
         "name": "MOODY FOR FL SENATE REPUBLICAN NOMINEE FUND 2026",
         "id": "C00895508",
-        "receipts": 11730.56,
-        "disbursements": 3375.82,
-        "cash_on_hand": 8354.74,
+        "receipts": 12172.06,
+        "disbursements": 11699.06,
+        "cash_on_hand": 473.0,
         "loans": 0.0
       }
     ]
@@ -483,13 +483,13 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "H4FL14109",
+    "id": "S6FL00764",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -552,11 +552,11 @@
     "party_full": "DEM",
     "office_full": "House District 9",
     "counties": "Glades, Highlands, Indian River, Okeechobee, Orange, Osceola, Polk",
-    "receipts": 2157833.96,
+    "receipts": 3464996.15,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 984597.84,
-    "cash_on_hand": 1187354.66,
+    "disbursements": 2137322.62,
+    "cash_on_hand": 1341792.07,
     "joint_funds": []
   },
   {
@@ -578,11 +578,11 @@
     "party_full": "REP",
     "office_full": "House District 11",
     "counties": "Lake, Orange, Sumter",
-    "receipts": 5248640.0,
+    "receipts": 5434537.62,
     "pac_money": 0,
     "loans": 5000000.0,
-    "disbursements": 2999736.61,
-    "cash_on_hand": 2248903.39,
+    "disbursements": 4614554.48,
+    "cash_on_hand": 819983.14,
     "joint_funds": []
   },
   {
@@ -604,11 +604,11 @@
     "party_full": "DEM",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 16273862.45,
+    "receipts": 20487915.65,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 9020003.41,
-    "cash_on_hand": 7253859.04,
+    "disbursements": 16370306.93,
+    "cash_on_hand": 4117608.72,
     "joint_funds": []
   },
   {
@@ -630,11 +630,11 @@
     "party_full": "REP",
     "office_full": "House District 11",
     "counties": "Lake, Orange, Sumter",
-    "receipts": 329214.58,
+    "receipts": 349275.67,
     "pac_money": 0,
     "loans": 236000.0,
-    "disbursements": 204668.38,
-    "cash_on_hand": 124546.2,
+    "disbursements": 261052.65,
+    "cash_on_hand": 88223.02,
     "joint_funds": []
   },
   {
@@ -656,11 +656,11 @@
     "party_full": "DEM",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
-    "receipts": 325709.89,
+    "receipts": 525921.82,
     "pac_money": 0,
     "loans": 100.0,
-    "disbursements": 291613.96,
-    "cash_on_hand": 34095.93,
+    "disbursements": 421868.52,
+    "cash_on_hand": 104053.3,
     "joint_funds": []
   }
 ]

@@ -5,11 +5,11 @@
     "party_full": "REP",
     "office_full": "House District 23",
     "counties": "Palm Beach",
-    "receipts": 162514.88,
+    "receipts": 196857.44,
     "pac_money": 0,
     "loans": 52026.0,
-    "disbursements": 132432.32,
-    "cash_on_hand": 33690.7,
+    "disbursements": 170007.48,
+    "cash_on_hand": 30458.1,
     "joint_funds": []
   },
   {
@@ -18,11 +18,11 @@
     "party_full": "REP",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 63848.58,
+    "receipts": 92565.58,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 23225.78,
-    "cash_on_hand": 40622.8,
+    "disbursements": 74379.3,
+    "cash_on_hand": 18186.28,
     "joint_funds": []
   },
   {
@@ -31,31 +31,39 @@
     "party_full": "REP",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 57816.02,
+    "receipts": 69983.08,
     "pac_money": 0,
     "loans": 30000.0,
-    "disbursements": 38668.93,
-    "cash_on_hand": 19147.09,
+    "disbursements": 54565.93,
+    "cash_on_hand": 15417.15,
     "joint_funds": []
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H0FL19221",
+    "id": "H6FL22248",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 2567760.0,
+    "receipts": 4908252.59,
     "pac_money": 0,
-    "loans": 2500000.0,
-    "disbursements": 1519363.96,
-    "cash_on_hand": 1048396.04,
+    "loans": 4440000.0,
+    "disbursements": 4828212.78,
+    "cash_on_hand": 80039.81,
     "joint_funds": [
       {
-        "name": "CASEY ASKAR FOR CONGRESS",
-        "id": "C00742528",
-        "receipts": 0.0,
+        "name": "CASEY FOR CONGRESS - EMB NOMINEE FUND FL-22",
+        "id": "C00951087",
+        "receipts": 18276.64,
+        "disbursements": 18276.64,
+        "cash_on_hand": 0.0,
+        "loans": 0.0
+      },
+      {
+        "name": "CASEY FOR CONGRESS-GTM NOMINEE FUND: FL-22",
+        "id": "C00954933",
+        "receipts": 8983.0,
         "disbursements": 0.0,
-        "cash_on_hand": 43.0,
+        "cash_on_hand": 8983.0,
         "loans": 0.0
       }
     ]
@@ -79,11 +87,11 @@
     "party_full": "REP",
     "office_full": "House District 24",
     "counties": "Miami-Dade, Broward",
-    "receipts": 313318.49,
+    "receipts": 313396.57,
     "pac_money": 0,
     "loans": 306068.33,
-    "disbursements": 14692.9,
-    "cash_on_hand": 298625.59,
+    "disbursements": 130228.89,
+    "cash_on_hand": 183167.68,
     "joint_funds": []
   },
   {
@@ -92,11 +100,11 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 255072.97,
+    "receipts": 310391.2,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 187965.41,
-    "cash_on_hand": 67107.56,
+    "loans": 15000.0,
+    "disbursements": 308372.52,
+    "cash_on_hand": 2018.68,
     "joint_funds": []
   },
   {
@@ -127,11 +135,11 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 4080724.41,
+    "receipts": 4493767.52,
     "pac_money": 0,
-    "loans": 4236901.87,
-    "disbursements": 4044134.97,
-    "cash_on_hand": 36589.44,
+    "loans": 4638294.98,
+    "disbursements": 4484328.66,
+    "cash_on_hand": 9438.86,
     "joint_funds": []
   },
   {
@@ -153,11 +161,11 @@
     "party_full": "NPA",
     "office_full": "House District 21",
     "counties": "St. Lucie, Martin, Palm Beach",
-    "receipts": 19543.0,
+    "receipts": 27157.99,
     "pac_money": 0,
-    "loans": 13000.0,
-    "disbursements": 18877.58,
-    "cash_on_hand": 665.42,
+    "loans": 19994.99,
+    "disbursements": 25917.07,
+    "cash_on_hand": 1240.92,
     "joint_funds": []
   },
   {
@@ -205,11 +213,11 @@
     "party_full": "REP",
     "office_full": "House District 26",
     "counties": "Miami-Dade, Collier",
-    "receipts": 2060781.95,
+    "receipts": 2606687.1,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 1341398.99,
-    "cash_on_hand": 2538703.16,
+    "disbursements": 2354822.03,
+    "cash_on_hand": 2071185.27,
     "joint_funds": []
   },
   {
@@ -301,7 +309,7 @@
   },
   {
     "name": "FRANZESE, DAN",
-    "id": "H2FL21108",
+    "id": "H6FL22149",
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
@@ -318,11 +326,11 @@
     "party_full": "DEM",
     "office_full": "House District 24",
     "counties": "Miami-Dade, Broward",
-    "receipts": 812142.8,
+    "receipts": 1278406.84,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 583049.58,
-    "cash_on_hand": 229093.22,
+    "disbursements": 1008858.85,
+    "cash_on_hand": 269547.99,
     "joint_funds": []
   },
   {
@@ -331,11 +339,11 @@
     "party_full": "NPA",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 12297.21,
+    "receipts": 13212.81,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 11460.17,
-    "cash_on_hand": 837.04,
+    "disbursements": 12312.61,
+    "cash_on_hand": 900.2,
     "joint_funds": []
   },
   {
@@ -344,11 +352,11 @@
     "party_full": "REP",
     "office_full": "House District 28",
     "counties": "Miami-Dade, Monroe",
-    "receipts": 601253.76,
+    "receipts": 697484.55,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 484408.8,
-    "cash_on_hand": 692872.93,
+    "disbursements": 531359.53,
+    "cash_on_hand": 742152.99,
     "joint_funds": []
   },
   {
@@ -379,13 +387,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "H6FL23105",
+    "id": "S6FL00632",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -396,11 +404,11 @@
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 797235.43,
+    "receipts": 805132.77,
     "pac_money": 0,
     "loans": 542000.0,
-    "disbursements": 722075.73,
-    "cash_on_hand": 75159.7,
+    "disbursements": 759943.36,
+    "cash_on_hand": 45189.41,
     "joint_funds": []
   },
   {
@@ -409,11 +417,11 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 46150.0,
+    "receipts": 55708.56,
     "pac_money": 0,
     "loans": 15000.0,
-    "disbursements": 18282.72,
-    "cash_on_hand": 27867.28,
+    "disbursements": 55708.56,
+    "cash_on_hand": 0.0,
     "joint_funds": []
   },
   {
@@ -422,11 +430,11 @@
     "party_full": "DEM",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 394892.89,
+    "receipts": 456487.39,
     "pac_money": 0,
     "loans": 71000.0,
-    "disbursements": 144765.58,
-    "cash_on_hand": 269209.62,
+    "disbursements": 467340.44,
+    "cash_on_hand": 8229.26,
     "joint_funds": []
   },
   {
@@ -500,11 +508,11 @@
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 3797856.28,
+    "receipts": 5048481.28,
     "pac_money": 0,
-    "loans": 3499999.0,
-    "disbursements": 3096261.99,
-    "cash_on_hand": 701594.29,
+    "loans": 4699999.0,
+    "disbursements": 5018086.89,
+    "cash_on_hand": 20798.93,
     "joint_funds": []
   },
   {
@@ -513,11 +521,11 @@
     "party_full": "DEM",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 689407.38,
+    "receipts": 1199997.91,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 519802.77,
-    "cash_on_hand": 169604.61,
+    "disbursements": 1159855.03,
+    "cash_on_hand": 40142.88,
     "joint_funds": []
   },
   {
@@ -526,11 +534,11 @@
     "party_full": "DEM",
     "office_full": "House District 26",
     "counties": "Miami-Dade, Collier",
-    "receipts": 347681.46,
+    "receipts": 560596.57,
     "pac_money": 0,
     "loans": 250000.0,
-    "disbursements": 149081.5,
-    "cash_on_hand": 198599.96,
+    "disbursements": 428587.81,
+    "cash_on_hand": 132008.76,
     "joint_funds": []
   },
   {
@@ -539,11 +547,11 @@
     "party_full": "DEM",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 1068383.87,
+    "receipts": 1337928.38,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 1034785.85,
-    "cash_on_hand": 33598.02,
+    "disbursements": 1328897.7,
+    "cash_on_hand": 9030.68,
     "joint_funds": []
   },
   {
@@ -552,11 +560,11 @@
     "party_full": "DEM",
     "office_full": "House District 21",
     "counties": "St. Lucie, Martin, Palm Beach",
-    "receipts": 579319.2,
+    "receipts": 772560.78,
     "pac_money": 0,
     "loans": 150000.0,
-    "disbursements": 391274.3,
-    "cash_on_hand": 188044.9,
+    "disbursements": 689973.75,
+    "cash_on_hand": 82587.03,
     "joint_funds": []
   },
   {
@@ -565,11 +573,11 @@
     "party_full": "REP",
     "office_full": "House District 21",
     "counties": "St. Lucie, Martin, Palm Beach",
-    "receipts": 4308890.46,
+    "receipts": 4938231.74,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 3151809.97,
-    "cash_on_hand": 2928458.15,
+    "disbursements": 3842099.97,
+    "cash_on_hand": 2867509.43,
     "joint_funds": []
   },
   {
@@ -591,11 +599,11 @@
     "party_full": "DEM",
     "office_full": "House District 24",
     "counties": "Miami-Dade, Broward",
-    "receipts": 657618.87,
+    "receipts": 817194.26,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 542847.05,
-    "cash_on_hand": 114771.82,
+    "disbursements": 787951.67,
+    "cash_on_hand": 29242.59,
     "joint_funds": []
   },
   {
@@ -626,9 +634,9 @@
       {
         "name": "MOISE FOR CONGRESS",
         "id": "C00935460",
-        "receipts": 651697.0,
+        "receipts": 653097.0,
         "disbursements": 555845.63,
-        "cash_on_hand": 100851.37,
+        "cash_on_hand": 93751.37,
         "loans": 400000.0
       }
     ]
@@ -652,18 +660,18 @@
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 11259073.98,
+    "receipts": 13326013.39,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 2776253.29,
-    "cash_on_hand": 8482820.69,
+    "disbursements": 10506406.67,
+    "cash_on_hand": 2819606.72,
     "joint_funds": [
       {
         "name": "MOODY FOR FL SENATE REPUBLICAN NOMINEE FUND 2026",
         "id": "C00895508",
-        "receipts": 11730.56,
-        "disbursements": 3375.82,
-        "cash_on_hand": 8354.74,
+        "receipts": 12172.06,
+        "disbursements": 11699.06,
+        "cash_on_hand": 473.0,
         "loans": 0.0
       }
     ]
@@ -674,11 +682,11 @@
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 931848.95,
+    "receipts": 982729.5,
     "pac_money": 0,
     "loans": 110000.0,
-    "disbursements": 660014.96,
-    "cash_on_hand": 271833.99,
+    "disbursements": 953402.02,
+    "cash_on_hand": 29327.48,
     "joint_funds": []
   },
   {
@@ -687,11 +695,11 @@
     "party_full": "DEM",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 2998428.2,
+    "receipts": 5093834.5,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 1465080.61,
-    "cash_on_hand": 1882634.29,
+    "disbursements": 3628095.28,
+    "cash_on_hand": 1815025.92,
     "joint_funds": []
   },
   {
@@ -713,22 +721,22 @@
     "party_full": "DEM",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 1061496.09,
+    "receipts": 1160499.64,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 923104.29,
-    "cash_on_hand": 138391.8,
+    "disbursements": 1159283.11,
+    "cash_on_hand": 1216.53,
     "joint_funds": []
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "H4FL14109",
+    "id": "S6FL00764",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -791,11 +799,11 @@
     "party_full": "REP",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 1999399.08,
+    "receipts": 2368783.21,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 1150679.49,
-    "cash_on_hand": 2259546.73,
+    "disbursements": 1772150.2,
+    "cash_on_hand": 2007460.15,
     "joint_funds": []
   },
   {
@@ -804,11 +812,11 @@
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 2245960.14,
+    "receipts": 2931479.58,
     "pac_money": 0,
     "loans": 724010.0,
-    "disbursements": 1779740.69,
-    "cash_on_hand": 466219.45,
+    "disbursements": 2377616.84,
+    "cash_on_hand": 553862.74,
     "joint_funds": [
       {
         "name": "SCOTT SINGER FOR CONGRESS - EMB NOMINEE FUND FL-25",
@@ -834,18 +842,18 @@
     "party_full": "REP",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 3671.44,
+    "receipts": 31400.89,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 2373.42,
-    "cash_on_hand": 1298.02,
+    "disbursements": 31400.89,
+    "cash_on_hand": 0.0,
     "joint_funds": [
       {
         "name": "CARLA SPALDING FOR CONGRESS",
         "id": "C00727164",
-        "receipts": 5108.21,
-        "disbursements": 14839.64,
-        "cash_on_hand": 17267.65,
+        "receipts": 5138.21,
+        "disbursements": 14854.64,
+        "cash_on_hand": 17282.65,
         "loans": 0.0
       }
     ]
@@ -895,11 +903,11 @@
     "party_full": "DEM",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 16273862.45,
+    "receipts": 20487915.65,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 9020003.41,
-    "cash_on_hand": 7253859.04,
+    "disbursements": 16370306.93,
+    "cash_on_hand": 4117608.72,
     "joint_funds": []
   },
   {
@@ -908,11 +916,11 @@
     "party_full": "DEM",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 3300107.37,
+    "receipts": 3643468.52,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 2496042.8,
-    "cash_on_hand": 1861373.49,
+    "disbursements": 3926133.4,
+    "cash_on_hand": 774644.04,
     "joint_funds": []
   }
 ]
