@@ -40,7 +40,7 @@
   },
   {
     "name": "ASKAR, CASEY",
-    "id": "H6FL22248",
+    "id": "H0FL19221",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
@@ -51,19 +51,11 @@
     "cash_on_hand": 80039.81,
     "joint_funds": [
       {
-        "name": "CASEY FOR CONGRESS - EMB NOMINEE FUND FL-22",
-        "id": "C00951087",
-        "receipts": 18276.64,
-        "disbursements": 18276.64,
-        "cash_on_hand": 0.0,
-        "loans": 0.0
-      },
-      {
-        "name": "CASEY FOR CONGRESS-GTM NOMINEE FUND: FL-22",
-        "id": "C00954933",
-        "receipts": 8983.0,
+        "name": "CASEY ASKAR FOR CONGRESS",
+        "id": "C00742528",
+        "receipts": 0.0,
         "disbursements": 0.0,
-        "cash_on_hand": 8983.0,
+        "cash_on_hand": 43.0,
         "loans": 0.0
       }
     ]
@@ -74,11 +66,11 @@
     "party_full": "REP",
     "office_full": "House District 23",
     "counties": "Palm Beach",
-    "receipts": 25886.66,
+    "receipts": 47320.8,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 24212.29,
-    "cash_on_hand": 1674.37,
+    "disbursements": 47320.8,
+    "cash_on_hand": 0.0,
     "joint_funds": []
   },
   {
@@ -116,8 +108,8 @@
     "receipts": 126493.68,
     "pac_money": 0,
     "loans": 7850.0,
-    "disbursements": 90008.64,
-    "cash_on_hand": 36485.04,
+    "disbursements": 90058.34,
+    "cash_on_hand": 36435.34,
     "joint_funds": [
       {
         "name": "LUTHER UNCLE LUKE CAMPBELL FOR CONGRESS",
@@ -174,11 +166,11 @@
     "party_full": "DEM",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 2284052.29,
+    "receipts": 3930911.6,
     "pac_money": 0,
     "loans": 247000.0,
-    "disbursements": 987367.81,
-    "cash_on_hand": 1296684.48,
+    "disbursements": 2833915.42,
+    "cash_on_hand": 1096996.18,
     "joint_funds": []
   },
   {
@@ -239,11 +231,11 @@
     "party_full": "DEM",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 25903.63,
+    "receipts": 27985.28,
     "pac_money": 0,
     "loans": 11200.0,
-    "disbursements": 21638.63,
-    "cash_on_hand": 4265.0,
+    "disbursements": 27556.7,
+    "cash_on_hand": 428.58,
     "joint_funds": []
   },
   {
@@ -252,11 +244,11 @@
     "party_full": "DEM",
     "office_full": "House District 28",
     "counties": "Miami-Dade, Monroe",
-    "receipts": 291398.16,
+    "receipts": 361423.35,
     "pac_money": 0,
-    "loans": 200000.0,
-    "disbursements": 625.1,
-    "cash_on_hand": 366568.55,
+    "loans": 210000.0,
+    "disbursements": 12325.1,
+    "cash_on_hand": 418920.85,
     "joint_funds": [
       {
         "name": "PHIL EHR FOR CONGRESS",
@@ -313,11 +305,11 @@
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 1488420.8,
+    "receipts": 1534023.02,
     "pac_money": 0,
-    "loans": 1271711.5,
-    "disbursements": 1026705.31,
-    "cash_on_hand": 471643.98,
+    "loans": 1313711.5,
+    "disbursements": 1523042.02,
+    "cash_on_hand": 20909.49,
     "joint_funds": []
   },
   {
@@ -365,11 +357,11 @@
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 26001.26,
+    "receipts": 32065.37,
     "pac_money": 0,
     "loans": 200.0,
-    "disbursements": 25212.82,
-    "cash_on_hand": 788.44,
+    "disbursements": 32404.23,
+    "cash_on_hand": -338.86,
     "joint_funds": []
   },
   {
@@ -499,7 +491,7 @@
     "pac_money": 0,
     "loans": 0.0,
     "disbursements": 158934.71,
-    "cash_on_hand": 528123.11,
+    "cash_on_hand": 534051.23,
     "joint_funds": []
   },
   {
@@ -612,11 +604,11 @@
     "party_full": "WRI",
     "office_full": "House District 26",
     "counties": "Miami-Dade, Collier",
-    "receipts": 8923.82,
+    "receipts": 10780.11,
     "pac_money": 0,
     "loans": 8500.0,
-    "disbursements": 7383.82,
-    "cash_on_hand": 1540.0,
+    "disbursements": 8404.71,
+    "cash_on_hand": 2375.4,
     "joint_funds": []
   },
   {
@@ -708,11 +700,11 @@
     "party_full": "DEM",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 974844.71,
+    "receipts": 8177943.83,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 709866.35,
-    "cash_on_hand": 264978.36,
+    "disbursements": 4052942.27,
+    "cash_on_hand": 4113082.56,
     "joint_funds": []
   },
   {
@@ -730,7 +722,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00764",
+    "id": "S6FL00772",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
@@ -743,7 +735,7 @@
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL20080",
+    "id": "H4FL23134",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
@@ -773,12 +765,21 @@
     "party_full": "DEM",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 661173.11,
+    "receipts": 1339983.8,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 336075.74,
-    "cash_on_hand": 325097.37,
-    "joint_funds": []
+    "disbursements": 660596.02,
+    "cash_on_hand": 679387.78,
+    "joint_funds": [
+      {
+        "name": "ELIOTT RODRIGUEZ VICTORY FUND",
+        "id": "C00962068",
+        "receipts": 3800.0,
+        "disbursements": 150.1,
+        "cash_on_hand": 3649.9,
+        "loans": 0.0
+      }
+    ]
   },
   {
     "name": "ROJAS, EDDY",
@@ -829,9 +830,9 @@
       {
         "name": "SCOTT SINGER FOR CONGRESS-GTM NOMINEE FUND: FL-25",
         "id": "C00954941",
-        "receipts": 8983.0,
-        "disbursements": 0.0,
-        "cash_on_hand": 8983.0,
+        "receipts": 38469.36,
+        "disbursements": 32471.86,
+        "cash_on_hand": 5997.5,
         "loans": 0.0
       }
     ]
@@ -864,11 +865,11 @@
     "party_full": "DEM",
     "office_full": "House District 21",
     "counties": "St. Lucie, Martin, Palm Beach",
-    "receipts": 993566.85,
+    "receipts": 1133231.14,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 848173.53,
-    "cash_on_hand": 151968.48,
+    "disbursements": 1016416.22,
+    "cash_on_hand": 119428.3,
     "joint_funds": []
   },
   {
