@@ -14,7 +14,7 @@
   },
   {
     "name": "BAKER, AARON",
-    "id": "H6FL06241",
+    "id": "H6FL06324",
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
@@ -253,7 +253,7 @@
   },
   {
     "name": "GRAYSON, ALAN",
-    "id": "S6FL00376",
+    "id": "S2FL00581",
     "party_full": "DEM",
     "office_full": "House District 7",
     "counties": "Orange, Seminole, Volusia",
@@ -474,11 +474,11 @@
     "party_full": "DEM",
     "office_full": "House District 11",
     "counties": "Lake, Orange, Sumter",
-    "receipts": 197288.78,
+    "receipts": 225867.92,
     "pac_money": 0,
     "loans": 64965.0,
-    "disbursements": 175408.13,
-    "cash_on_hand": 21880.65,
+    "disbursements": 190672.27,
+    "cash_on_hand": 35195.65,
     "joint_funds": []
   },
   {
