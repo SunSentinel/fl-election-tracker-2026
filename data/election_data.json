@@ -534,11 +534,11 @@
     "party_full": "DEM",
     "office_full": "House District 26",
     "counties": "Miami-Dade, Collier",
-    "receipts": 560596.57,
+    "receipts": 599526.7,
     "pac_money": 0,
     "loans": 250000.0,
-    "disbursements": 428587.81,
-    "cash_on_hand": 132008.76,
+    "disbursements": 489536.92,
+    "cash_on_hand": 109989.78,
     "joint_funds": []
   },
   {
@@ -882,15 +882,15 @@
   },
   {
     "name": "THOMPSON, MICHAEL",
-    "id": "H6FL22180",
+    "id": "H6FL01275",
     "party_full": "REP",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 25663.0,
+    "receipts": 86975.7,
     "pac_money": 0,
-    "loans": 0.0,
-    "disbursements": 27221.37,
-    "cash_on_hand": 0.0,
+    "loans": 25000.0,
+    "disbursements": 111975.7,
+    "cash_on_hand": -25000.0,
     "joint_funds": []
   },
   {
