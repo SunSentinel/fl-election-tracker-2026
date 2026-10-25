@@ -174,11 +174,11 @@
     "party_full": "DEM",
     "office_full": "House District 22",
     "counties": "Palm Beach",
-    "receipts": 3930911.6,
+    "receipts": 4619822.46,
     "pac_money": 0,
     "loans": 247000.0,
-    "disbursements": 2833915.42,
-    "cash_on_hand": 1096996.18,
+    "disbursements": 3884717.23,
+    "cash_on_hand": 735105.23,
     "joint_funds": []
   },
   {
@@ -213,11 +213,11 @@
     "party_full": "REP",
     "office_full": "House District 26",
     "counties": "Miami-Dade, Collier",
-    "receipts": 2606687.1,
+    "receipts": 2763195.61,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 2354822.03,
-    "cash_on_hand": 2071185.27,
+    "disbursements": 2906303.14,
+    "cash_on_hand": 1676212.67,
     "joint_funds": []
   },
   {
@@ -309,7 +309,7 @@
   },
   {
     "name": "FRANZESE, DAN",
-    "id": "H6FL22149",
+    "id": "H2FL21108",
     "party_full": "REP",
     "office_full": "House District 25",
     "counties": "Broward",
@@ -387,13 +387,13 @@
   },
   {
     "name": "HAMILTON, MICHAELANGELO",
-    "id": "H6FL23105",
+    "id": "S6FL00632",
     "party_full": "WRI",
     "office_full": "House District 25",
     "counties": "Broward",
     "receipts": 0,
     "pac_money": 0,
-    "loans": 0.0,
+    "loans": 0,
     "disbursements": 0,
     "cash_on_hand": 0,
     "joint_funds": []
@@ -586,11 +586,11 @@
     "party_full": "IND",
     "office_full": "House District 20",
     "counties": "Palm Beach, Broward",
-    "receipts": 125572.76,
+    "receipts": 126572.76,
     "pac_money": 0,
     "loans": 110000.0,
-    "disbursements": 46324.64,
-    "cash_on_hand": 79248.12,
+    "disbursements": 67221.55,
+    "cash_on_hand": 59351.21,
     "joint_funds": []
   },
   {
@@ -695,11 +695,11 @@
     "party_full": "DEM",
     "office_full": "House District 25",
     "counties": "Broward",
-    "receipts": 5093834.5,
+    "receipts": 5710776.47,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 3628095.28,
-    "cash_on_hand": 1815025.92,
+    "disbursements": 4849990.04,
+    "cash_on_hand": 1210073.13,
     "joint_funds": []
   },
   {
@@ -708,11 +708,11 @@
     "party_full": "DEM",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
-    "receipts": 8177943.83,
+    "receipts": 11319380.4,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 4061851.22,
-    "cash_on_hand": 4113082.56,
+    "disbursements": 8052585.63,
+    "cash_on_hand": 3266794.77,
     "joint_funds": []
   },
   {
@@ -730,7 +730,7 @@
   },
   {
     "name": "PERRY, NEELAM",
-    "id": "S6FL00780",
+    "id": "S6FL00764",
     "party_full": "REP",
     "office_full": "U.S. Senate",
     "counties": "Statewide",
@@ -743,7 +743,7 @@
   },
   {
     "name": "PIPER, MARK",
-    "id": "H4FL23134",
+    "id": "H4FL20080",
     "party_full": "DEM",
     "office_full": "House District 23",
     "counties": "Palm Beach",
@@ -773,18 +773,18 @@
     "party_full": "DEM",
     "office_full": "House District 27",
     "counties": "Miami-Dade",
-    "receipts": 1339983.8,
+    "receipts": 1567392.71,
     "pac_money": 0,
     "loans": 0.0,
-    "disbursements": 660596.02,
-    "cash_on_hand": 679387.78,
+    "disbursements": 945601.63,
+    "cash_on_hand": 621791.08,
     "joint_funds": [
       {
         "name": "ELIOTT RODRIGUEZ VICTORY FUND",
         "id": "C00962068",
-        "receipts": 3800.0,
-        "disbursements": 150.1,
-        "cash_on_hand": 3649.9,
+        "receipts": 65525.0,
+        "disbursements": 2086.93,
+        "cash_on_hand": 63438.07,
         "loans": 0.0
       }
     ]
