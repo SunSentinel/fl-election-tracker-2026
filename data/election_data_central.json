@@ -8,13 +8,13 @@
     "receipts": 50003.0,
     "pac_money": 0,
     "loans": 50000.0,
-    "disbursements": 13115.12,
-    "cash_on_hand": 36887.88,
+    "disbursements": 22454.0,
+    "cash_on_hand": -12011.0,
     "joint_funds": []
   },
   {
     "name": "BAKER, AARON",
-    "id": "H6FL06241",
+    "id": "H6FL06324",
     "party_full": "REP",
     "office_full": "House District 6",
     "counties": "Flagler, Lake, Marion, Putnam, St. Johns, Volusia",
